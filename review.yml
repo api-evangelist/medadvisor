@@ -1,0 +1,132 @@
+aid: medadvisor
+name: MedAdvisor
+review:
+  question: Does MedAdvisor expose a documented public API, and is it FHIR-based?
+  answer: true
+  date: '2026-07-24'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    MedAdvisor's documented developer surface is the Pharmacy Unified API, a
+    Swagger 2.0 HTTP REST API over HTTPS. No WebSocket (ws:// / wss://) or SSE
+    streaming endpoint is documented, so no AsyncAPI document was authored.
+findings:
+  summary: |
+    MedAdvisor (MedAdvisor Solutions) publishes a real, machine-readable API
+    surface - the Pharmacy Unified API - documented with a live Swagger UI at
+    https://pharmacy-unified.api.medadvisor.com.au/swagger/ and a Swagger 2.0
+    definition served at https://pharmacy-unified.api.medadvisor.com.au/swagger/docs/v1
+    (HTTP 200, 107 paths, ~112 operations, host pharmacy-unified.api.medadvisor.com.au,
+    schemes: https). The API is HTTP REST, NOT HL7 FHIR: no FHIR CapabilityStatement
+    (/metadata) and no SMART-on-FHIR /.well-known/smart-configuration or
+    /.well-known/openid-configuration are served (both returned HTTP 404). The
+    surface is organised by product tag - 3rd-Party Integration, Pharmacy,
+    BookingService, RefillOrder, Inbox, Communication, HeadOffice, Config,
+    Account, Logging - covering dispense/pharmacy workflow, appointment and
+    clinical-service booking, medication refill ordering, eScript (electronic
+    prescription) token handling, the PlusOne pharmacy inbox, and patient
+    communication. There is no dedicated developer-portal subdomain (developer.,
+    docs., fhir., api.medadvisor.com.au all failed to resolve / returned no
+    response); the Swagger UI itself is the developer reference. The publicly
+    documented, integrator-facing slice is the "3rd-Party Integration" family
+    (partner login, /pharmacy lookup, /escript/{token} status, /pharmacy/notify
+    order push into the PlusOne inbox); the remainder appears to be the first-party
+    pharmacy client surface, gated behind partner credentials. Home market is
+    Australia.
+  developerPortal:
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+    httpStatus: 200
+    confirmedLive: true
+    note: Live Swagger UI acts as the developer reference; no separate developer.* / docs.* portal resolves.
+  fhirCapabilityStatement:
+    present: false
+    fhirVersion: null
+    resources: []
+    note: >-
+      No FHIR base or CapabilityStatement found. fhir.medadvisor.com.au did not
+      resolve; /.well-known/smart-configuration and /.well-known/openid-configuration
+      on the API host both returned HTTP 404. The API is HTTP/REST, not HL7 FHIR.
+  downloadableSpecs:
+    count: 1
+    specs:
+    - type: Swagger 2.0
+      savedAs: openapi/medadvisor-pharmacy-unified-openapi.json
+      provenance: https://pharmacy-unified.api.medadvisor.com.au/swagger/docs/v1
+      httpStatus: 200
+      title: Pharmacy Unified API v1.0
+      paths: 107
+      operations: 112
+      parses: true
+  authModel:
+    scheme: JWT Bearer (OAuth2-style client credentials + pharmacy login)
+    smartOnFhir: false
+    detail: >-
+      securityDefinitions declares a single "Bearer" apiKey in the Authorization
+      header ("Authorization: Bearer {token}"). Tokens are obtained via
+      POST /api/v1/account/3rdpartylogin using a MedAdvisor-issued clientId and
+      clientSecret together with a Base64-encoded UTF8 pharmacy username/password.
+      No SMART-on-FHIR scopes (patient/*.read, system/*.rw) are used - this is a
+      proprietary pharmacy-integration auth model, not SMART-on-FHIR.
+    scopes: []
+  standardsConformance:
+    usCore: false
+    ukCore: false
+    auCore: false
+    daVinci: false
+    carin: false
+    note: >-
+      No FHIR implementation guide conformance (US Core / AU Core / UK Core /
+      Da Vinci / CARIN) applies; the surface is a proprietary HTTP REST API. It
+      does interoperate with the Australian eScript / electronic-prescribing
+      ecosystem via eScript token handling and MedView Flow.
+  homeMarket: Australia
+  gatedVsSelfServe: >-
+    Gated. The Swagger reference is publicly viewable, but access requires
+    MedAdvisor-issued clientId/clientSecret and pharmacy credentials via a
+    partner/integrator arrangement; there is no self-serve public signup.
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://pharmacy-unified.api.medadvisor.com.au
+    documented: true
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+    note: No WebSocket endpoint is documented in the Pharmacy Unified API Swagger definition as of the review date.
+  endpointsConfirmedRest:
+  - POST   https://pharmacy-unified.api.medadvisor.com.au/api/v1/account/3rdpartylogin
+  - GET    https://pharmacy-unified.api.medadvisor.com.au/api/v1/pharmacy
+  - GET    https://pharmacy-unified.api.medadvisor.com.au/api/v1/pharmacy/{id}
+  - GET    https://pharmacy-unified.api.medadvisor.com.au/api/v1/drug/escript/{token}
+  - POST   https://pharmacy-unified.api.medadvisor.com.au/api/v1/pharmacy/notify
+  - GET    https://pharmacy-unified.api.medadvisor.com.au/api/v1/inbox/main
+  - GET    https://pharmacy-unified.api.medadvisor.com.au/api/v1/bookingservice/pharmacy/allservices
+  - GET    https://pharmacy-unified.api.medadvisor.com.au/api/v1/RefillOrder/CompletedOrder/{orderId}
+  - POST   https://pharmacy-unified.api.medadvisor.com.au/api/v1/RefillOrder/SendEScript
+sources:
+- url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  type: APIReference
+  note: Live Swagger UI (HTTP 200) - the developer reference for the Pharmacy Unified API.
+- url: https://pharmacy-unified.api.medadvisor.com.au/swagger/docs/v1
+  type: OpenAPI
+  note: Swagger 2.0 definition (HTTP 200); saved verbatim to openapi/medadvisor-pharmacy-unified-openapi.json.
+- url: https://www.medadvisorsolutions.com/
+  type: Website
+  note: MedAdvisor Solutions corporate site - patient engagement and medication management for pharmacies and pharma.
+- url: https://www.mymedadvisor.com/en-au/medadvisor-for-pharmacy
+  type: Documentation
+  note: MedAdvisor for Pharmacy - web platform replacing PlusOne; 95%+ of Australian pharmacies, 4M+ patients.
+- url: https://support.medadvisor.com.au
+  type: Support
+  note: Support / help centre (HTTP 200).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    A real Swagger 2.0 definition was harvested verbatim and the apis.yml catalogs
+    the documented Pharmacy Unified API product families (3rd-Party Integration,
+    Booking Service, Refill Order, Inbox, Communication, Head Office, Pharmacy).
+    No WebSocket/SSE surface exists, so no AsyncAPI was authored.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

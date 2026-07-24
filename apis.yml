@@ -1,0 +1,199 @@
+aid: medadvisor
+url: https://raw.githubusercontent.com/api-evangelist/medadvisor/refs/heads/main/apis.yml
+name: MedAdvisor
+kind: company
+description: >-
+  MedAdvisor (MedAdvisor Solutions) is an Australian-founded, ASX-listed medication
+  management and patient engagement technology company whose pharmacy workflow software
+  runs in more than 95% of Australian community pharmacies and reaches over 4 million
+  patients. Its clinician-facing platform - the web-based "MedAdvisor for Pharmacy"
+  that replaced the long-running PlusOne desktop software - handles dispense workflow,
+  medication adherence, appointment and service booking (vaccinations, health checks,
+  scope-of-practice services), e-script (eScript) token handling, refill ordering, and
+  omnichannel patient communication, alongside a consumer medication app. On the
+  developer side MedAdvisor exposes a real, Swagger-documented HTTP REST surface, the
+  Pharmacy Unified API, at pharmacy-unified.api.medadvisor.com.au, including a
+  "3rd-Party Integration" family (partner login, pharmacy lookup, eScript status, and
+  order notification into the pharmacy PlusOne inbox) for third-party widgets and
+  eCommerce integrations. Authentication is a JWT bearer token obtained via a
+  clientId/clientSecret plus Base64-encoded pharmacy credentials exchange; the surface
+  is HL7/HTTP REST rather than HL7 FHIR - no public FHIR CapabilityStatement or
+  SMART-on-FHIR configuration is served. Home market is Australia, positioned as the
+  dominant community-pharmacy engagement layer sitting between dispense systems,
+  pharmaceutical programs, and patients.
+accessModel:
+  pricing: unknown
+  onboarding: partner
+  trial: false
+  try_now: false
+  public: false
+  label: Partner / integrator onboarding
+  confidence: medium
+  source:
+  - authentication
+  - review
+  generated: '2026-07-24'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Healthcare
+- Australia
+- Pharmacy
+- Medication Management
+- Medication Adherence
+- e-Prescribing
+- eScript
+- Patient Engagement
+- Appointment Booking
+- Digital Health
+- Healthcare API
+created: '2026-07-24'
+modified: '2026-07-24'
+specificationVersion: '0.19'
+apis:
+- aid: medadvisor:pharmacy-unified-third-party-integration
+  name: Pharmacy Unified API - 3rd-Party Integration
+  description: >-
+    The publicly documented third-party integration surface of MedAdvisor's Pharmacy
+    Unified API, enabling external widgets and eCommerce platforms to authenticate,
+    look up pharmacy details, retrieve eScript (electronic prescription) status by
+    token, and notify a pharmacy of new orders into its PlusOne inbox. Authenticated
+    with a JWT bearer token issued from the /3rdpartylogin exchange (clientId +
+    clientSecret + Base64-encoded pharmacy credentials).
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacy
+  - e-Prescribing
+  - Integration
+  properties:
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-unified-openapi.json
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:pharmacy-unified-booking-service
+  name: Pharmacy Unified API - Booking Service
+  description: >-
+    Appointment and clinical-service booking operations within the Pharmacy Unified
+    API - listing available pharmacy services and time slots, creating and editing
+    event bookings, managing event resources and staff calendars, and searching
+    patients and bookings. Supports vaccination, health-check, and scope-of-practice
+    service delivery in-pharmacy.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacy
+  - Appointment Booking
+  - Scheduling
+  properties:
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-unified-openapi.json
+- aid: medadvisor:pharmacy-unified-refill-order
+  name: Pharmacy Unified API - Refill Order
+  description: >-
+    Medication refill and order management operations within the Pharmacy Unified API -
+    retrieving pending and completed orders, sending eScript tokens, adding line items
+    and notes, processing patient-initiated actions, completing orders, and handling
+    refunds, reminders, and return-to-stock.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacy
+  - Medication Management
+  - Orders
+  properties:
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-unified-openapi.json
+- aid: medadvisor:pharmacy-unified-inbox
+  name: Pharmacy Unified API - Inbox
+  description: >-
+    Operations for the pharmacy PlusOne inbox within the Pharmacy Unified API -
+    retrieving the main inbox, sent, completed, scheduled, and ready-to-collect
+    message queues, adding scripts, sending scheduled messages, and dismissing items.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacy
+  - Messaging
+  - Workflow
+  properties:
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-unified-openapi.json
+- aid: medadvisor:pharmacy-unified-communication
+  name: Pharmacy Unified API - Communication
+  description: >-
+    Patient-communication and group-messaging operations within the Pharmacy Unified
+    API - creating and editing patient groups, managing group membership, and
+    supporting targeted patient outreach from the pharmacy.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacy
+  - Patient Engagement
+  - Messaging
+  properties:
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-unified-openapi.json
+- aid: medadvisor:pharmacy-unified-head-office
+  name: Pharmacy Unified API - Head Office
+  description: >-
+    Head-office (banner / multi-pharmacy) operations within the Pharmacy Unified API -
+    managing services across a group of pharmacies, listing pharmacies, and pushing
+    services with deadlines out to individual member stores.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacy
+  - Multi-Site
+  - Administration
+  properties:
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-unified-openapi.json
+- aid: medadvisor:pharmacy-unified-pharmacy
+  name: Pharmacy Unified API - Pharmacy
+  description: >-
+    Pharmacy account, settings, and administration operations within the Pharmacy
+    Unified API - retrieving pharmacy details and module/feature settings, patient
+    search, account registration and activation, electronic-prescribing settings,
+    SMS reminder handling, and pharmacy change requests.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacy
+  - Account Management
+  - Administration
+  properties:
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-unified-openapi.json
+common:
+- type: Website
+  url: https://www.medadvisor.com.au
+- type: CompanyWebsite
+  url: https://www.medadvisorsolutions.com/
+- type: APIReference
+  url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+- type: Documentation
+  url: https://support.medadvisor.com.au
+- type: Support
+  url: https://support.medadvisor.com.au
+- type: PrivacyPolicy
+  url: https://www.medadvisor.com.au/privacy
+- type: Contact
+  url: https://www.medadvisorsolutions.com/contact
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
