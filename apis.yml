@@ -180,6 +180,50 @@ apis:
   - type: OpenAPI
     url: openapi/medadvisor-pharmacy-unified-openapi.json
 common:
+- type: AgenticAccess
+  url: agentic-access/medadvisor-agentic-access.yml
+- type: DomainSecurity
+  url: security/medadvisor-domain-security.yml
+- type: Authentication
+  url: authentication/medadvisor-authentication.yml
+- type: OpenAPI
+  name: Pharmacy Unified API v2
+  url: openapi/medadvisor-pharmacy-unified-v2-openapi.json
+- type: Conventions
+  url: conventions/medadvisor-conventions.yml
+- type: ErrorCatalog
+  url: errors/medadvisor-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/medadvisor-lifecycle.yml
+- type: DataModel
+  url: data-model/medadvisor-data-model.yml
+- type: Conformance
+  url: conformance/medadvisor-conformance.yml
+- type: Compliance
+  url: https://www.medadvisorsolutions.com/en-au/data-and-privacy
+- type: TrustCenter
+  url: security/medadvisor-trust-center.yml
+- type: MCPServer
+  url: mcp/medadvisor-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/medadvisor-tool-crosswalk.yml
+- type: LLMsTxt
+  url: llms/medadvisor-llms.txt
+- type: Overlay
+  name: Pharmacy Unified API v1 enhancements
+  url: overlays/medadvisor-pharmacy-unified-v1-overlay.yaml
+- type: Overlay
+  name: Pharmacy Unified API v2 enhancements
+  url: overlays/medadvisor-pharmacy-unified-v2-overlay.yaml
+- type: AgentSkill
+  name: Third-party eScript & order integration
+  url: skills/medadvisor-third-party-escript-integration.md
+- type: AgentSkill
+  name: Book a pharmacy clinical service
+  url: skills/medadvisor-book-pharmacy-service.md
+- type: AgentSkill
+  name: Fulfil a medication refill order
+  url: skills/medadvisor-fulfil-refill-order.md
 - type: Website
   url: https://www.medadvisor.com.au
 - type: CompanyWebsite
@@ -192,6 +236,8 @@ common:
   url: https://support.medadvisor.com.au
 - type: PrivacyPolicy
   url: https://www.medadvisor.com.au/privacy
+- type: TermsOfService
+  url: https://www.medadvisorsolutions.com/terms-and-conditions
 - type: Contact
   url: https://www.medadvisorsolutions.com/contact
 maintainers:

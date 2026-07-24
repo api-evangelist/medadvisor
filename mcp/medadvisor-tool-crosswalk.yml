@@ -1,0 +1,93 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/medadvisor-pharmacy-unified-openapi.json
+# Binds each derived MCP tool to its backing OpenAPI operationId; the tool inherits
+# that operation's parameters + requestBody as its real inputSchema.
+surfaces:
+  openapi: openapi/medadvisor-pharmacy-unified-openapi.json
+  graphql: null
+  mcp: null  # no hosted MCP server; tools are candidate
+crosswalk:
+  - tool: partner_login
+    category: auth
+    rest: [Account_LoginPharmacy]
+    binding: rest
+    confidence: high
+  - tool: get_pharmacy_detail
+    category: pharmacy
+    rest: [Pharmacy_PharmacyDetail]
+    binding: rest
+    confidence: high
+  - tool: get_escript_status
+    category: eprescribing
+    rest: [Drug_RetrieveEPrescription3rdParty]
+    binding: rest
+    confidence: high
+  - tool: notify_pharmacy_order
+    category: orders
+    rest: [Pharmacy_NotifyPharmacyOfECommerceOrder]
+    binding: rest
+    confidence: high
+  - tool: list_available_services
+    category: booking
+    rest: [BookingService_RetrieveAvailableServices]
+    binding: rest
+    confidence: high
+  - tool: get_available_timeslots
+    category: booking
+    rest: [BookingService_RetrieveAvailableTimeslots]
+    binding: rest
+    confidence: high
+  - tool: create_event_booking
+    category: booking
+    rest: [BookingService_CreateEventBooking]
+    binding: rest
+    confidence: high
+  - tool: search_patients
+    category: patients
+    rest: [Pharmacy_SearchPatients]
+    binding: rest
+    confidence: high
+  - tool: get_pending_order
+    category: orders
+    rest: [RefillOrder_GetPendingOrder]
+    binding: rest
+    confidence: high
+  - tool: complete_order
+    category: orders
+    rest: [RefillOrder_Complete]
+    binding: rest
+    confidence: high
+  - tool: send_escript
+    category: orders
+    rest: [RefillOrder_SendEScript]
+    binding: rest
+    confidence: high
+  - tool: get_inbox
+    category: inbox
+    rest: [Inbox_GetInboxMessages]
+    binding: rest
+    confidence: high
+  - tool: hq_list_pharmacies
+    category: headoffice
+    rest: [HeadOffice_GetPharmacies]
+    binding: rest
+    confidence: high
+  - tool: hq_push_service
+    category: headoffice
+    rest: [HeadOffice_PushService]
+    binding: rest
+    confidence: high
+mcp_only: []
+rest_only:
+  note: >-
+    ~98 further v1 operations (full booking CRUD, inbox queue management, refill
+    line-item/refund/return-to-stock, pharmacy settings/registration/SMS reminders,
+    patient groups) and the entire v2 surface (Booking/CalendarSetting/Clinic/Pharmacist)
+    have no candidate tool yet.
+coverage:
+  tools_named: 14
+  tools_bound: 14
+  mcp_only: 0
+  rest_ops_total: 112
+  rest_ops_with_tool: 14

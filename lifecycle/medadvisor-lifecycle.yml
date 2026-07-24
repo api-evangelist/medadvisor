@@ -1,0 +1,30 @@
+generated: '2026-07-24'
+method: searched
+source: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+versioning:
+  scheme: uri-path
+  current: v2
+  versions:
+    - id: v1
+      title: Pharmacy Unified API v1.0
+      spec: openapi/medadvisor-pharmacy-unified-openapi.json
+      swagger: https://pharmacy-unified.api.medadvisor.com.au/swagger/docs/v1
+    - id: v2
+      title: Pharmacy Unified API v2.0
+      spec: openapi/medadvisor-pharmacy-unified-v2-openapi.json
+      swagger: https://pharmacy-unified.api.medadvisor.com.au/swagger/docs/v2
+  note: >-
+    Two concurrent API versions are served side by side under /api/v1 and /api/v2
+    path prefixes. v1 (107 paths) carries the third-party integration, refill,
+    inbox, and pharmacy-admin surface; v2 (44 paths) covers newer Booking,
+    CalendarSetting, Clinic, and Pharmacist capabilities.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No public deprecation policy or RFC 8594 Sunset/Deprecation header support was found.
+sla:
+  url: null
+status_page: null
+# status.medadvisor.com.au resolves but serves only a maintenance holding page,
+# not an operational status/uptime dashboard - so no StatusPage pointer is wired.
+deprecated_operations: []

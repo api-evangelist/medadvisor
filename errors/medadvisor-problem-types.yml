@@ -1,0 +1,44 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/medadvisor-pharmacy-unified-openapi.json
+format: operation-result
+# The Pharmacy Unified API does NOT use RFC 9457 application/problem+json.
+# Errors are returned inside a .NET-style OperationResult<T> envelope.
+envelope:
+  schema: MedAdvisor.HSH.Core.Structure.OperationResult
+  fields:
+    result: Machine result/status code for the operation (success vs failure).
+    resultMessage: Human-readable message describing the outcome or error.
+    errorData: Optional structured error payload (present on failures).
+    data: Operation payload on success.
+  content_type: application/json
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: >-
+      Request validation failed - malformed body, missing required field, or an
+      invalid clientId/clientSecret/pharmacy-credential combination on the
+      /3rdpartylogin exchange. Body carries the OperationResult envelope with
+      resultMessage populated.
+    envelope: MedAdvisor.HSH.Core.Structure.OperationResult
+    source_operations:
+      - openapi/medadvisor-pharmacy-unified-openapi.json#Account_LoginPharmacy
+      - openapi/medadvisor-pharmacy-unified-openapi.json#Pharmacy_NotifyPharmacyOfECommerceOrder
+  - status: 401
+    title: Unauthorized
+    meaning: >-
+      Missing, expired, or invalid JWT bearer token. Re-authenticate via
+      POST /api/v1/account/3rdpartylogin to obtain a fresh access token.
+    source_operations:
+      - openapi/medadvisor-pharmacy-unified-openapi.json#Drug_RetrieveEPrescription3rdParty
+      - openapi/medadvisor-pharmacy-unified-openapi.json#Pharmacy_PharmacyDetail
+  - status: 404
+    title: Not Found
+    meaning: >-
+      The addressed resource (pharmacy, eScript token, order, or booking) does
+      not exist or is not visible to the authenticated partner/pharmacy context.
+    source_operations:
+      - openapi/medadvisor-pharmacy-unified-openapi.json#Drug_RetrieveEPrescription3rdParty
+  - status: 500
+    title: Internal Server Error
+    meaning: Unexpected server-side error. Safe to retry idempotent reads with backoff.

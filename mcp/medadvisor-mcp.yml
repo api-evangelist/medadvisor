@@ -1,0 +1,66 @@
+generated: '2026-07-24'
+method: derived
+status: candidate
+# No official hosted MCP server was found for MedAdvisor. This is a DERIVED candidate
+# tool set bound one-to-one to real Pharmacy Unified API v1 operationIds.
+server:
+  name: medadvisor-pharmacy-unified
+  transport: http
+  url: null
+tools:
+  - name: partner_login
+    category: auth
+    description: Exchange clientId/clientSecret + Base64 pharmacy credentials for a JWT access token.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#Account_LoginPharmacy
+  - name: get_pharmacy_detail
+    category: pharmacy
+    description: Look up a pharmacy's public details by id (3rd-party integration).
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#Pharmacy_PharmacyDetail
+  - name: get_escript_status
+    category: eprescribing
+    description: Retrieve eScript (electronic prescription) details/status by token.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#Drug_RetrieveEPrescription3rdParty
+  - name: notify_pharmacy_order
+    category: orders
+    description: Notify a pharmacy of a new eCommerce order into its PlusOne inbox.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#Pharmacy_NotifyPharmacyOfECommerceOrder
+  - name: list_available_services
+    category: booking
+    description: List available bookable pharmacy services.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#BookingService_RetrieveAvailableServices
+  - name: get_available_timeslots
+    category: booking
+    description: Retrieve available appointment time slots.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#BookingService_RetrieveAvailableTimeslots
+  - name: create_event_booking
+    category: booking
+    description: Create a service/appointment booking for a patient.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#BookingService_CreateEventBooking
+  - name: search_patients
+    category: patients
+    description: Search patients in the pharmacy context.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#Pharmacy_SearchPatients
+  - name: get_pending_order
+    category: orders
+    description: Retrieve a pending refill order by orderId.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#RefillOrder_GetPendingOrder
+  - name: complete_order
+    category: orders
+    description: Mark a refill order as completed.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#RefillOrder_Complete
+  - name: send_escript
+    category: orders
+    description: Send an eScript token against an order.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#RefillOrder_SendEScript
+  - name: get_inbox
+    category: inbox
+    description: Retrieve the pharmacy PlusOne main inbox queue.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#Inbox_GetInboxMessages
+  - name: hq_list_pharmacies
+    category: headoffice
+    description: List pharmacies in a head-office group.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#HeadOffice_GetPharmacies
+  - name: hq_push_service
+    category: headoffice
+    description: Push a service out to member pharmacies with a deadline.
+    source_operation: openapi/medadvisor-pharmacy-unified-openapi.json#HeadOffice_PushService

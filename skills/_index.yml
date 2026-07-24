@@ -1,0 +1,15 @@
+generated: '2026-07-24'
+method: generated
+skills:
+  - file: medadvisor-third-party-escript-integration.md
+    name: Third-party eScript & order integration
+    api: openapi/medadvisor-pharmacy-unified-openapi.json
+    operations: [Account_LoginPharmacy, Pharmacy_PharmacyDetail, Drug_RetrieveEPrescription3rdParty, Pharmacy_NotifyPharmacyOfECommerceOrder]
+  - file: medadvisor-book-pharmacy-service.md
+    name: Book a pharmacy clinical service
+    api: openapi/medadvisor-pharmacy-unified-openapi.json
+    operations: [BookingService_RetrieveAvailableServices, BookingService_RetrieveAvailableTimeslots, Pharmacy_SearchPatients, BookingService_CreateEventBooking]
+  - file: medadvisor-fulfil-refill-order.md
+    name: Fulfil a medication refill order
+    api: openapi/medadvisor-pharmacy-unified-openapi.json
+    operations: [RefillOrder_GetPendingOrder, RefillOrder_AddLineItem, RefillOrder_SendEScript, RefillOrder_Complete]

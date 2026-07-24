@@ -1,0 +1,20 @@
+generated: '2026-07-24'
+method: searched
+probe: false
+url: https://www.medadvisorsolutions.com/en-au/data-and-privacy
+certifications:
+  - ISO 27001
+  - HIPAA
+  - GDPR
+  - Australian Privacy Principles
+security_practices:
+  - "All data is encrypted using 256-AES encryption"
+  - Periodic third-party penetration testing
+  - Privacy by Design framework across system development
+  - Least-privilege access controls with regular access audits and privacy impact assessments
+policy_links:
+  privacy_policy: https://www.medadvisorsolutions.com/privacy-policy
+  terms_and_conditions: https://www.medadvisorsolutions.com/terms-and-conditions
+evidence:
+  - source: https://www.medadvisorsolutions.com/en-au/data-and-privacy
+    keywords: [iso 27001, hipaa, gdpr, 256-aes encryption, penetration testing, privacy by design]

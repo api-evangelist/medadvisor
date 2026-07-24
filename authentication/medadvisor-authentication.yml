@@ -1,0 +1,30 @@
+generated: '2026-07-24'
+method: searched
+source: openapi/medadvisor-pharmacy-unified-openapi.json
+docs: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  model: jwt-bearer
+schemes:
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  scheme: bearer
+  bearer_format: JWT
+  description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+  sources:
+  - openapi/medadvisor-pharmacy-unified-openapi.json
+  - openapi/medadvisor-pharmacy-unified-v2-openapi.json
+token_exchange:
+  operation: openapi/medadvisor-pharmacy-unified-openapi.json#Account_LoginPharmacy
+  endpoint: POST /api/v1/account/3rdpartylogin
+  description: >-
+    Integrators are issued a clientId and clientSecret by MedAdvisor. The pharmacy's
+    username and password are Base64-encoded (UTF-8) and posted with the clientId and
+    clientSecret to /3rdpartylogin; on success the endpoint returns a JWT access token
+    used as Authorization: Bearer {token} on all subsequent requests.
+  onboarding: partner

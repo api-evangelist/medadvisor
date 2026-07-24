@@ -1,0 +1,79 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/medadvisor-pharmacy-unified-openapi.json
+# Entity graph derived from OpenAPI definitions ($ref links + id-reference fields).
+entities:
+  - name: Pharmacy
+    aka: [Store]
+    key: id
+    fields: [id, storeCode, systemCode, preferredName, tier, phone, email, operatingHours, location]
+    notes: Community pharmacy / store; the tenant context most operations run within.
+  - name: HeadOffice
+    key: id
+    notes: Banner / multi-pharmacy group that owns and pushes services to member pharmacies.
+  - name: Service
+    aka: [EventService]
+    key: id
+    notes: A bookable clinical service (vaccination, health check, scope-of-practice).
+  - name: EventResource
+    key: resourceId
+    notes: A staff member / room / calendar resource a service is delivered against.
+  - name: EventBooking
+    key: id
+    fields: [id, startDate, endDate, reasonForConsultation, clinicalConsent, financialConsent]
+    notes: A patient appointment for a service against a resource.
+  - name: Patient
+    aka: [User]
+    key: id
+    notes: Health consumer; searched via patientsearch / SearchPatients.
+  - name: PatientGroup
+    key: id
+    notes: Communication segment for targeted messaging.
+  - name: RefillOrder
+    key: orderId
+    notes: Medication refill / eCommerce order flowing into the pharmacy PlusOne inbox.
+  - name: LineItem
+    key: lineItemId
+    notes: An individual medication/product line on a RefillOrder.
+  - name: EScriptToken
+    key: tokenId
+    notes: Electronic prescription (eScript) token.
+  - name: InboxMessage
+    notes: PlusOne inbox item (main/sent/completed/scheduled/ready-to-collect queues).
+relationships:
+  - from: HeadOffice
+    type: has_many
+    to: Pharmacy
+    via: pharmacyId
+  - from: HeadOffice
+    type: has_many
+    to: Service
+  - from: Pharmacy
+    type: has_many
+    to: Service
+  - from: Service
+    type: has_many
+    to: EventBooking
+  - from: EventBooking
+    type: belongs_to
+    to: EventResource
+    via: resourceId
+  - from: EventBooking
+    type: belongs_to
+    to: Patient
+    via: patientId
+  - from: Patient
+    type: has_many
+    to: PatientGroup
+    via: groupId
+  - from: RefillOrder
+    type: has_many
+    to: LineItem
+    via: lineItemId
+  - from: RefillOrder
+    type: has_many
+    to: EScriptToken
+    via: tokenId
+  - from: RefillOrder
+    type: belongs_to
+    to: Pharmacy

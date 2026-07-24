@@ -1,0 +1,5206 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v2",
+    "title": "Pharmacy Unified API v2.0"
+  },
+  "host": "pharmacy-unified.api.medadvisor.com.au",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api/v2/booking/eventresource": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieve Event Resources",
+        "operationId": "Booking_RetrieveEventResources",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.EventResourceResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/retrieveservice": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Calendar setting: Retrieves all service by pharmacy to show on list",
+        "operationId": "Booking_RetrieveAllServices",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Collections.Generic.List`1[[MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/detail/{bookingId}": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieve Booking detail",
+        "operationId": "Booking_RetrieveBooking",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "description": "BookingId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.EventBookingModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/services/available": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieve Available Services",
+        "operationId": "Booking_RetrieveAvailableServices",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.BookingAvailabilityResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/eventresource/{resourceId}": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieve Event Resource detail",
+        "operationId": "Booking_RetrieveEventResource",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "resourceId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.EventResourceResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/RetrievePublicBookingLinks": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "operationId": "Booking_RetrievePublicBookingLinks",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/retrieverunsheet": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieve Run Sheet Result",
+        "operationId": "Booking_RetrieveRunSheet",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Date",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.RunSheetModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/validateCalendarToken": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "operationId": "Booking_ValidateCalendarToken",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "calendarToken",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/booking/services/availableresource/{capabilityId}": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieve Available Services Resource For Capability",
+        "operationId": "Booking_RetrieveAvailableResourceForCapability",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "capabilityId",
+            "in": "path",
+            "description": "CapabilityId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Date",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.EventBookingModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/availabletimeslotnewbooking": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieves the available time slot new booking.",
+        "operationId": "Booking_RetrieveAvailableTimeSlotNewBooking",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "serviceId",
+            "in": "query",
+            "description": "The service identifier.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "The date.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "noOfDays",
+            "in": "query",
+            "description": "The no of days.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "clinicId",
+            "in": "query",
+            "description": "clinic Id.",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.EventBookingResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/retrieveavailabletimeslots": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieve available times slots",
+        "operationId": "Booking_RetrieveAvailableTimeslots",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "resourceId",
+            "in": "query",
+            "description": "resource Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "dd/MM/yyyy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "serviceId",
+            "in": "query",
+            "description": "service Id",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pharmacistId",
+            "in": "query",
+            "description": "pharmacist Id",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Object[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/retrieveeventbookings": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Retrieves the event bookings.",
+        "operationId": "Booking_RetrieveEventBookings",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "The start date.",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "The end date.",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "resourceId",
+            "in": "query",
+            "description": "The resource identifier.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "includeResourceAvailability",
+            "in": "query",
+            "description": "if set to true [include resource availability].",
+            "required": true,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.EventBookingModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/count": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Get number of bookings",
+        "operationId": "Booking_CountNumberOfBooking",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "Booking search model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.BulkBookingSearchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/walkinqr": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Returns the pharmacy-level walk-in QR token, creating it if it does not exist.",
+        "operationId": "Booking_GetOrCreateWalkInQrToken",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/bulkcancel": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Bulk cancel booking",
+        "operationId": "Booking_BulkCancelBooking",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "Booking search model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.BulkBookingSearchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/customrunsheet": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Custom Run Sheet Result",
+        "operationId": "Booking_CustomRunSheet",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "CustomRunSheetRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.CustomRunSheetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.RunSheetModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/sendprescreener": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Sends a prescreener email for a walk-in booking.",
+        "operationId": "Booking_SendPrescreener",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.SendPrescreenerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/print/{bookingCode}": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "operationId": "Booking_Print",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "bookingCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PrescreenFormModel"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/eventresource/update": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Updates the event resource.",
+        "operationId": "Booking_UpdateEventResource",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "The models.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.EventResourceModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/createorupdateservice": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Calendar setting: Create or update service",
+        "operationId": "Booking_CreateOrUpdateService",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/CompleteCalendarWizard": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Complete Calendar wizard",
+        "operationId": "Booking_CompleteCalendarWizard",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "Calendar Wizard Data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.CalendarWizardModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/eventresource/create/{name}": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Creates the event resource",
+        "operationId": "Booking_CreateEventResource",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Event resource name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/searchprescreenformforbooking": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "operationId": "Booking_SearchPrescreenFormForBooking",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "prescreenFormSearchModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PrescreenFormSearchModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/booking/savebooking": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Create new booking",
+        "operationId": "Booking_SaveBooking",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingWrapper"
+            }
+          },
+          {
+            "name": "forceSaveBooking",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "checkLimitAmount",
+            "in": "query",
+            "description": "Allow save booking without checking limit amount if user click OK on warning pop-up",
+            "required": true,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/delete/{bookingId}": {
+      "delete": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Delete booking by pharmacy id",
+        "operationId": "Booking_DeleteBooking",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "description": "Booking Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/services/delete/{serviceId}": {
+      "delete": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Deletes the event service.",
+        "operationId": "Booking_DeleteEventService",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "serviceId",
+            "in": "path",
+            "description": "Service id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/booking/eventresource/{resourceId}/delete": {
+      "delete": {
+        "tags": [
+          "Booking"
+        ],
+        "summary": "Deletes the event resource.",
+        "operationId": "Booking_DeleteEventResource",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "resourceId",
+            "in": "path",
+            "description": "The resource identifier.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/calendarsetting/eventpreference": {
+      "get": {
+        "tags": [
+          "CalendarSetting"
+        ],
+        "operationId": "CalendarSetting_GetEventPreferences",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/calendarsetting/retrieveclosedperiod": {
+      "get": {
+        "tags": [
+          "CalendarSetting"
+        ],
+        "summary": "Retrieve closed periods by pharmacy id",
+        "operationId": "CalendarSetting_RetrieveClosedPeriod",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClosedPeriodModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/calendarsetting/retrievepublicholidays/{year}": {
+      "get": {
+        "tags": [
+          "CalendarSetting"
+        ],
+        "summary": "Retrieve public holiday by pharmacy id",
+        "operationId": "CalendarSetting_RetrievePublicHolidays",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClosedPeriodModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/calendarsetting/eventpreference/update": {
+      "post": {
+        "tags": [
+          "CalendarSetting"
+        ],
+        "operationId": "CalendarSetting_UpdateEventPreferences",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/calendarsetting/createorupdate/closedperiod": {
+      "post": {
+        "tags": [
+          "CalendarSetting"
+        ],
+        "summary": "Create or update list of Closed Period by pharmacy id.",
+        "operationId": "CalendarSetting_CreateOrUpdateClosedPeriod",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "closedPeriodModel",
+            "in": "body",
+            "description": "Closed Period",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/calendarsetting/createorupdate/publicholidays": {
+      "post": {
+        "tags": [
+          "CalendarSetting"
+        ],
+        "summary": "Create or update list of public holidays by pharmacy id.",
+        "operationId": "CalendarSetting_CreateOrUpdatePublicHolidays",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "closedPeriodModel",
+            "in": "body",
+            "description": "public holidays",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/{clinicId}": {
+      "get": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Retrieve clinic detail",
+        "operationId": "Clinic_RetrieveClinicDetail",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinicId",
+            "in": "path",
+            "description": "Clinic Id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Deletes a clinic associated with the specified clinic identifier.",
+        "description": "This action requires the caller to be authorized and associated with a valid\r\n            pharmacy. If the pharmacy identifier is invalid, the request will result in an unauthorized response. If the\r\n            {clinicId} is an empty GUID, the request will result in a bad request response.",
+        "operationId": "Clinic_RemoveClinic",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinicId",
+            "in": "path",
+            "description": "The unique identifier of the clinic to be removed. Must not be an empty GUID.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/{clinicId}/retrieveBookingUrl": {
+      "get": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "RetrieveBookingUrl",
+        "operationId": "Clinic_RetrieveBookingUrl",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinicId",
+            "in": "path",
+            "description": "clinicId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/{clinicId}/bookings": {
+      "get": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Retrieve clinic bookings",
+        "operationId": "Clinic_RetrieveClinicBookings",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinicId",
+            "in": "path",
+            "description": "Clinic Id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The search query.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Collections.Generic.List`1[[MedAdvisor.Framework.Interface.v2.ClinicBookingModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Add clinic booking",
+        "operationId": "Clinic_AddClinicBooking",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "Clinic Booking Model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicBookingModel"
+            }
+          },
+          {
+            "name": "clinicId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/generateclinicreport": {
+      "get": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Generate clinic report in csv",
+        "operationId": "Clinic_GenerateClinicReportAsync",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinicGuid",
+            "in": "query",
+            "description": "Clinic GUID",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicReportModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/{clinicId}/retrieveavailabletimeslots": {
+      "get": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Retrieve clinic available times slots",
+        "operationId": "Clinic_RetrieveAvailableTimeslots",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinicId",
+            "in": "path",
+            "description": "clinicId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "eventBookingId",
+            "in": "query",
+            "description": "eventBookingId",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/retrieveclinics": {
+      "get": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Retrieves clinic.",
+        "operationId": "Clinic_RetrieveClinics",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Clinic status",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The search query.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortFieldName",
+            "in": "query",
+            "description": "Sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "description": "Direction",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Collections.Generic.List`1[[MedAdvisor.Framework.Interface.v2.ClinicModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/createorupdate": {
+      "post": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Create or update the clinic.",
+        "operationId": "Clinic_CreateOrUpdateClinic",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinic",
+            "in": "body",
+            "description": "The clinic.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicSaveModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/clinic/booking/{clinicId}/{eventBookingId}": {
+      "delete": {
+        "tags": [
+          "Clinic"
+        ],
+        "summary": "Deletes a clinic booking associated with the specified pharmacy, clinic, and event booking identifiers.",
+        "description": "This action requires the caller to be authorized and associated with a valid pharmacy.  \r\n            If the pharmacy identifier is invalid or does not match the authenticated user, the request will result in an unauthorized response. \r\n            If the {eventBookingId} is invalid or zero, the request will result in a bad request response.",
+        "operationId": "Clinic_RemoveClinicBooking",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "clinicId",
+            "in": "path",
+            "description": "The unique identifier of the clinic associated with the booking. Must not be an empty GUID.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "eventBookingId",
+            "in": "path",
+            "description": "The unique identifier (ID) of the event booking to be removed. Must be greater than zero.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/pharmacist/retrievebypharmacy": {
+      "get": {
+        "tags": [
+          "Pharmacist"
+        ],
+        "summary": "Retrieve list pharmacist by pharmacy id",
+        "operationId": "Pharmacist_RetrievePharmacist",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/pharmacist/createorupdate": {
+      "post": {
+        "tags": [
+          "Pharmacist"
+        ],
+        "summary": "Create or update pharmacist",
+        "operationId": "Pharmacist_CreateOrUpdatePharmacist",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "description": "Pharmacist model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/pharmacist/delete/{pharmacistId}": {
+      "delete": {
+        "tags": [
+          "Pharmacist"
+        ],
+        "summary": "Delete pharmacist",
+        "operationId": "Pharmacist_DeletePharmacist",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pharmacistId",
+            "in": "path",
+            "description": "Pharmacist id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.EventResourceResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventResourceResult"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.EventResourceResult": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventResourceWrapper"
+          }
+        },
+        "totalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "store": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Store"
+        },
+        "earliestOpening": {
+          "type": "string"
+        },
+        "latestClosing": {
+          "type": "string"
+        },
+        "calendarLayout": {
+          "type": "string"
+        },
+        "smsConfirmation": {
+          "type": "boolean"
+        },
+        "smsReminder": {
+          "type": "boolean"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.EventResourceWrapper": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "availabilityType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "recurrencePattern": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventRecurrence"
+          }
+        },
+        "singleBookings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingWrapper"
+          }
+        },
+        "availableServices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.BookingAvailability"
+          }
+        },
+        "linkedServices": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "calendarContext": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "locationType": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.Store": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "storeCode": {
+          "type": "string"
+        },
+        "systemCode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "preferredName": {
+          "type": "string"
+        },
+        "tier": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Finance.PharmacyTier"
+        },
+        "bannerURL": {
+          "type": "string"
+        },
+        "pendingBannerURL": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "phoneVisible": {
+          "type": "boolean"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "faxVisible": {
+          "type": "boolean"
+        },
+        "email": {
+          "type": "string"
+        },
+        "emailVisible": {
+          "type": "boolean"
+        },
+        "operatingHours": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.OperatingHour"
+          }
+        },
+        "operatingHoursRaw": {
+          "type": "string"
+        },
+        "operatingHoursNotes": {
+          "type": "string"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "websiteURL": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Location"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pepStatus": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pepScriptProcessing": {
+          "type": "boolean"
+        },
+        "pepScriptProcessingPulse": {
+          "type": "boolean"
+        },
+        "currentUsers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "currentUsersLocal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ttrOrders": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "distance": {
+          "format": "double",
+          "type": "number"
+        },
+        "processingMode": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "broadcastAllowed": {
+          "type": "boolean"
+        },
+        "blockUI": {
+          "type": "boolean"
+        },
+        "password": {
+          "type": "string"
+        },
+        "pushReports": {
+          "type": "boolean"
+        },
+        "pepLastUploadDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "pepLastScriptDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "gcLastHeartbeat": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "hnScriptFlowEnabled": {
+          "type": "boolean"
+        },
+        "hnLastHeartbeat": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lightweightLastHeartbeat": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "automatedRefillValid": {
+          "type": "boolean"
+        },
+        "automatedRefillTimePickup": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "automatedRefillClosingLimit": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "automatedRefillAlert": {
+          "type": "boolean"
+        },
+        "automatedPopupAlert": {
+          "type": "boolean"
+        },
+        "automatedRefillReadyMessage": {
+          "type": "boolean"
+        },
+        "supportClickAndCollect": {
+          "type": "boolean"
+        },
+        "supportPayInAdvance": {
+          "type": "boolean"
+        },
+        "supportGST": {
+          "type": "boolean"
+        },
+        "remoteActivation": {
+          "type": "boolean"
+        },
+        "deliveryOptions": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            4
+          ],
+          "type": "integer"
+        },
+        "automatedRefillIfRepeats": {
+          "type": "boolean"
+        },
+        "automatedRefillIfDispenseHistory": {
+          "type": "boolean"
+        },
+        "firstLogin": {
+          "type": "boolean"
+        },
+        "latitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "longitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "patientInitiatedCommsAllowed": {
+          "type": "boolean"
+        },
+        "photoSupport": {
+          "type": "boolean"
+        },
+        "wizardRun": {
+          "type": "boolean"
+        },
+        "dispenseSoftware": {
+          "type": "string"
+        },
+        "autoCloseNotification": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "notificationFrequency": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "consumerLogoReplacement": {
+          "type": "string"
+        },
+        "consumerCatalog": {
+          "type": "string"
+        },
+        "consumerRewards": {
+          "type": "string"
+        },
+        "consumerServices": {
+          "type": "string"
+        },
+        "consumerServicesBlock": {
+          "type": "boolean"
+        },
+        "systemID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "consent": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "lastUploadDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "pepLastUploadTime": {
+          "type": "string"
+        },
+        "pepPulseFrequency": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pepPulseStart": {
+          "type": "string"
+        },
+        "pepPulseEnd": {
+          "type": "string"
+        },
+        "lastScriptDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "codeineMonitoring": {
+          "type": "boolean"
+        },
+        "smsSupport": {
+          "type": "boolean"
+        },
+        "allowNDSSOrdering": {
+          "type": "boolean"
+        },
+        "allowOTCOrdering": {
+          "type": "boolean"
+        },
+        "instantActivateAllowed": {
+          "type": "boolean"
+        },
+        "bookingServiceSupport": {
+          "type": "boolean"
+        },
+        "homeSMSView": {
+          "type": "boolean"
+        },
+        "billingAccess": {
+          "type": "string"
+        },
+        "reportAccess": {
+          "type": "string"
+        },
+        "hnId": {
+          "type": "string"
+        },
+        "hnPassword": {
+          "type": "string"
+        },
+        "eGuildID": {
+          "type": "string"
+        },
+        "nostraId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uuid": {
+          "type": "string"
+        },
+        "healthNotesPharmacyDetail": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail"
+          }
+        },
+        "owner": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Owner"
+        },
+        "moduleSettings": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.ModuleActivation"
+        },
+        "smsFallbackSupport": {
+          "type": "boolean"
+        },
+        "isTest": {
+          "type": "boolean"
+        },
+        "isStaging": {
+          "type": "boolean"
+        },
+        "isDemo": {
+          "type": "boolean"
+        },
+        "isOptOut": {
+          "type": "boolean"
+        },
+        "isMultimain": {
+          "type": "boolean"
+        },
+        "multimainPrimaryId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "storeDetailsCorrect": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "showTermsConditions": {
+          "type": "boolean"
+        },
+        "partnerType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerPharmacyId": {
+          "type": "string"
+        },
+        "ePrescribingSettings": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.ElectronicPrescribingSettings"
+        },
+        "externalSystem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.PharmacyExternalSystem"
+          }
+        },
+        "providers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider"
+          }
+        },
+        "locale": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "serverTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.Subscription"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.EventRecurrence": {
+      "type": "object",
+      "properties": {
+        "isNew": {
+          "type": "boolean"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "recurrenceType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "months": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "type": "integer"
+          }
+        },
+        "weekdays": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          }
+        },
+        "dates": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "startTime": {
+          "type": "string"
+        },
+        "endTime": {
+          "type": "string"
+        },
+        "startDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "recurEvery": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "endAfterOccurences": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "recurrenceEndType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "dayOfMonthInYearlyRecurrence": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "useEndTime": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.EventBookingWrapper": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "startDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "resourceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resourceName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "bookingRef": {
+          "type": "string"
+        },
+        "isNew": {
+          "type": "boolean"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "capabilityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "capabilityName": {
+          "type": "string"
+        },
+        "capabilityNameOriginal": {
+          "type": "string"
+        },
+        "openPrescreeningInExternalBrowser": {
+          "type": "boolean"
+        },
+        "color": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "initials": {
+          "type": "string"
+        },
+        "userID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userCache_ID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userMobile": {
+          "type": "string"
+        },
+        "userEmail": {
+          "type": "string"
+        },
+        "userMedicareNumber": {
+          "type": "string"
+        },
+        "userIRN": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userMedicareExpiry": {
+          "type": "string"
+        },
+        "userDateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "userStreet": {
+          "type": "string"
+        },
+        "userSuburb": {
+          "type": "string"
+        },
+        "userState": {
+          "type": "string"
+        },
+        "userPostcode": {
+          "type": "string"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "shouldSendConfirmation": {
+          "type": "boolean"
+        },
+        "shouldSendReminder": {
+          "type": "boolean"
+        },
+        "reminderPriorHours": {
+          "type": "string"
+        },
+        "createDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dispenseRefId": {
+          "type": "string"
+        },
+        "calendarTokenId": {
+          "type": "string"
+        },
+        "availableResourceIds": {
+          "type": "string"
+        },
+        "pharmacyName": {
+          "type": "string"
+        },
+        "pharmacy_ID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pharmacyTimeZone": {
+          "type": "string"
+        },
+        "prescreenCompleted": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "prescreenData": {
+          "type": "string"
+        },
+        "prescreenURL": {
+          "type": "string"
+        },
+        "prescreenView": {
+          "type": "string"
+        },
+        "dose": {
+          "type": "string"
+        },
+        "reasonForConsultation": {
+          "type": "string"
+        },
+        "relevantBackgroundInfo": {
+          "type": "string"
+        },
+        "decisionMakerName": {
+          "type": "string"
+        },
+        "organisationCode": {
+          "type": "string"
+        },
+        "consultationType": {
+          "type": "string"
+        },
+        "pharmacistId": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "pharmacistName": {
+          "type": "string"
+        },
+        "vaccineEnquiry": {
+          "type": "boolean"
+        },
+        "prescreenRequirement": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isVaccineRecommendationPrompt": {
+          "type": "boolean"
+        },
+        "vaccineRecommendationPromptMessage": {
+          "type": "string"
+        },
+        "source": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "availablePharmacistIds": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "organisationDivision": {
+          "type": "string"
+        },
+        "employeeStatus": {
+          "type": "string"
+        },
+        "employeeId": {
+          "type": "string"
+        },
+        "organisationServices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "decisionMakerConsent": {
+          "type": "boolean"
+        },
+        "clinicalConsent": {
+          "type": "boolean"
+        },
+        "financialConsent": {
+          "type": "boolean"
+        },
+        "groupBookingId": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "groupSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "groupMemberIndex": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "groupContactEmail": {
+          "type": "string"
+        },
+        "groupContactMobile": {
+          "type": "string"
+        },
+        "hasPrescreen": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.BookingAvailability": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "type": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "bookingTarget": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "bookingTargetUrl": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "longName": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "blurb": {
+          "type": "string"
+        },
+        "iconImage": {
+          "type": "string"
+        },
+        "bannerImage": {
+          "type": "string"
+        },
+        "suggestionPriority": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resourceAvailable": {
+          "type": "boolean"
+        },
+        "standardDuration": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "prescreenRequirement": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "prescreenView": {
+          "type": "string"
+        },
+        "ppsEngine": {
+          "type": "string"
+        },
+        "bookingInformation": {
+          "type": "string"
+        },
+        "openPrescreeningInExternalBrowser": {
+          "type": "boolean"
+        },
+        "maExternalBookingUrl": {
+          "type": "string"
+        },
+        "openBookingPageInExternalBrowser": {
+          "type": "boolean"
+        },
+        "warningMessage": {
+          "type": "string"
+        },
+        "isLinkedToVaccinationForm": {
+          "type": "boolean"
+        },
+        "isCollectConsentRemind": {
+          "type": "boolean"
+        },
+        "isCollectConsentPrompt": {
+          "type": "boolean"
+        },
+        "isFamilyBookingEligible": {
+          "type": "boolean"
+        },
+        "collectConsentMessage": {
+          "type": "string"
+        },
+        "isSetAge": {
+          "type": "boolean"
+        },
+        "minAge": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "maxAge": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "clinicId": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "clinicName": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Finance.PharmacyTier": {
+      "type": "object",
+      "properties": {
+        "tierID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "tierName": {
+          "type": "string"
+        },
+        "startDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.OperatingHour": {
+      "type": "object",
+      "properties": {
+        "weekday": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer"
+        },
+        "startHour": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "startMinute": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "endHour": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "endMinute": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.Location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "addressName": {
+          "type": "string"
+        },
+        "addressLine1": {
+          "type": "string"
+        },
+        "addressLine2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "suburb": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "stateId": {
+          "type": "string"
+        },
+        "stateName": {
+          "type": "string"
+        },
+        "type": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "type": "integer"
+        },
+        "typeName": {
+          "type": "string"
+        },
+        "latitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "longitude": {
+          "format": "double",
+          "type": "number"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "cityNew": {
+          "type": "string"
+        },
+        "fullAddress": {
+          "type": "string",
+          "readOnly": true
+        },
+        "fullAddressWithCommas": {
+          "type": "string",
+          "readOnly": true
+        },
+        "fullAddressWithSpace": {
+          "type": "string",
+          "readOnly": true
+        },
+        "fullAddressWithCommasAndBr": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "invoiceGroup": {
+          "type": "string"
+        },
+        "bannerGroup": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "suburb": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postCode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "enrolledPatients": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "hN_ID": {
+          "type": "string"
+        },
+        "createDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "pharmacy_ID": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.Owner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "abn": {
+          "type": "string"
+        },
+        "pharmacyCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "billingGroupCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "clinicCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "gpCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "address": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Location"
+        },
+        "pharmacies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.Store"
+          }
+        },
+        "billingGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.Store"
+          }
+        },
+        "clinics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.GPPractice"
+          }
+        },
+        "gPs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.GPPractitioner"
+          }
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "balance": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.ModuleActivation": {
+      "type": "object",
+      "properties": {
+        "appModule": {
+          "type": "boolean"
+        },
+        "smsModule": {
+          "type": "boolean"
+        },
+        "ppsModule": {
+          "type": "boolean"
+        },
+        "gpModule": {
+          "type": "boolean"
+        },
+        "analyticsModule": {
+          "type": "boolean"
+        },
+        "map2Module": {
+          "type": "boolean"
+        },
+        "healthHubModule": {
+          "type": "boolean"
+        },
+        "termsConditions": {
+          "type": "string"
+        },
+        "paymentsWarning": {
+          "type": "boolean"
+        },
+        "paymentsSuspension": {
+          "type": "boolean"
+        },
+        "whiteLabelName": {
+          "type": "string"
+        },
+        "whiteLabelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "segmentApiKey": {
+          "type": "string"
+        },
+        "firehoseAccessKey": {
+          "type": "string"
+        },
+        "firehoseSecretKey": {
+          "type": "string"
+        },
+        "plusOneCloudWatchAccessKey": {
+          "type": "string"
+        },
+        "plusOneCloudWatchSecretKey": {
+          "type": "string"
+        },
+        "s3PlusOneCloudUploadAccessKey": {
+          "type": "string"
+        },
+        "s3PlusOneCloudUploadSecretKey": {
+          "type": "string"
+        },
+        "s3PlusOneCloudUploadBucketName": {
+          "type": "string"
+        },
+        "remoteSettingsEnabled": {
+          "type": "boolean"
+        },
+        "termsConditionsVersion": {
+          "type": "string"
+        },
+        "termsConditionsDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "releaseNoteID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isDeliveryEnabled": {
+          "type": "boolean"
+        },
+        "calendarModule": {
+          "type": "boolean"
+        },
+        "subscriptionsModule": {
+          "type": "boolean"
+        },
+        "projectStopModule": {
+          "type": "boolean"
+        },
+        "trainingModule": {
+          "type": "boolean"
+        },
+        "locale": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "eGuildID": {
+          "type": "string"
+        },
+        "communicationsModule": {
+          "type": "boolean"
+        },
+        "dataCollectorModule": {
+          "type": "boolean"
+        },
+        "plusOneCloudModule": {
+          "type": "boolean"
+        },
+        "medAdvisorForPharmacyModule": {
+          "type": "boolean"
+        },
+        "showCalendarWizard": {
+          "type": "boolean"
+        },
+        "calendarWizardEndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "calendarWizardRemainingDays": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "calendarVersion": {
+          "type": "string"
+        },
+        "allowedIpAddress": {
+          "type": "string"
+        },
+        "usingCalendar": {
+          "type": "boolean"
+        },
+        "receiveThirdPartyOutageAlerts": {
+          "type": "boolean"
+        },
+        "mergePatientsFunctionality": {
+          "type": "boolean"
+        },
+        "managePharmacistsFunctionality": {
+          "type": "boolean"
+        },
+        "advancedPatientSearch": {
+          "type": "boolean"
+        },
+        "enableNewMedicationForSmsRemindersScreen": {
+          "type": "boolean"
+        },
+        "editDaysLefteScriptsNoScriptFlow": {
+          "type": "boolean"
+        },
+        "unmappedDrugsEnabled": {
+          "type": "boolean"
+        },
+        "automatedBannerEnabled": {
+          "type": "boolean"
+        },
+        "customTileEnabled": {
+          "type": "boolean"
+        },
+        "inboxAlertForMobilePhoneDiscrepancy": {
+          "type": "boolean"
+        },
+        "aiAssistModule": {
+          "type": "boolean"
+        },
+        "aiAssistProvider": {
+          "type": "string"
+        },
+        "angularPendingOrderEnabled": {
+          "type": "boolean"
+        },
+        "walkInEnabled": {
+          "type": "boolean"
+        },
+        "vaccinationConsentCaptureEnabled": {
+          "type": "boolean"
+        },
+        "familyBookingEnabled": {
+          "type": "boolean"
+        },
+        "featureFlag_InboxAlgorithm": {
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "whitelistIPAddresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.ElectronicPrescribingSettings": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.PharmacyExternalSystem": {
+      "type": "object",
+      "properties": {
+        "maid": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "externalSystemName": {
+          "type": "string"
+        },
+        "externalID": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pendingOperation": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "externalSystemID": {
+          "format": "int32",
+          "enum": [
+            1
+          ],
+          "type": "integer"
+        },
+        "rawData": {
+          "type": "string"
+        },
+        "uuid": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider": {
+      "type": "object",
+      "properties": {
+        "providerID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "providerName": {
+          "type": "string"
+        },
+        "merchantId": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.Subscription": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "startDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "showOnInvoice": {
+          "type": "boolean"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.GPPractice": {
+      "type": "object",
+      "properties": {
+        "practiceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "activationKey": {
+          "type": "string"
+        },
+        "activationKeyExpiry": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Location"
+        },
+        "addressGoogle": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Location"
+        },
+        "bannerURL": {
+          "type": "string"
+        },
+        "businessName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "bookingSystem": {
+          "type": "string"
+        },
+        "abn": {
+          "type": "string"
+        },
+        "phoneVisible": {
+          "type": "boolean"
+        },
+        "faxVisible": {
+          "type": "boolean"
+        },
+        "emailVisible": {
+          "type": "boolean"
+        },
+        "websiteVisible": {
+          "type": "boolean"
+        },
+        "bookingSystemVisible": {
+          "type": "boolean"
+        },
+        "openHours": {
+          "type": "string"
+        },
+        "openHoursNotes": {
+          "type": "string"
+        },
+        "practiceIdentifier": {
+          "type": "string"
+        },
+        "practiceSourceSystem": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            -1
+          ],
+          "type": "integer"
+        },
+        "bankingAccount": {
+          "type": "string"
+        },
+        "bankingDisplay": {
+          "type": "string"
+        },
+        "activated": {
+          "type": "boolean"
+        },
+        "allowPracticeRateOverride": {
+          "type": "boolean"
+        },
+        "internalPractice": {
+          "type": "boolean"
+        },
+        "owner": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Owner"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.GPPractitioner": {
+      "type": "object",
+      "properties": {
+        "practitionerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "practice_UserId": {
+          "type": "string"
+        },
+        "practice_PractitionerId": {
+          "type": "string"
+        },
+        "providerNumber": {
+          "type": "string"
+        },
+        "prescriberNumber": {
+          "type": "string"
+        },
+        "stateRegistrationNumber": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleNames": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "qualifications": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "abn": {
+          "type": "string"
+        },
+        "phoneVisible": {
+          "type": "boolean"
+        },
+        "faxVisible": {
+          "type": "boolean"
+        },
+        "emailVisible": {
+          "type": "boolean"
+        },
+        "mobileVisible": {
+          "type": "boolean"
+        },
+        "sendSMSReminder": {
+          "type": "boolean"
+        },
+        "sendSMTPReminder": {
+          "type": "boolean"
+        },
+        "reminderHour": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "reminderMinute": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "processQueue": {
+          "type": "boolean"
+        },
+        "owner": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.Owner"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Collections.Generic.List`1[[MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pharmacy_ID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "bookingType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "supplemental": {
+          "type": "string"
+        },
+        "formType": {
+          "type": "string"
+        },
+        "visible": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "timeRequired": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "limitAmount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "daysRunning": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "limitBooking": {
+          "type": "boolean"
+        },
+        "sendLimitBookingNotification": {
+          "type": "boolean"
+        },
+        "walkInEnabled": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "fromResourceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "eventResources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.EventResourceModel"
+          }
+        },
+        "pharmacists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel"
+          }
+        },
+        "hasPrescreen": {
+          "type": "boolean"
+        },
+        "sourceBannerGroup": {
+          "type": "string"
+        },
+        "remainingDays": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.EventResourceModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pharmacyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "preferences": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "serviceCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "toServiceId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.BookablePharmacistModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pharmacyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "hasBooking": {
+          "type": "boolean"
+        },
+        "pharmacyUuid": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "workingHour": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel"
+        },
+        "startDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "linkedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "deleted": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "serviceCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "hasHolidayAway": {
+          "type": "boolean"
+        },
+        "holidayAway": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.TimePeriodModel"
+          }
+        },
+        "preferences": {
+          "type": "string"
+        },
+        "timeSlots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.TimePeriodModel"
+          }
+        },
+        "linkedServices": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "dateOfHolidayAways": {
+          "type": "array",
+          "items": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel": {
+      "type": "object",
+      "properties": {
+        "fortnightly": {
+          "type": "boolean"
+        },
+        "primaryWorkingHour": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.OperatingHour"
+          }
+        },
+        "primaryStartDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "secondaryWorkingHour": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.OperatingHour"
+          }
+        },
+        "secondaryStartDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.TimePeriodModel": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "to": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.EventBookingModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.EventBookingModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.EventBookingModel": {
+      "type": "object",
+      "properties": {
+        "bookings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingWrapper"
+          }
+        },
+        "totalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resourceAvailability": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.EventAvailabilityModel"
+          }
+        },
+        "clinics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicModel"
+          }
+        },
+        "cancelAllowed": {
+          "type": "boolean"
+        },
+        "deleted": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.EventAvailabilityModel": {
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "color": {
+          "type": "string"
+        },
+        "availableTimes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.TimePeriodModel"
+          }
+        },
+        "times": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.TimePeriodModel"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ClinicModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "pharmacyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "capabilityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "capabilityName": {
+          "type": "string"
+        },
+        "eventResourceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resourceName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceLength": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "locationType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "externalLocationName": {
+          "type": "string"
+        },
+        "startTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "addBufferTime": {
+          "type": "boolean"
+        },
+        "bufferTime": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "clinicStatus": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "privateUrlOnly": {
+          "type": "boolean"
+        },
+        "preferences": {
+          "type": "string"
+        },
+        "pharmacistIds": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "pharmacists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PharmacistInfoModel"
+          }
+        },
+        "bookingIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.PharmacistInfoModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "name": {
+          "type": "string"
+        },
+        "deleted": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.BookingAvailabilityResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.BookingAvailabilityResult"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.BookingAvailabilityResult": {
+      "type": "object",
+      "properties": {
+        "availability": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.BookingAvailability"
+          }
+        },
+        "totalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isNew": {
+          "type": "boolean"
+        },
+        "bookingType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "bookingTypeUrl": {
+          "type": "string"
+        },
+        "directBookingsURL": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.BookingTokenKey"
+          }
+        },
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.BookingTokenKey": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "code": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "capabilityId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult": {
+      "type": "object",
+      "properties": {
+        "pharmacyName": {
+          "type": "string"
+        },
+        "fileContent": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.RunSheetModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.RunSheetModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.RunSheetModel": {
+      "type": "object",
+      "properties": {
+        "pharmacyName": {
+          "type": "string"
+        },
+        "pharmacyAddress1": {
+          "type": "string"
+        },
+        "pharmacyAddress2": {
+          "type": "string"
+        },
+        "createDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "runSheetDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "pharmacyStartTime": {
+          "type": "string"
+        },
+        "pharmacyEndTime": {
+          "type": "string"
+        },
+        "staffList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "roomList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "services": {
+          "type": "object",
+          "additionalProperties": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "patientEnquiry": {
+          "type": "string"
+        },
+        "clinicNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bookings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingWrapper"
+          }
+        },
+        "bookingForClinicList": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "clinicMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.EventBookingResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingResult"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.EventBookingResult": {
+      "type": "object",
+      "properties": {
+        "bookings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingWrapper"
+          }
+        },
+        "bookings_Event": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingWrapper"
+        },
+        "totalCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resourceAvailability": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventAvailability"
+          }
+        },
+        "cancelAllowed": {
+          "type": "boolean"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "bookingAvailability": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.BookingAvailability"
+        },
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.EventAvailability": {
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "availabilityType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "times": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.EventBookingWrapper"
+          }
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Object[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.BulkBookingSearchRequest": {
+      "type": "object",
+      "properties": {
+        "pharmacy_ID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pharmacist_ID": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "fromDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "toDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "smsContent": {
+          "type": "string"
+        },
+        "emailContent": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.CustomRunSheetRequest": {
+      "type": "object",
+      "properties": {
+        "pharmacyID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "timeFrom": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "timeTo": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "pharmacists": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "serviceTypes": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "statuses": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "orderBy": {
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.SendPrescreenerRequest": {
+      "type": "object",
+      "properties": {
+        "bookingRef": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "deliveryMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.PharmacyUnifiedAPI.v1.Models.PrescreenFormModel": {
+      "type": "object",
+      "properties": {
+        "bookingCode": {
+          "type": "string"
+        },
+        "readOnlyMode": {
+          "type": "boolean"
+        },
+        "officeOnlyMode": {
+          "type": "boolean"
+        },
+        "formField": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "medicareNumber": {
+          "type": "string"
+        },
+        "irn": {
+          "type": "string"
+        },
+        "medicareExpiry": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "pharmacyName": {
+          "type": "string"
+        },
+        "pharmacyAddress": {
+          "type": "string"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "startDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "completedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "eventBookingCapabilityName": {
+          "type": "string"
+        },
+        "prescreenView": {
+          "type": "string"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "bookingCreated": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.CalendarWizardModel": {
+      "type": "object",
+      "properties": {
+        "pharmacyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "bookingTargetType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "bookingTargetUrl": {
+          "type": "string"
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.EventResourceModel"
+          }
+        },
+        "pharmacists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel"
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel"
+          }
+        },
+        "publicHolidays": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.PrescreenFormSearchModel": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "dob": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "postCode": {
+          "type": "string"
+        },
+        "bookingDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult": {
+      "type": "object",
+      "properties": {
+        "bookingCode": {
+          "type": "string"
+        },
+        "bookingCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "prescreenCompleted": {
+          "type": "boolean"
+        },
+        "prescreenForm": {
+          "type": "string"
+        },
+        "serviceName": {
+          "type": "string"
+        },
+        "patientFullName": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel": {
+      "type": "object",
+      "properties": {
+        "pharmacyUuid": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "type": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "layout": {
+          "type": "string"
+        },
+        "supplemental": {
+          "type": "string"
+        },
+        "smsConfirmation": {
+          "type": "boolean"
+        },
+        "smsReminder": {
+          "type": "boolean"
+        },
+        "isCollectConsentRemind": {
+          "type": "boolean"
+        },
+        "isCollectConsentPrompt": {
+          "type": "boolean"
+        },
+        "collectConsentMessage": {
+          "type": "string"
+        },
+        "isSetAge": {
+          "type": "boolean"
+        },
+        "minAge": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "maxAge": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClosedPeriodModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ClosedPeriodModel": {
+      "type": "object",
+      "properties": {
+        "pharmacyUuid": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "year": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "holidays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.PublicHolidayModel"
+          }
+        },
+        "linkedPublicHolidays": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "bookingClosedPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.TimePeriodModel"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.PublicHolidayModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Collections.Generic.List`1[[MedAdvisor.Framework.Interface.v2.ClinicBookingModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicBookingModel"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ClinicBookingModel": {
+      "type": "object",
+      "properties": {
+        "eventBookingId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pharmacyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "clinicId": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "patientId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "serviceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "serviceName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "dob": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "suburb": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "medicareNumber": {
+          "type": "string"
+        },
+        "irn": {
+          "type": "string"
+        },
+        "initial": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "fromTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "voucherCode": {
+          "type": "string"
+        },
+        "sendEmail": {
+          "type": "boolean"
+        },
+        "sendReminder": {
+          "type": "boolean"
+        },
+        "isLinkedServiceToForm": {
+          "type": "boolean"
+        },
+        "isVaccineRecommendationPrompt": {
+          "type": "boolean"
+        },
+        "vaccineRecommendationPromptMessage": {
+          "type": "string"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "completedTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "source": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicReportModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicReportModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicReportModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicReportModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ClinicReportModel": {
+      "type": "object",
+      "properties": {
+        "clinicName": {
+          "type": "string"
+        },
+        "fileContent": {
+          "type": "string"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel": {
+      "type": "object",
+      "properties": {
+        "availableTimes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.TimePeriodModel"
+          }
+        },
+        "bookingAvailability": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.BookingAvailability"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[System.Collections.Generic.List`1[[MedAdvisor.Framework.Interface.v2.ClinicModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicModel"
+          }
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.v2.ClinicSaveModel, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]]": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultMessage": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/MedAdvisor.Framework.Interface.v2.ClinicSaveModel"
+        }
+      }
+    },
+    "MedAdvisor.Framework.Interface.v2.ClinicSaveModel": {
+      "type": "object",
+      "properties": {
+        "clinicId": {
+          "format": "uuid",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "bookingUrl": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

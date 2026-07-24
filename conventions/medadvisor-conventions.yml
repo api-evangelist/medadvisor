@@ -1,0 +1,40 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/medadvisor-pharmacy-unified-openapi.json
+authentication:
+  style: jwt-bearer
+  scheme: apiKey (Authorization header carrying a Bearer JWT)
+  token_exchange: >-
+    POST /api/v1/account/3rdpartylogin with clientId + clientSecret + Base64-encoded
+    (UTF-8) pharmacy username/password; returns an access token used as
+    Authorization: Bearer {token} on all subsequent calls.
+  see: authentication/medadvisor-authentication.yml
+versioning:
+  style: uri-path
+  current: v2
+  see: lifecycle/medadvisor-lifecycle.yml
+error_envelope:
+  style: operation-result
+  schema: MedAdvisor.HSH.Core.Structure.OperationResult
+  fields: [result, resultMessage, errorData, data]
+  see: errors/medadvisor-problem-types.yml
+idempotency:
+  supported: false
+  note: >-
+    No Idempotency-Key header/parameter is declared in either the v1 or v2 OpenAPI,
+    and no idempotency contract is documented; write operations are not advertised
+    as idempotent. No Idempotency pointer is wired.
+pagination:
+  style: none-standardized
+  note: >-
+    No cursor/offset/page query parameters are declared. List responses instead
+    return a totalCount field alongside the collection (e.g. EventBookingResult.totalCount,
+    UserSearchResult.totalCount); slicing is request-body driven per endpoint.
+request_tracing:
+  request_id_header: null
+  note: No documented request-id / correlation header.
+rate_limit_signaling:
+  documented: false
+media_types:
+  request: application/json
+  response: application/json
