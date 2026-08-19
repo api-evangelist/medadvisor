@@ -1,0 +1,838 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pharmacy Unified API v2.0",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Booking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Event Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/eventresource"
+          },
+          "docs": "Retrieve Event Resources"
+        },
+        {
+          "info": {
+            "name": "Calendar setting: Retrieves all service by pharmacy to show on list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/retrieveservice"
+          },
+          "docs": "Calendar setting: Retrieves all service by pharmacy to show on list"
+        },
+        {
+          "info": {
+            "name": "Retrieve Booking detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/detail/:bookingId",
+            "params": [
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path",
+                "description": "BookingId"
+              }
+            ]
+          },
+          "docs": "Retrieve Booking detail"
+        },
+        {
+          "info": {
+            "name": "Retrieve Available Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/services/available"
+          },
+          "docs": "Retrieve Available Services"
+        },
+        {
+          "info": {
+            "name": "Retrieve Event Resource detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/eventresource/:resourceId",
+            "params": [
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Event Resource detail"
+        },
+        {
+          "info": {
+            "name": "Booking_RetrievePublicBookingLinks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/RetrievePublicBookingLinks"
+          }
+        },
+        {
+          "info": {
+            "name": "Retrieve Run Sheet Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/retrieverunsheet",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date"
+              }
+            ]
+          },
+          "docs": "Retrieve Run Sheet Result"
+        },
+        {
+          "info": {
+            "name": "Booking_ValidateCalendarToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/validateCalendarToken",
+            "params": [
+              {
+                "name": "calendarToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Retrieve Available Services Resource For Capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/services/availableresource/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path",
+                "description": "CapabilityId"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date"
+              }
+            ]
+          },
+          "docs": "Retrieve Available Services Resource For Capability"
+        },
+        {
+          "info": {
+            "name": "Retrieves the available time slot new booking.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/availabletimeslotnewbooking",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "The service identifier."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "The date."
+              },
+              {
+                "name": "noOfDays",
+                "value": "",
+                "type": "query",
+                "description": "The no of days."
+              },
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "query",
+                "description": "clinic Id."
+              }
+            ]
+          },
+          "docs": "Retrieves the available time slot new booking."
+        },
+        {
+          "info": {
+            "name": "Retrieve available times slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/retrieveavailabletimeslots",
+            "params": [
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "query",
+                "description": "resource Id"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "dd/MM/yyyy"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "service Id"
+              },
+              {
+                "name": "pharmacistId",
+                "value": "",
+                "type": "query",
+                "description": "pharmacist Id"
+              }
+            ]
+          },
+          "docs": "Retrieve available times slots"
+        },
+        {
+          "info": {
+            "name": "Retrieves the event bookings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/booking/retrieveeventbookings",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "The start date."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "The end date."
+              },
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "query",
+                "description": "The resource identifier."
+              },
+              {
+                "name": "includeResourceAvailability",
+                "value": "",
+                "type": "query",
+                "description": "if set to true [include resource availability]."
+              }
+            ]
+          },
+          "docs": "Retrieves the event bookings."
+        },
+        {
+          "info": {
+            "name": "Get number of bookings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/count"
+          },
+          "docs": "Get number of bookings"
+        },
+        {
+          "info": {
+            "name": "Returns the pharmacy-level walk-in QR token, creating it if it does not exist.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/walkinqr"
+          },
+          "docs": "Returns the pharmacy-level walk-in QR token, creating it if it does not exist."
+        },
+        {
+          "info": {
+            "name": "Bulk cancel booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/bulkcancel"
+          },
+          "docs": "Bulk cancel booking"
+        },
+        {
+          "info": {
+            "name": "Custom Run Sheet Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/customrunsheet"
+          },
+          "docs": "Custom Run Sheet Result"
+        },
+        {
+          "info": {
+            "name": "Sends a prescreener email for a walk-in booking.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/sendprescreener"
+          },
+          "docs": "Sends a prescreener email for a walk-in booking."
+        },
+        {
+          "info": {
+            "name": "Booking_Print",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/print/:bookingCode",
+            "params": [
+              {
+                "name": "bookingCode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Updates the event resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/eventresource/update"
+          },
+          "docs": "Updates the event resource."
+        },
+        {
+          "info": {
+            "name": "Calendar setting: Create or update service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/createorupdateservice"
+          },
+          "docs": "Calendar setting: Create or update service"
+        },
+        {
+          "info": {
+            "name": "Complete Calendar wizard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/CompleteCalendarWizard"
+          },
+          "docs": "Complete Calendar wizard"
+        },
+        {
+          "info": {
+            "name": "Creates the event resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/eventresource/create/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Event resource name"
+              }
+            ]
+          },
+          "docs": "Creates the event resource"
+        },
+        {
+          "info": {
+            "name": "Booking_SearchPrescreenFormForBooking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/searchprescreenformforbooking"
+          }
+        },
+        {
+          "info": {
+            "name": "Create new booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/booking/savebooking",
+            "params": [
+              {
+                "name": "forceSaveBooking",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "checkLimitAmount",
+                "value": "",
+                "type": "query",
+                "description": "Allow save booking without checking limit amount if user click OK on warning pop-up"
+              }
+            ]
+          },
+          "docs": "Create new booking"
+        },
+        {
+          "info": {
+            "name": "Delete booking by pharmacy id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/booking/delete/:bookingId",
+            "params": [
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path",
+                "description": "Booking Id"
+              }
+            ]
+          },
+          "docs": "Delete booking by pharmacy id"
+        },
+        {
+          "info": {
+            "name": "Deletes the event service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/booking/services/delete/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "Service id"
+              }
+            ]
+          },
+          "docs": "Deletes the event service."
+        },
+        {
+          "info": {
+            "name": "Deletes the event resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/booking/eventresource/:resourceId/delete",
+            "params": [
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier."
+              }
+            ]
+          },
+          "docs": "Deletes the event resource."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CalendarSetting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CalendarSetting_GetEventPreferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/calendarsetting/eventpreference"
+          }
+        },
+        {
+          "info": {
+            "name": "Retrieve closed periods by pharmacy id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/calendarsetting/retrieveclosedperiod"
+          },
+          "docs": "Retrieve closed periods by pharmacy id"
+        },
+        {
+          "info": {
+            "name": "Retrieve public holiday by pharmacy id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/calendarsetting/retrievepublicholidays/:year",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve public holiday by pharmacy id"
+        },
+        {
+          "info": {
+            "name": "CalendarSetting_UpdateEventPreferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/calendarsetting/eventpreference/update"
+          }
+        },
+        {
+          "info": {
+            "name": "Create or update list of Closed Period by pharmacy id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/calendarsetting/createorupdate/closedperiod"
+          },
+          "docs": "Create or update list of Closed Period by pharmacy id."
+        },
+        {
+          "info": {
+            "name": "Create or update list of public holidays by pharmacy id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/calendarsetting/createorupdate/publicholidays"
+          },
+          "docs": "Create or update list of public holidays by pharmacy id."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Clinic",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve clinic detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/clinic/:clinicId",
+            "params": [
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "path",
+                "description": "Clinic Id"
+              }
+            ]
+          },
+          "docs": "Retrieve clinic detail"
+        },
+        {
+          "info": {
+            "name": "Deletes a clinic associated with the specified clinic identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/clinic/:clinicId",
+            "params": [
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the clinic to be removed. Must not be an empty GUID."
+              }
+            ]
+          },
+          "docs": "This action requires the caller to be authorized and associated with a valid\r\n            pharmacy. If the pharmacy identifier is invalid, the request will result in an unauthorized response. If the\r\n            {clinicId} is an empty GUID, the request will result in a bad request response."
+        },
+        {
+          "info": {
+            "name": "RetrieveBookingUrl",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/clinic/:clinicId/retrieveBookingUrl",
+            "params": [
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "path",
+                "description": "clinicId"
+              }
+            ]
+          },
+          "docs": "RetrieveBookingUrl"
+        },
+        {
+          "info": {
+            "name": "Retrieve clinic bookings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/clinic/:clinicId/bookings",
+            "params": [
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "path",
+                "description": "Clinic Id"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The search query."
+              }
+            ]
+          },
+          "docs": "Retrieve clinic bookings"
+        },
+        {
+          "info": {
+            "name": "Add clinic booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/clinic/:clinicId/bookings",
+            "params": [
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add clinic booking"
+        },
+        {
+          "info": {
+            "name": "Generate clinic report in csv",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/clinic/generateclinicreport",
+            "params": [
+              {
+                "name": "clinicGuid",
+                "value": "",
+                "type": "query",
+                "description": "Clinic GUID"
+              }
+            ]
+          },
+          "docs": "Generate clinic report in csv"
+        },
+        {
+          "info": {
+            "name": "Retrieve clinic available times slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/clinic/:clinicId/retrieveavailabletimeslots",
+            "params": [
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "path",
+                "description": "clinicId"
+              },
+              {
+                "name": "eventBookingId",
+                "value": "",
+                "type": "query",
+                "description": "eventBookingId"
+              }
+            ]
+          },
+          "docs": "Retrieve clinic available times slots"
+        },
+        {
+          "info": {
+            "name": "Retrieves clinic.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/clinic/retrieveclinics",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Clinic status"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The search query."
+              },
+              {
+                "name": "sortFieldName",
+                "value": "",
+                "type": "query",
+                "description": "Sort"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction"
+              }
+            ]
+          },
+          "docs": "Retrieves clinic."
+        },
+        {
+          "info": {
+            "name": "Create or update the clinic.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/clinic/createorupdate"
+          },
+          "docs": "Create or update the clinic."
+        },
+        {
+          "info": {
+            "name": "Deletes a clinic booking associated with the specified pharmacy, clinic, and event booking identifiers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/clinic/booking/:clinicId/:eventBookingId",
+            "params": [
+              {
+                "name": "clinicId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the clinic associated with the booking. Must not be an empty GUID."
+              },
+              {
+                "name": "eventBookingId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (ID) of the event booking to be removed. Must be greater than zero."
+              }
+            ]
+          },
+          "docs": "This action requires the caller to be authorized and associated with a valid pharmacy.  \r\n            If the pharmacy identifier is invalid or does not match the authenticated user, the request will result in an unauthorized response. \r\n            If the {eventBookingId} is invalid or zero, the request will result in a bad request response."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pharmacist",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list pharmacist by pharmacy id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/pharmacist/retrievebypharmacy"
+          },
+          "docs": "Retrieve list pharmacist by pharmacy id"
+        },
+        {
+          "info": {
+            "name": "Create or update pharmacist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/pharmacist/createorupdate"
+          },
+          "docs": "Create or update pharmacist"
+        },
+        {
+          "info": {
+            "name": "Delete pharmacist",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/pharmacist/delete/:pharmacistId",
+            "params": [
+              {
+                "name": "pharmacistId",
+                "value": "",
+                "type": "path",
+                "description": "Pharmacist id"
+              }
+            ]
+          },
+          "docs": "Delete pharmacist"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

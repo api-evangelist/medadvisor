@@ -1,0 +1,1740 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pharmacy Unified API v1.0",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "3rd-Party Integration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login with pharmacy username and password(encoded).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/account/3rdpartylogin"
+          },
+          "docs": "To login into MedAdvisor's system, send a <code>POST</code> request to <code>/loginthirdparty</code> and provide <code>userName</code> and <code>password</code> which is encoded by Base64-encoded UTF8 string. MedAdvisor will provide integrators with a <code>clientId</code> and a <code>clientSecret</code>. Consequently, MedAdvisor is going to return a token, which is used for authentication purposes in APIs requiring token-based authentication. "
+        },
+        {
+          "info": {
+            "name": "Retrieve details of a electronic prescription from PDS, given a EScript token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/drug/escript/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "The EScript token"
+              }
+            ]
+          },
+          "docs": "Patient is going to transfer this token, medication, patient information... from Mobile Patient App to MedAdvisor. \nDuring the MedAdvisor's process, patient can look into the information about medication, quantity, status... in Mobile Patient App, by making an API call GET /escript/{token} to retrieve all the information mentioned above. \nIntegrators put the token of the dispensation into parameters request, MedAdvisor responses dispense information"
+        },
+        {
+          "info": {
+            "name": "Retrieve pharmacy detail information including services information , delivery settings, etc.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of receiving information pharmacy"
+              }
+            ]
+          },
+          "docs": "Retrieve pharmacy detail information including services information , delivery settings, etc."
+        },
+        {
+          "info": {
+            "name": "Push a message in Inbox of PlusOne. The detail of message displays description and the clickable URL of the order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/notify"
+          },
+          "docs": "Push a message in Inbox of PlusOne. The detail of message displays description and the clickable URL of the order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request reset password for pharmacy user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/account/resetpassword"
+          },
+          "docs": "Request reset password for pharmacy user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "BookingService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Pharmacy Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/gettime"
+          },
+          "docs": "Get Pharmacy Time"
+        },
+        {
+          "info": {
+            "name": "Alls the services.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/allservices"
+          },
+          "docs": "Alls the services."
+        },
+        {
+          "info": {
+            "name": "Retrieve Event Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/eventresource"
+          },
+          "docs": "Retrieve Event Resources"
+        },
+        {
+          "info": {
+            "name": "Retrieve Dynamic Services.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/dynamic"
+          },
+          "docs": "Retrieve Dynamic Services."
+        },
+        {
+          "info": {
+            "name": "Retrieve Available Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/available"
+          },
+          "docs": "Retrieve Available Services"
+        },
+        {
+          "info": {
+            "name": "Retrieve Event Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/eventresource/:resourceId",
+            "params": [
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Event Resources"
+        },
+        {
+          "info": {
+            "name": "Retrieve Booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/booking/:bookingId",
+            "params": [
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path",
+                "description": "BookingId"
+              }
+            ]
+          },
+          "docs": "Retrieve Booking"
+        },
+        {
+          "info": {
+            "name": "BookingService_RetrieveCalendarAccessTokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/calendartoken/:resetStaffUrl",
+            "params": [
+              {
+                "name": "resetStaffUrl",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Retrieve Dynamic Services by Capability Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/dynamic/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path",
+                "description": "CapabilityId"
+              }
+            ]
+          },
+          "docs": "Retrieve Dynamic Services by Capability Id."
+        },
+        {
+          "info": {
+            "name": "Retrieve Available Services by Capability Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/available/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path",
+                "description": "CapabilityId"
+              }
+            ]
+          },
+          "docs": "Retrieve Available Services by Capability Id"
+        },
+        {
+          "info": {
+            "name": "BookingService_RetrieveCalendarTokenDetails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/calendartokendetails/:calendarToken/:staffToken",
+            "params": [
+              {
+                "name": "calendarToken",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "staffToken",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Retrieve available times slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/retrieveavailabletimeslots",
+            "params": [
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "dd/MM/yyyy"
+              }
+            ]
+          },
+          "docs": "Retrieve available times slots"
+        },
+        {
+          "info": {
+            "name": "Retrieves the available time slot new booking.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/availabletimeslotnewbooking",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "The service identifier."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "The date."
+              },
+              {
+                "name": "noOfDays",
+                "value": "",
+                "type": "query",
+                "description": "The no of days."
+              }
+            ]
+          },
+          "docs": "Retrieves the available time slot new booking."
+        },
+        {
+          "info": {
+            "name": "Retrieves the event bookings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/retrieveeventbookings",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "The start date."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "The end date."
+              },
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "query",
+                "description": "The resource identifier."
+              },
+              {
+                "name": "includeResourceAvailability",
+                "value": "",
+                "type": "query",
+                "description": "if set to true [include resource availability]."
+              }
+            ]
+          },
+          "docs": "Retrieves the event bookings."
+        },
+        {
+          "info": {
+            "name": "Searches the patients.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/patientsearch"
+          },
+          "docs": "Searches the patients."
+        },
+        {
+          "info": {
+            "name": "Update services",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/services/update"
+          },
+          "docs": "Update services"
+        },
+        {
+          "info": {
+            "name": "Retrieve Historic Bookings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/services/historic"
+          },
+          "docs": "Retrieve Historic Bookings"
+        },
+        {
+          "info": {
+            "name": "Creates the event booking.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/createeventbooking"
+          },
+          "docs": "Creates the event booking."
+        },
+        {
+          "info": {
+            "name": "Retrieve Suggested Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/services/suggested"
+          },
+          "docs": "Retrieve Suggested Services"
+        },
+        {
+          "info": {
+            "name": "Updates the event booking.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/eventbooking/update"
+          },
+          "docs": "Updates the event booking."
+        },
+        {
+          "info": {
+            "name": "Updates the event resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/eventresource/update"
+          },
+          "docs": "Updates the event resource."
+        },
+        {
+          "info": {
+            "name": "Updates the event preferences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/eventpreferences/update"
+          },
+          "docs": "Updates the event preferences."
+        },
+        {
+          "info": {
+            "name": "Generate Service Booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/generate"
+          },
+          "docs": "Generate Service Booking"
+        },
+        {
+          "info": {
+            "name": "Prints the specified booking code.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/print/:bookingCode",
+            "params": [
+              {
+                "name": "bookingCode",
+                "value": "",
+                "type": "path",
+                "description": "\"Blank_[PrescreenView]_CapbilityId\", \"Today\", \"TodayCap[CapabilityId]\", \"Date_[yyyy-mm-dd]_[CapabilityId]\", or a booking Code"
+              }
+            ]
+          },
+          "docs": "Prints the specified booking code."
+        },
+        {
+          "info": {
+            "name": "Event booking edit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/bookingedit"
+          },
+          "docs": "Event booking edit"
+        },
+        {
+          "info": {
+            "name": "Creates the event resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/eventresource/create/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name."
+              }
+            ]
+          },
+          "docs": "Creates the event resource."
+        },
+        {
+          "info": {
+            "name": "Deletes the event service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/delete/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "The service identifier."
+              }
+            ]
+          },
+          "docs": "Deletes the event service."
+        },
+        {
+          "info": {
+            "name": "Deletes the event booking.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/eventbooking/:bookingId/delete",
+            "params": [
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path",
+                "description": "The booking identifier."
+              }
+            ]
+          },
+          "docs": "Deletes the event booking."
+        },
+        {
+          "info": {
+            "name": "Update Event Resource Associate Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/eventresource/update/:resourceId",
+            "params": [
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "path",
+                "description": "resourceId"
+              }
+            ]
+          },
+          "docs": "Update Event Resource Associate Service"
+        },
+        {
+          "info": {
+            "name": "Deletes the event resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/eventresource/:resourceId/delete",
+            "params": [
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier."
+              }
+            ]
+          },
+          "docs": "Deletes the event resource."
+        },
+        {
+          "info": {
+            "name": "Booking search.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/bookingsearch",
+            "params": [
+              {
+                "name": "searchingKeyword",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Booking search."
+        },
+        {
+          "info": {
+            "name": "Retrieve Available Services Resource For Capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/availableresource/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path",
+                "description": "CapabilityId"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date"
+              }
+            ]
+          },
+          "docs": "Retrieve Available Services Resource For Capability"
+        },
+        {
+          "info": {
+            "name": "Delete an event (calendar) booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/bookingservice/pharmacy/services/deletebooking/:bookingId",
+            "params": [
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an event (calendar) booking"
+        },
+        {
+          "info": {
+            "name": "Deletes the booking request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/bookingservice/deletebookingrequest/:patientId/:bookingId",
+            "params": [
+              {
+                "name": "patientId",
+                "value": "",
+                "type": "path",
+                "description": "The patient identifier."
+              },
+              {
+                "name": "bookingId",
+                "value": "",
+                "type": "path",
+                "description": "The booking identifier."
+              }
+            ]
+          },
+          "docs": "Deletes the booking request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Communication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get patient groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/comunication/GetPatientGroups",
+            "params": [
+              {
+                "name": "groupType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get patient groups"
+        },
+        {
+          "info": {
+            "name": "Get all patient group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/comunication/GetAllPatientGroupMembers",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all patient group members"
+        },
+        {
+          "info": {
+            "name": "Add patient group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/comunication/AddPatientGroup"
+          },
+          "docs": "Add patient group"
+        },
+        {
+          "info": {
+            "name": "Edit patient group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/comunication/EditPatientGroup"
+          },
+          "docs": "Edit patient group"
+        },
+        {
+          "info": {
+            "name": "Update patient group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/comunication/UpdatePatientGroupMembers"
+          },
+          "docs": "Update patient group members"
+        },
+        {
+          "info": {
+            "name": "Delete patient group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/comunication/DeletePatientGroup/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete patient group"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Demographic Rules Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/config/demographicRules"
+          },
+          "docs": "Retrieve Demographic Rules Details"
+        },
+        {
+          "info": {
+            "name": "Retrieve Demographic Rules Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/config/precursorInstructions"
+          },
+          "docs": "Retrieve Demographic Rules Details"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "HeadOffice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HeadOffice_GetServices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/hq/services"
+          }
+        },
+        {
+          "info": {
+            "name": "Creates an HO custom service (RAP-38 Story 2.5). The service is owned by the caller's report\r\ngroup and is NOT pushed to any pharmacy — it lands in the catalogue as \"Not pushed\". Returns\r\nthe created service. Pushing to pharmacies is a separate operation (Story 2.7).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/hq/services"
+          },
+          "docs": "Creates an HO custom service (RAP-38 Story 2.5). The service is owned by the caller's report\r\ngroup and is NOT pushed to any pharmacy — it lands in the catalogue as \"Not pushed\". Returns\r\nthe created service. Pushing to pharmacies is a separate operation (Story 2.7)."
+        },
+        {
+          "info": {
+            "name": "HeadOffice_GetPharmacies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/hq/pharmacies"
+          }
+        },
+        {
+          "info": {
+            "name": "HeadOffice_GetService",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/hq/services/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Edits an HO-owned service (RAP-38 Story 2.5). The change updates the shared service definition, so\r\nit applies to every pharmacy already linked to it — this does not push to new pharmacies. Returns\r\nthe updated service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/hq/services/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Edits an HO-owned service (RAP-38 Story 2.5). The change updates the shared service definition, so\r\nit applies to every pharmacy already linked to it — this does not push to new pharmacies. Returns\r\nthe updated service."
+        },
+        {
+          "info": {
+            "name": "HeadOffice_GetPharmacy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/hq/pharmacies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Extends or shortens the auto-activation deadline on a pending push (RAP-38 Story 3a.5, AC1a).\r\nShortening into the past is allowed — the nightly job picks it up on its next run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/hq/services/:id/push/:pharmacyId/deadline",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pharmacyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Extends or shortens the auto-activation deadline on a pending push (RAP-38 Story 3a.5, AC1a).\r\nShortening into the past is allowed — the nightly job picks it up on its next run."
+        },
+        {
+          "info": {
+            "name": "Pushes an HO service to pharmacies in the group (RAP-38 Story 2.7) by scope — all, by state, or\r\nselected pharmacies. Force-links each target with visibility off (pushed, not yet live). Returns\r\nthe push result with updated counts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/hq/services/:id/push",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Pushes an HO service to pharmacies in the group (RAP-38 Story 2.7) by scope — all, by state, or\r\nselected pharmacies. Force-links each target with visibility off (pushed, not yet live). Returns\r\nthe push result with updated counts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inbox",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get inbox messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/inbox/main"
+          },
+          "docs": "Get inbox messages"
+        },
+        {
+          "info": {
+            "name": "Get inbox sent messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/inbox/sent"
+          },
+          "docs": "Get inbox sent messages"
+        },
+        {
+          "info": {
+            "name": "Create deferred scripts from order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/inbox/addscript"
+          },
+          "docs": "Create deferred scripts from order"
+        },
+        {
+          "info": {
+            "name": "Get inbox completed messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/inbox/completed"
+          },
+          "docs": "Get inbox completed messages"
+        },
+        {
+          "info": {
+            "name": "Get inbox scheduled messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/inbox/scheduled"
+          },
+          "docs": "Get inbox scheduled messages"
+        },
+        {
+          "info": {
+            "name": "Send scheduled messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/inbox/sendscheduled"
+          },
+          "docs": "Send scheduled messages"
+        },
+        {
+          "info": {
+            "name": "Mark multiple messages as Ready to collect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/inbox/readytocollect"
+          },
+          "docs": "Mark multiple messages as Ready to collect"
+        },
+        {
+          "info": {
+            "name": "Dismiss message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/inbox/dismissmultiple"
+          },
+          "docs": "Dismiss message"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Forward log from Pharmacy-Web client (angular application) to CloudWatch.\r\nCallers should use a bearer token if they have one, despite AllowAnonymous, to allow the caller identity to be included in the log entry.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/logging"
+          },
+          "docs": "Forward log from Pharmacy-Web client (angular application) to CloudWatch.\r\nCallers should use a bearer token if they have one, despite AllowAnonymous, to allow the caller identity to be included in the log entry."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pharmacy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pharmacy_GetPharmacyDetail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy"
+          }
+        },
+        {
+          "info": {
+            "name": "Retrieve Pharmacy Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/settings"
+          },
+          "docs": "Retrieve Pharmacy Details"
+        },
+        {
+          "info": {
+            "name": "Update Pharmacy Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/pharmacy/settings"
+          },
+          "docs": "Update Pharmacy Details"
+        },
+        {
+          "info": {
+            "name": "Pharmacy_GetAuthInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GetAuthInfo"
+          }
+        },
+        {
+          "info": {
+            "name": "Pending HO-pushed services for this pharmacy — pushed, not yet live, with an auto-activation\r\ncountdown (RAP-38 Story 3a.5). Empty list when nothing is pending.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/ho-pending-activations"
+          },
+          "docs": "Pending HO-pushed services for this pharmacy — pushed, not yet live, with an auto-activation\r\ncountdown (RAP-38 Story 3a.5). Empty list when nothing is pending."
+        },
+        {
+          "info": {
+            "name": "Get all pharmacy which has Pending SMS Broadcast messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/PharmacyHasPendingHshSms"
+          },
+          "docs": "Get all pharmacy which has Pending SMS Broadcast messages"
+        },
+        {
+          "info": {
+            "name": "Get pharmacy module settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GetPharmacyModuleSettings"
+          },
+          "docs": "Get pharmacy module settings"
+        },
+        {
+          "info": {
+            "name": "Get pharmacy activating banner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GetPharmacyActivatingBanner"
+          },
+          "docs": "Get pharmacy activating banner"
+        },
+        {
+          "info": {
+            "name": "Retrieve Pharmacy Electronic Prescribing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/ElectronicPrescribingSettings"
+          },
+          "docs": "Retrieve Pharmacy Electronic Prescribing Settings"
+        },
+        {
+          "info": {
+            "name": "Retrieves pharmacies with pending SMS Reminders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/RetrievePharmaciesWithPendingSMSReminders"
+          },
+          "docs": "Retrieves pharmacies with pending SMS Reminders."
+        },
+        {
+          "info": {
+            "name": "Get all pharmacy which has Pending SMS Broadcast messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/PendingHshSmsMessage",
+            "params": [
+              {
+                "name": "pharmacyUUid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all pharmacy which has Pending SMS Broadcast messages"
+        },
+        {
+          "info": {
+            "name": "Retrieves SMS Reminder Pending patients.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/RetrieveSMSReminderPending",
+            "params": [
+              {
+                "name": "pharmacyId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves SMS Reminder Pending patients."
+        },
+        {
+          "info": {
+            "name": "Retrieves actions to be carried out by the PlusOne client.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/RetrievePlusOneQueuedActions",
+            "params": [
+              {
+                "name": "pharmacyId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves actions to be carried out by the PlusOne client."
+        },
+        {
+          "info": {
+            "name": "Get pharmacy release notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GetPharmacyReleaseNotes",
+            "params": [
+              {
+                "name": "releaseNoteId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get pharmacy release notes"
+        },
+        {
+          "info": {
+            "name": "Get pharmacy release notes by types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GetPharmacyReleaseNotesByType",
+            "params": [
+              {
+                "name": "releaseNoteType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get pharmacy release notes by types"
+        },
+        {
+          "info": {
+            "name": "Get Photo PreSigned Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/logo",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "File Id"
+              },
+              {
+                "name": "extension",
+                "value": "",
+                "type": "query",
+                "description": "File extension"
+              },
+              {
+                "name": "isDefaultLogo",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Photo PreSigned Url"
+        },
+        {
+          "info": {
+            "name": "Upload Pharmacy Logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/logo"
+          },
+          "docs": "Upload Pharmacy Logo"
+        },
+        {
+          "info": {
+            "name": "Pharmacy_GetModuleSettingsByIdentifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GetModuleSettingsByIdentifier",
+            "params": [
+              {
+                "name": "pharmacyIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Get pharmacy setting by identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GetPharmacySettingByIdentifier",
+            "params": [
+              {
+                "name": "pharmacyIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get pharmacy setting by identifier"
+        },
+        {
+          "info": {
+            "name": "Retrieve Pharmacy features",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/features"
+          },
+          "docs": "Retrieve Pharmacy features"
+        },
+        {
+          "info": {
+            "name": "Search patient free text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/SearchPatients"
+          },
+          "docs": "Search patient free text"
+        },
+        {
+          "info": {
+            "name": "Pharmacy_GetPharmacyInfos",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/getpharmacyinfos"
+          }
+        },
+        {
+          "info": {
+            "name": "Registers account (instant activate).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/RegisterAccountV4"
+          },
+          "docs": "Registers account (instant activate)."
+        },
+        {
+          "info": {
+            "name": "Update Action Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/UpdateActionStatus"
+          },
+          "docs": "Update Action Status"
+        },
+        {
+          "info": {
+            "name": "Pharmacy_UpdateCachePatient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/UpdateCachePatient"
+          }
+        },
+        {
+          "info": {
+            "name": "Pharmacy_VerifyPharmacyInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/VerifyPharmacyInfo"
+          }
+        },
+        {
+          "info": {
+            "name": "Search patient advance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/SearchPatientAdvance"
+          },
+          "docs": "Search patient advance"
+        },
+        {
+          "info": {
+            "name": "Requests that a message be broadcasted to a set of recipients by App Message, SMS, etc.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/SendBroadcastMessage"
+          },
+          "docs": "Requests that a message be broadcasted to a set of recipients by App Message, SMS, etc."
+        },
+        {
+          "info": {
+            "name": "Accept terms conditions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/AcceptTermsConditions"
+          },
+          "docs": "Accept terms conditions"
+        },
+        {
+          "info": {
+            "name": "Generate Activation Code V3.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GenerateActivationCodeV3"
+          },
+          "docs": "Generate Activation Code V3."
+        },
+        {
+          "info": {
+            "name": "Updates SMS Reminder Completed patients.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/UpdateSMSReminderComplete"
+          },
+          "docs": "Updates SMS Reminder Completed patients."
+        },
+        {
+          "info": {
+            "name": "Pharmacy_GeneratePharmacyChangeRequest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/GeneratePharmacyChangeRequest"
+          }
+        },
+        {
+          "info": {
+            "name": "Send EScript Token To MedView Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/pharmacy/SendEScriptTokenToMedViewFlow",
+            "params": [
+              {
+                "name": "eScriptToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Send EScript Token To MedView Flow"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RefillOrder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get full pending order with line items and resolved statuses (Epic 2 — Story 2.1).\r\nReturns HTTP 404 when the order does not exist or does not belong to this pharmacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/PendingOrder/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get full pending order with line items and resolved statuses (Epic 2 — Story 2.1).\r\nReturns HTTP 404 when the order does not exist or does not belong to this pharmacy."
+        },
+        {
+          "info": {
+            "name": "Delete a pending order (Epic 2 — Story 2.5a, FR29).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/PendingOrder/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a pending order (Epic 2 — Story 2.5a, FR29).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy."
+        },
+        {
+          "info": {
+            "name": "Get a completed order with read-only details and PIA payment status (Epic 6 — Story 6.1).\r\nReturns HTTP 404 when the order does not exist or does not belong to this pharmacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/CompletedOrder/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a completed order with read-only details and PIA payment status (Epic 6 — Story 6.1).\r\nReturns HTTP 404 when the order does not exist or does not belong to this pharmacy."
+        },
+        {
+          "info": {
+            "name": "Get full eScript token detail for a line item (Epic 3 — Story 3.2, FR15).\r\nReturns 404 when the order does not belong to this pharmacy or the token is not found.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/EScriptToken/:orderId/:tokenId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get full eScript token detail for a line item (Epic 3 — Story 3.2, FR15).\r\nReturns 404 when the order does not belong to this pharmacy or the token is not found."
+        },
+        {
+          "info": {
+            "name": "Update delivery address fields, shipping method, or delivery status (Story 4.1 — FR18–FR20).\r\nReturns 404 when the order does not exist, does not belong to this pharmacy, or is not a delivery order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/Delivery/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update delivery address fields, shipping method, or delivery status (Story 4.1 — FR18–FR20).\r\nReturns 404 when the order does not exist, does not belong to this pharmacy, or is not a delivery order."
+        },
+        {
+          "info": {
+            "name": "Add or update a pharmacy note on an order (Epic 5 — Story 5.1, FR24).\r\nReturns 404 when the order does not belong to this pharmacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/AddNote"
+          },
+          "docs": "Add or update a pharmacy note on an order (Epic 5 — Story 5.1, FR24).\r\nReturns 404 when the order does not belong to this pharmacy."
+        },
+        {
+          "info": {
+            "name": "Finalise (complete) a pending order (Story 2.5b — FR27).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.\r\nReturns 400 when the order has no line items to tally.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/Complete"
+          },
+          "docs": "Finalise (complete) a pending order (Story 2.5b — FR27).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.\r\nReturns 400 when the order has no line items to tally."
+        },
+        {
+          "info": {
+            "name": "Process a Pay-in-Advance charge (Epic 4 — Story 4.3).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/ProcessPIA"
+          },
+          "docs": "Process a Pay-in-Advance charge (Epic 4 — Story 4.3)."
+        },
+        {
+          "info": {
+            "name": "Send an eScript token to the dispensing system (Epic 3 — Story 3.3, FR16).\r\nAlways returns HTTP 200; the response body Code field indicates SUCCESS,\r\nFALLBACK_TO_PLUSONE (Angular must call PlusOne JS bridge), or ERROR.\r\nReturns 404 when the order does not belong to this pharmacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/SendEScript"
+          },
+          "docs": "Send an eScript token to the dispensing system (Epic 3 — Story 3.3, FR16).\r\nAlways returns HTTP 200; the response body Code field indicates SUCCESS,\r\nFALLBACK_TO_PLUSONE (Angular must call PlusOne JS bridge), or ERROR.\r\nReturns 404 when the order does not belong to this pharmacy."
+        },
+        {
+          "info": {
+            "name": "Add a custom line item to a pending order (Story 3.5 — FR13).\r\nReturns the full updated order so the caller can refresh its list in one round-trip.\r\nReturns 400 when the name is missing; 404 when the order does not belong to this pharmacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/LineItem/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add a custom line item to a pending order (Story 3.5 — FR13).\r\nReturns the full updated order so the caller can refresh its list in one round-trip.\r\nReturns 400 when the name is missing; 404 when the order does not belong to this pharmacy."
+        },
+        {
+          "info": {
+            "name": "Update the status of a line item (Epic 3 — Story 3.1, FR6–FR9).\r\nReturns 404 when the order or component does not belong to this pharmacy.\r\nReturns 400 when action = OnOrder but followUpDate is absent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/UpdateLineItemStatus"
+          },
+          "docs": "Update the status of a line item (Epic 3 — Story 3.1, FR6–FR9).\r\nReturns 404 when the order or component does not belong to this pharmacy.\r\nReturns 400 when action = OnOrder but followUpDate is absent."
+        },
+        {
+          "info": {
+            "name": "Refund the PIA charge for a completed order (Epic 6 — Story 6.4, CRO-5).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.\r\nReturns 400 with an error message when the refund is rejected (gateway failure,\r\ndisbursed, already refunded, delay window, etc.).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/CompletedOrder/:orderId/Refund",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refund the PIA charge for a completed order (Epic 6 — Story 6.4, CRO-5).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.\r\nReturns 400 with an error message when the refund is rejected (gateway failure,\r\ndisbursed, already refunded, delay window, etc.)."
+        },
+        {
+          "info": {
+            "name": "Send a reminder message to a patient for a completed order (Epic 6 — Story 6.2, CRO-2).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.\r\nReturns 400 when the message body is missing or empty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/CompletedOrder/:orderId/Reminder",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Send a reminder message to a patient for a completed order (Epic 6 — Story 6.2, CRO-2).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.\r\nReturns 400 when the message body is missing or empty."
+        },
+        {
+          "info": {
+            "name": "Return all items for a completed order to stock (Epic 6 — Story 6.3, CRO-3).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/CompletedOrder/:orderId/ReturnToStock",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return all items for a completed order to stock (Epic 6 — Story 6.3, CRO-3).\r\nReturns 404 when the order does not exist or does not belong to this pharmacy."
+        },
+        {
+          "info": {
+            "name": "Delete a custom line item from a pending order (Story 3.5 — FR14).\r\nReturns 404 when the order, item, or pharmacy context is not found, or the item\r\nis not a custom item (only custom items may be deleted via this endpoint).",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/RefillOrder/LineItem/:orderId/:lineItemId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "lineItemId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a custom line item from a pending order (Story 3.5 — FR14).\r\nReturns 404 when the order, item, or pharmacy context is not found, or the item\r\nis not a custom item (only custom items may be deleted via this endpoint)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
