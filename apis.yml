@@ -101,6 +101,10 @@ apis:
   tags:
   - Pharmacy
   - Medication Management
+  - Order
+  tags_raw:
+  - Pharmacy
+  - Medication Management
   - Orders
   properties:
   - type: APIReference
@@ -116,6 +120,10 @@ apis:
   humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
   baseURL: https://pharmacy-unified.api.medadvisor.com.au
   tags:
+  - Pharmacy
+  - Messaging
+  - Workflows
+  tags_raw:
   - Pharmacy
   - Messaging
   - Workflow
