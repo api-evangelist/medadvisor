@@ -51,146 +51,203 @@ created: '2026-07-24'
 modified: '2026-07-24'
 specificationVersion: '0.23'
 apis:
-- aid: medadvisor:pharmacy-unified-third-party-integration
-  name: Pharmacy Unified API - 3rd-Party Integration
+- aid: medadvisor:medadvisor-3rd-party-integration-api
+  name: MedAdvisor 3rd-Party Integration API
   description: >-
-    The publicly documented third-party integration surface of MedAdvisor's Pharmacy Unified API, enabling
-    external widgets and eCommerce platforms to authenticate, look up pharmacy details, retrieve eScript
-    (electronic prescription) status by token, and notify a pharmacy of new orders into its PlusOne inbox.
-    Authenticated with a JWT bearer token issued from the /3rdpartylogin exchange (clientId + clientSecret
-    + Base64-encoded pharmacy credentials).
+    The 3rd-Party Integration API from MedAdvisor — 4 operation(s) for 3rd-party integration.
   humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
   baseURL: https://pharmacy-unified.api.medadvisor.com.au
   tags:
-  - Pharmacy
-  - e-Prescribing
-  - Integration
+  - 3rd-Party Integration
   properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-3rd-party-integration-api-openapi.yml
   - type: APIReference
     url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-openapi.json
   - type: Documentation
     url: https://support.medadvisor.com.au
-- aid: medadvisor:pharmacy-unified-booking-service
-  name: Pharmacy Unified API - Booking Service
-  description: >-
-    Appointment and clinical-service booking operations within the Pharmacy Unified API - listing available
-    pharmacy services and time slots, creating and editing event bookings, managing event resources and
-    staff calendars, and searching patients and bookings. Supports vaccination, health-check, and scope-of-practice
-    service delivery in-pharmacy.
+- aid: medadvisor:medadvisor-account-api
+  name: MedAdvisor Account API
+  description: The Account API from MedAdvisor — 1 operation(s) for account.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-account-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-booking-api
+  name: MedAdvisor Booking API
+  description: The Booking API from MedAdvisor — 27 operation(s) for booking.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Booking
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-booking-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-bookingservice-api
+  name: MedAdvisor Booking Service API
+  description: The BookingService API from MedAdvisor — 34 operation(s) for bookingservice.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - BookingService
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-bookingservice-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-calendarsetting-api
+  name: MedAdvisor Calendar Setting API
+  description: The CalendarSetting API from MedAdvisor — 6 operation(s) for calendarsetting.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - CalendarSetting
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-calendarsetting-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-clinic-api
+  name: MedAdvisor Clinic API
+  description: The Clinic API from MedAdvisor — 8 operation(s) for clinic.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Clinic
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-clinic-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-communication-api
+  name: MedAdvisor Communication API
+  description: The Communication API from MedAdvisor — 6 operation(s) for communication.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Communication
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-communication-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-config-api
+  name: MedAdvisor Config API
+  description: The Config API from MedAdvisor — 2 operation(s) for config.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Config
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-config-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-headoffice-api
+  name: MedAdvisor Head Office API
+  description: The HeadOffice API from MedAdvisor — 6 operation(s) for headoffice.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - HeadOffice
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-headoffice-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-inbox-api
+  name: MedAdvisor Inbox API
+  description: The Inbox API from MedAdvisor — 8 operation(s) for inbox.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Inbox
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-inbox-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-logging-api
+  name: MedAdvisor Logging API
+  description: The Logging API from MedAdvisor — 1 operation(s) for logging.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Logging
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-logging-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-pharmacist-api
+  name: MedAdvisor Pharmacist API
+  description: The Pharmacist API from MedAdvisor — 3 operation(s) for pharmacist.
+  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  baseURL: https://pharmacy-unified.api.medadvisor.com.au
+  tags:
+  - Pharmacist
+  properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacist-api-openapi.yml
+  - type: APIReference
+    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-pharmacy-api
+  name: MedAdvisor Pharmacy API
+  description: The Pharmacy API from MedAdvisor — 31 operation(s) for pharmacy.
   humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
   baseURL: https://pharmacy-unified.api.medadvisor.com.au
   tags:
   - Pharmacy
-  - Appointment Booking
-  - Scheduling
   properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-pharmacy-api-openapi.yml
   - type: APIReference
     url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-openapi.json
-- aid: medadvisor:pharmacy-unified-refill-order
-  name: Pharmacy Unified API - Refill Order
-  description: >-
-    Medication refill and order management operations within the Pharmacy Unified API - retrieving pending
-    and completed orders, sending eScript tokens, adding line items and notes, processing patient-initiated
-    actions, completing orders, and handling refunds, reminders, and return-to-stock.
+  - type: Documentation
+    url: https://support.medadvisor.com.au
+- aid: medadvisor:medadvisor-refillorder-api
+  name: MedAdvisor Refill Order API
+  description: The RefillOrder API from MedAdvisor — 14 operation(s) for refillorder.
   humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
   baseURL: https://pharmacy-unified.api.medadvisor.com.au
   tags:
-  - Pharmacy
-  - Medication Management
-  - Order
-  tags_raw:
-  - Pharmacy
-  - Medication Management
-  - Orders
+  - RefillOrder
   properties:
+  - type: OpenAPI
+    url: openapi/medadvisor-refillorder-api-openapi.yml
   - type: APIReference
     url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-openapi.json
-- aid: medadvisor:pharmacy-unified-inbox
-  name: Pharmacy Unified API - Inbox
-  description: >-
-    Operations for the pharmacy PlusOne inbox within the Pharmacy Unified API - retrieving the main inbox,
-    sent, completed, scheduled, and ready-to-collect message queues, adding scripts, sending scheduled
-    messages, and dismissing items.
-  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  baseURL: https://pharmacy-unified.api.medadvisor.com.au
-  tags:
-  - Pharmacy
-  - Messaging
-  - Workflows
-  tags_raw:
-  - Pharmacy
-  - Messaging
-  - Workflow
-  properties:
-  - type: APIReference
-    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-openapi.json
-- aid: medadvisor:pharmacy-unified-communication
-  name: Pharmacy Unified API - Communication
-  description: >-
-    Patient-communication and group-messaging operations within the Pharmacy Unified API - creating and
-    editing patient groups, managing group membership, and supporting targeted patient outreach from the
-    pharmacy.
-  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  baseURL: https://pharmacy-unified.api.medadvisor.com.au
-  tags:
-  - Pharmacy
-  - Patient Engagement
-  - Messaging
-  properties:
-  - type: APIReference
-    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-openapi.json
-- aid: medadvisor:pharmacy-unified-head-office
-  name: Pharmacy Unified API - Head Office
-  description: >-
-    Head-office (banner / multi-pharmacy) operations within the Pharmacy Unified API - managing services
-    across a group of pharmacies, listing pharmacies, and pushing services with deadlines out to individual
-    member stores.
-  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  baseURL: https://pharmacy-unified.api.medadvisor.com.au
-  tags:
-  - Pharmacy
-  - Multi-Site
-  - Administration
-  properties:
-  - type: APIReference
-    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-openapi.json
-- aid: medadvisor:pharmacy-unified-pharmacy
-  name: Pharmacy Unified API - Pharmacy
-  description: >-
-    Pharmacy account, settings, and administration operations within the Pharmacy Unified API - retrieving
-    pharmacy details and module/feature settings, patient search, account registration and activation,
-    electronic-prescribing settings, SMS reminder handling, and pharmacy change requests.
-  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  baseURL: https://pharmacy-unified.api.medadvisor.com.au
-  tags:
-  - Pharmacy
-  - Account Management
-  - Administration
-  properties:
-  - type: APIReference
-    url: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-openapi.json
-- aid: medadvisor:medadvisor-pharmacy-unified-v2-openapi
-  name: MedAdvisor Pharmacy Unified API v2.0
-  description: MedAdvisor Pharmacy Unified API v2.0 from MedAdvisor — 44 path(s) described in OpenAPI.
-  humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
-  baseURL: https://pharmacy-unified.api.medadvisor.com.au
-  properties:
-  - type: OpenAPI
-    url: openapi/medadvisor-pharmacy-unified-v2-openapi.json
+  - type: Documentation
+    url: https://support.medadvisor.com.au
 common:
 - type: AgenticAccess
   url: agentic-access/medadvisor-agentic-access.yml
