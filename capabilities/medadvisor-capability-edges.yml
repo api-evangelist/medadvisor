@@ -19,11 +19,10 @@ edges:
   capability_id_l1: BC-2800
   capability_name: Scheduling & Appointment Management
   confidence: 0.85
-  evidence: Booking_RetrieveAvailableTimeslots  Retrieve available times slots; Booking_RetrieveAvailableServices;
-    Booking_RetrieveEventResources
-  reason: Operations book pharmacy service appointments, expose available services and resources, and
-    retrieve available time slots and run sheets — provider/resource scheduling and appointment booking
-    for patients.
+  evidence: Booking_RetrieveAvailableTimeSlotNewBooking  Retrieves the available time slot new booking.;
+    Booking_RetrieveAvailableServices  Retrieve Available Services; Booking_RetrieveRunSheet
+  reason: Operations manage bookable pharmacy services, resources, available time slots and run sheets
+    for patient appointments — provider/resource scheduling and appointment booking.
 - tag: BookingService
   spec_file: medadvisor-bookingservice-api-openapi.yml
   capability_id: BC-2800.10
@@ -31,38 +30,41 @@ edges:
   capability_name: Scheduling & Appointment Management
   confidence: 0.85
   evidence: BookingService_RetrieveAvailableTimeslots  Retrieve available times slots; BookingService_RetrieveBooking  Retrieve
-    Booking; schema BookingRequestModel
-  reason: 'v1 counterpart of the booking surface: pharmacy services, event resources, bookings and availability
-    — appointment and resource scheduling for pharmacy-delivered services.'
+    Booking; BookingService_RetrieveEventResources
+  reason: 'v1 equivalent of the booking surface: pharmacy services, event resources, bookings and timeslot
+    availability — appointment and resource scheduling for clinical services.'
+- tag: Clinic
+  spec_file: medadvisor-clinic-api-openapi.yml
+  capability_id: BC-2800.10
+  capability_id_l1: BC-2800
+  capability_name: Scheduling & Appointment Management
+  confidence: 0.82
+  evidence: GET /api/v2/clinic/{clinicId}/retrieveavailabletimeslots  Clinic_RetrieveAvailableTimeslots  Retrieve
+    clinic available times slots; POST /api/v2/clinic/{clinicId}/bookings  Clinic_AddClinicBooking  Add
+    clinic booking
+  reason: Operations create, retrieve and cancel clinic bookings and expose available timeslots and booking
+    URLs — appointment booking against provider/resource availability, i.e. scheduling and appointment
+    management in a pharmacy clinic setting.
 - tag: RefillOrder
   spec_file: medadvisor-refillorder-api-openapi.yml
   capability_id: BC-2850.30
   capability_id_l1: BC-2850
   capability_name: Outpatient & Specialty Pharmacy Operations
   confidence: 0.8
-  evidence: POST /api/v1/RefillOrder/SendEScript  Send an eScript token to the dispensing system; Update
-    delivery address fields, shipping method, or delivery status
-  reason: 'End-to-end handling of patient prescription refill orders in a community pharmacy: pending/completed
-    orders, line-item statuses, eScript tokens sent to the dispensing system, delivery and pay-in-advance
-    charges/refunds. This is outpatient/mail-order pharmacy dispensing operations.'
-- tag: Clinic
-  spec_file: medadvisor-clinic-api-openapi.yml
-  capability_id: BC-2800.10
-  capability_id_l1: BC-2800
-  capability_name: Scheduling & Appointment Management
-  confidence: 0.75
-  evidence: Clinic_AddClinicBooking  Add clinic booking; Clinic_RetrieveAvailableTimeslots  Retrieve clinic
-    available times slots
-  reason: Manages pharmacy clinics and their bookings, booking URLs and available time slots — appointment
-    booking and resource scheduling for clinic sessions. Some ambiguity as clinic setup also touches service
-    configuration.
+  evidence: RefillOrder_SendEScript  Send an eScript token to the dispensing system; RefillOrder_Complete  Finalise
+    (complete) a pending order; RefillOrder_UpdateDelivery  Update delivery address fields, shipping method,
+    or delivery status
+  reason: 'End-to-end community-pharmacy prescription refill order handling: line items, eScript tokens
+    to the dispensing system, delivery, pay-in-advance charge and refund — retail/outpatient pharmacy
+    dispensing operations.'
 - tag: CalendarSetting
   spec_file: medadvisor-calendarsetting-api-openapi.yml
   capability_id: BC-2800.10
   capability_id_l1: BC-2800
   capability_name: Scheduling & Appointment Management
   confidence: 0.7
-  evidence: CalendarSetting_RetrieveClosedPeriod  Retrieve closed periods by pharmacy id; CalendarSetting_CreateOrUpdatePublicHolidays
-  reason: Maintains the pharmacy booking calendar's closed periods, public holidays and event preferences
-    — configuration of scheduling availability, i.e. resource/appointment scheduling. Confidence tempered
-    because it is setup/configuration rather than booking itself.
+  evidence: CalendarSetting_RetrieveClosedPeriod  Retrieve closed periods by pharmacy id; CalendarSetting_RetrievePublicHolidays  Retrieve
+    public holiday by pharmacy id
+  reason: Configuration of closed periods, public holidays and event preferences that govern bookable
+    availability in the pharmacy appointment calendar; supports scheduling, though it is configuration
+    rather than booking itself, hence moderate confidence.
