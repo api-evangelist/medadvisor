@@ -261,6 +261,9 @@ apis:
   - type: Documentation
     url: https://support.medadvisor.com.au
 common:
+- type: CapabilityMap
+  url: capabilities/medadvisor-capability-edges.yml
+  name: MedAdvisor Business Capability Map
 - type: AgenticAccess
   url: agentic-access/medadvisor-agentic-access.yml
 - type: DomainSecurity

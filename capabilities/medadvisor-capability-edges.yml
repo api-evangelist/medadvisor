@@ -1,0 +1,68 @@
+slug: medadvisor
+provider: MedAdvisor
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Booking
+  spec_file: medadvisor-booking-api-openapi.yml
+  capability_id: BC-2800.10
+  capability_id_l1: BC-2800
+  capability_name: Scheduling & Appointment Management
+  confidence: 0.85
+  evidence: Booking_RetrieveAvailableTimeslots  Retrieve available times slots; Booking_RetrieveAvailableServices;
+    Booking_RetrieveEventResources
+  reason: Operations book pharmacy service appointments, expose available services and resources, and
+    retrieve available time slots and run sheets — provider/resource scheduling and appointment booking
+    for patients.
+- tag: BookingService
+  spec_file: medadvisor-bookingservice-api-openapi.yml
+  capability_id: BC-2800.10
+  capability_id_l1: BC-2800
+  capability_name: Scheduling & Appointment Management
+  confidence: 0.85
+  evidence: BookingService_RetrieveAvailableTimeslots  Retrieve available times slots; BookingService_RetrieveBooking  Retrieve
+    Booking; schema BookingRequestModel
+  reason: 'v1 counterpart of the booking surface: pharmacy services, event resources, bookings and availability
+    — appointment and resource scheduling for pharmacy-delivered services.'
+- tag: RefillOrder
+  spec_file: medadvisor-refillorder-api-openapi.yml
+  capability_id: BC-2850.30
+  capability_id_l1: BC-2850
+  capability_name: Outpatient & Specialty Pharmacy Operations
+  confidence: 0.8
+  evidence: POST /api/v1/RefillOrder/SendEScript  Send an eScript token to the dispensing system; Update
+    delivery address fields, shipping method, or delivery status
+  reason: 'End-to-end handling of patient prescription refill orders in a community pharmacy: pending/completed
+    orders, line-item statuses, eScript tokens sent to the dispensing system, delivery and pay-in-advance
+    charges/refunds. This is outpatient/mail-order pharmacy dispensing operations.'
+- tag: Clinic
+  spec_file: medadvisor-clinic-api-openapi.yml
+  capability_id: BC-2800.10
+  capability_id_l1: BC-2800
+  capability_name: Scheduling & Appointment Management
+  confidence: 0.75
+  evidence: Clinic_AddClinicBooking  Add clinic booking; Clinic_RetrieveAvailableTimeslots  Retrieve clinic
+    available times slots
+  reason: Manages pharmacy clinics and their bookings, booking URLs and available time slots — appointment
+    booking and resource scheduling for clinic sessions. Some ambiguity as clinic setup also touches service
+    configuration.
+- tag: CalendarSetting
+  spec_file: medadvisor-calendarsetting-api-openapi.yml
+  capability_id: BC-2800.10
+  capability_id_l1: BC-2800
+  capability_name: Scheduling & Appointment Management
+  confidence: 0.7
+  evidence: CalendarSetting_RetrieveClosedPeriod  Retrieve closed periods by pharmacy id; CalendarSetting_CreateOrUpdatePublicHolidays
+  reason: Maintains the pharmacy booking calendar's closed periods, public holidays and event preferences
+    — configuration of scheduling availability, i.e. resource/appointment scheduling. Confidence tempered
+    because it is setup/configuration rather than booking itself.
