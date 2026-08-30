@@ -154,6 +154,8 @@ apis:
   humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
   baseURL: https://pharmacy-unified.api.medadvisor.com.au
   tags:
+  - Communications
+  tags_raw:
   - Communication
   properties:
   - type: OpenAPI
