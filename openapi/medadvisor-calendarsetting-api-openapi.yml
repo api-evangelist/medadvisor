@@ -1,0 +1,331 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Pharmacy Unified API v2.0 Calendar Setting API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: CalendarSetting
+paths:
+  /api/v2/calendarsetting/eventpreference:
+    get:
+      tags:
+      - CalendarSetting
+      operationId: CalendarSetting_GetEventPreferences
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+      security:
+      - Bearer: []
+  /api/v2/calendarsetting/retrieveclosedperiod:
+    get:
+      tags:
+      - CalendarSetting
+      summary: Retrieve closed periods by pharmacy id
+      operationId: CalendarSetting_RetrieveClosedPeriod
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+      security:
+      - Bearer: []
+  /api/v2/calendarsetting/retrievepublicholidays/{year}:
+    get:
+      tags:
+      - CalendarSetting
+      summary: Retrieve public holiday by pharmacy id
+      operationId: CalendarSetting_RetrievePublicHolidays
+      parameters:
+      - name: year
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+      security:
+      - Bearer: []
+  /api/v2/calendarsetting/eventpreference/update:
+    post:
+      tags:
+      - CalendarSetting
+      operationId: CalendarSetting_UpdateEventPreferences
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
+        required: true
+  /api/v2/calendarsetting/createorupdate/closedperiod:
+    post:
+      tags:
+      - CalendarSetting
+      summary: Create or update list of Closed Period by pharmacy id.
+      operationId: CalendarSetting_CreateOrUpdateClosedPeriod
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+        description: Closed Period
+        required: true
+  /api/v2/calendarsetting/createorupdate/publicholidays:
+    post:
+      tags:
+      - CalendarSetting
+      summary: Create or update list of public holidays by pharmacy id.
+      operationId: CalendarSetting_CreateOrUpdatePublicHolidays
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+        description: public holidays
+        required: true
+components:
+  schemas:
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          format: int32
+          type: integer
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
+    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
+      type: object
+      properties:
+        from:
+          format: date-time
+          type: string
+        to:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel:
+      type: object
+      properties:
+        pharmacyUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        type:
+          format: int32
+          type: integer
+        layout:
+          type: string
+        supplemental:
+          type: string
+        smsConfirmation:
+          type: boolean
+        smsReminder:
+          type: boolean
+        isCollectConsentRemind:
+          type: boolean
+        isCollectConsentPrompt:
+          type: boolean
+        collectConsentMessage:
+          type: string
+        isSetAge:
+          type: boolean
+        minAge:
+          format: int32
+          type: integer
+        maxAge:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.v2.PublicHolidayModel:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        date:
+          format: date-time
+          type: string
+        state:
+          type: string
+    MedAdvisor.Framework.Interface.v2.ClosedPeriodModel:
+      type: object
+      properties:
+        pharmacyUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        year:
+          format: int32
+          type: integer
+        holidays:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PublicHolidayModel'
+        linkedPublicHolidays:
+          type: array
+          items:
+            format: int32
+            type: integer
+        bookingClosedPeriods:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

@@ -1,0 +1,2519 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Unified API v1.0 Pharmacy API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: Pharmacy
+paths:
+  /api/v1/pharmacy:
+    get:
+      tags:
+      - Pharmacy
+      operationId: Pharmacy_GetPharmacyDetail
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/settings:
+    get:
+      tags:
+      - Pharmacy
+      summary: Retrieve Pharmacy Details
+      operationId: Pharmacy_RetrievePharmacySettings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - Pharmacy
+      summary: Update Pharmacy Details
+      operationId: Pharmacy_UpdatePharmacySettings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacySettingsModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacySettingsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacySettingsModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacySettingsModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacySettingsModel'
+        description: PharmacySettingsModel
+        required: true
+  /api/v1/pharmacy/GetAuthInfo:
+    get:
+      tags:
+      - Pharmacy
+      operationId: Pharmacy_GetAuthInfo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+            text/xml:
+              schema:
+                type: string
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/ho-pending-activations:
+    get:
+      tags:
+      - Pharmacy
+      summary: 'Pending HO-pushed services for this pharmacy — pushed, not yet live, with an auto-activation
+
+        countdown (RAP-38 Story 3a.5). Empty list when nothing is pending.'
+      operationId: Pharmacy_GetHoPendingActivations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/PharmacyHasPendingHshSms:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get all pharmacy which has Pending SMS Broadcast messages
+      operationId: Pharmacy_PharmacyHasPendingHshSms
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/GetPharmacyModuleSettings:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get pharmacy module settings
+      operationId: Pharmacy_GetPharmacyModuleSettings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/GetPharmacyActivatingBanner:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get pharmacy activating banner
+      operationId: Pharmacy_GetPharmacyActivatingBanner
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/ElectronicPrescribingSettings:
+    get:
+      tags:
+      - Pharmacy
+      summary: Retrieve Pharmacy Electronic Prescribing Settings
+      operationId: Pharmacy_GetPharmacyElectronicPrescribingSettings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/RetrievePharmaciesWithPendingSMSReminders:
+    get:
+      tags:
+      - Pharmacy
+      summary: Retrieves pharmacies with pending SMS Reminders.
+      operationId: Pharmacy_RetrievePharmaciesWithPendingSMSReminders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/PendingHshSmsMessage:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get all pharmacy which has Pending SMS Broadcast messages
+      operationId: Pharmacy_GetPendingHshSmsMessage
+      parameters:
+      - name: pharmacyUUid
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/RetrieveSMSReminderPending:
+    get:
+      tags:
+      - Pharmacy
+      summary: Retrieves SMS Reminder Pending patients.
+      operationId: Pharmacy_RetrieveSMSReminderPending
+      parameters:
+      - name: pharmacyId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/RetrievePlusOneQueuedActions:
+    get:
+      tags:
+      - Pharmacy
+      summary: Retrieves actions to be carried out by the PlusOne client.
+      operationId: Pharmacy_RetrievePlusOneQueuedActions
+      parameters:
+      - name: pharmacyId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/GetPharmacyReleaseNotes:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get pharmacy release notes
+      operationId: Pharmacy_GetPharmacyReleaseNotes
+      parameters:
+      - name: releaseNoteId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/GetPharmacyReleaseNotesByType:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get pharmacy release notes by types
+      operationId: Pharmacy_GetPharmacyReleaseNotesByType
+      parameters:
+      - name: releaseNoteType
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/logo:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get Photo PreSigned Url
+      operationId: Pharmacy_GetPhoto
+      parameters:
+      - name: id
+        in: query
+        description: File Id
+        required: true
+        schema:
+          type: string
+      - name: extension
+        in: query
+        description: File extension
+        required: true
+        schema:
+          type: string
+      - name: isDefaultLogo
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - Pharmacy
+      summary: Upload Pharmacy Logo
+      operationId: Pharmacy_UploadLogo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacySettingsResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel'
+        description: File content
+        required: true
+  /api/v1/pharmacy/GetModuleSettingsByIdentifier:
+    get:
+      tags:
+      - Pharmacy
+      operationId: Pharmacy_GetModuleSettingsByIdentifier
+      parameters:
+      - name: pharmacyIdentifier
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/GetPharmacySettingByIdentifier:
+    get:
+      tags:
+      - Pharmacy
+      summary: Get pharmacy setting by identifier
+      operationId: Pharmacy_GetPharmacySettingByIdentifier
+      parameters:
+      - name: pharmacyIdentifier
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/features:
+    post:
+      tags:
+      - Pharmacy
+      summary: Retrieve Pharmacy features
+      operationId: Pharmacy_SearchPharmacyFeatures
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel'
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel'
+        description: Pharmacy GUIDs
+        required: true
+  /api/v1/pharmacy/SearchPatients:
+    post:
+      tags:
+      - Pharmacy
+      summary: Search patient free text
+      operationId: Pharmacy_SearchPatients
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest'
+        required: true
+  /api/v1/pharmacy/getpharmacyinfos:
+    post:
+      tags:
+      - Pharmacy
+      operationId: Pharmacy_GetPharmacyInfos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                format: uuid
+                type: string
+                example: 00000000-0000-0000-0000-000000000000
+          text/json:
+            schema:
+              type: array
+              items:
+                format: uuid
+                type: string
+                example: 00000000-0000-0000-0000-000000000000
+          application/xml:
+            schema:
+              type: array
+              items:
+                format: uuid
+                type: string
+                example: 00000000-0000-0000-0000-000000000000
+          text/xml:
+            schema:
+              type: array
+              items:
+                format: uuid
+                type: string
+                example: 00000000-0000-0000-0000-000000000000
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                format: uuid
+                type: string
+                example: 00000000-0000-0000-0000-000000000000
+        required: true
+  /api/v1/pharmacy/RegisterAccountV4:
+    post:
+      tags:
+      - Pharmacy
+      summary: Registers account (instant activate).
+      operationId: Pharmacy_RegisterAccountV4
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstantActivateRequest'
+        required: true
+  /api/v1/pharmacy/UpdateActionStatus:
+    post:
+      tags:
+      - Pharmacy
+      summary: Update Action Status
+      operationId: Pharmacy_UpdateActionStatus
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel'
+        required: true
+  /api/v1/pharmacy/UpdateCachePatient:
+    post:
+      tags:
+      - Pharmacy
+      operationId: Pharmacy_UpdateCachePatient
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UpdateCachePatientRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UpdateCachePatientRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UpdateCachePatientRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UpdateCachePatientRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UpdateCachePatientRequest'
+        required: true
+  /api/v1/pharmacy/VerifyPharmacyInfo:
+    post:
+      tags:
+      - Pharmacy
+      operationId: Pharmacy_VerifyPharmacyInfo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel'
+        required: true
+  /api/v1/pharmacy/SearchPatientAdvance:
+    post:
+      tags:
+      - Pharmacy
+      summary: Search patient advance
+      operationId: Pharmacy_SearchPatientAdvance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto'
+        required: true
+  /api/v1/pharmacy/SendBroadcastMessage:
+    post:
+      tags:
+      - Pharmacy
+      summary: Requests that a message be broadcasted to a set of recipients by App Message, SMS, etc.
+      operationId: Pharmacy_SendBroadcastMessage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel'
+        required: true
+  /api/v1/pharmacy/AcceptTermsConditions:
+    post:
+      tags:
+      - Pharmacy
+      summary: Accept terms conditions
+      operationId: Pharmacy_AcceptTermsConditions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest'
+        required: true
+  /api/v1/pharmacy/GenerateActivationCodeV3:
+    post:
+      tags:
+      - Pharmacy
+      summary: Generate Activation Code V3.
+      operationId: Pharmacy_GenerateActivationCodeV3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.ActivationKeyResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.ActivationKeyResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.ActivationKeyResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.ActivationKeyResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AccountActivationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AccountActivationRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AccountActivationRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AccountActivationRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.AccountActivationRequest'
+        required: true
+  /api/v1/pharmacy/UpdateSMSReminderComplete:
+    post:
+      tags:
+      - Pharmacy
+      summary: Updates SMS Reminder Completed patients.
+      operationId: Pharmacy_UpdateSMSReminderComplete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel'
+        required: true
+  /api/v1/pharmacy/GeneratePharmacyChangeRequest:
+    post:
+      tags:
+      - Pharmacy
+      operationId: Pharmacy_GeneratePharmacyChangeRequest
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperationResult'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest'
+        required: true
+  /api/v1/pharmacy/SendEScriptTokenToMedViewFlow:
+    post:
+      tags:
+      - Pharmacy
+      summary: Send EScript Token To MedView Flow
+      operationId: Pharmacy_SendEScriptTokenToMedViewFlow
+      parameters:
+      - name: eScriptToken
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+components:
+  schemas:
+    MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider:
+      type: object
+      properties:
+        providerID:
+          format: int32
+          type: integer
+        providerName:
+          type: string
+        merchantId:
+          type: string
+    MedAdvisor.Framework.Interface.PharmacyServiceCapability:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        shortName:
+          type: string
+        longName:
+          type: string
+        isProvided:
+          type: boolean
+        pharmacyId:
+          format: int32
+          type: integer
+        bookingType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        linkElements:
+          type: string
+        capElements:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel:
+      type: object
+      properties:
+        idType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        pharmacyId:
+          type: string
+    MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest:
+      type: object
+      properties:
+        pharmacyUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        searchValue:
+          type: string
+        searchFields:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchField'
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        patientIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        medicareNos:
+          type: array
+          items:
+            type: string
+        medicareSha1s:
+          type: array
+          items:
+            type: string
+        localIdentifiers:
+          type: array
+          items:
+            type: string
+    MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        mobile:
+          type: string
+        medicare:
+          type: string
+        dva:
+          type: string
+    MedAdvisor.Framework.Interface.PharmacySettingsResult:
+      type: object
+      properties:
+        stores:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        servicesProvided:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacyServiceCapability'
+        totalCount:
+          format: int32
+          type: integer
+        additional:
+          type: array
+          items:
+            type: string
+        bannerLogos:
+          type: array
+          items:
+            type: string
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.UpdateCachePatientRequest:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        patientData:
+          format: byte
+          type: string
+    MedAdvisor.Framework.Interface.ElectronicPrescribingSettings:
+      type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest:
+      type: object
+      properties:
+        pharmacistFullName:
+          type: string
+        version:
+          type: string
+    MedAdvisor.Framework.Interface.GPPractitioner:
+      type: object
+      properties:
+        practitionerId:
+          format: int32
+          type: integer
+        practice_UserId:
+          type: string
+        practice_PractitionerId:
+          type: string
+        providerNumber:
+          type: string
+        prescriberNumber:
+          type: string
+        stateRegistrationNumber:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        middleNames:
+          type: string
+        lastName:
+          type: string
+        qualifications:
+          type: string
+        phone:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        abn:
+          type: string
+        phoneVisible:
+          type: boolean
+        faxVisible:
+          type: boolean
+        emailVisible:
+          type: boolean
+        mobileVisible:
+          type: boolean
+        sendSMSReminder:
+          type: boolean
+        sendSMTPReminder:
+          type: boolean
+        reminderHour:
+          format: int32
+          type: integer
+        reminderMinute:
+          format: int32
+          type: integer
+        processQueue:
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
+    MedAdvisor.Framework.Interface.Store:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        storeCode:
+          type: string
+        systemCode:
+          format: int32
+          type: integer
+        preferredName:
+          type: string
+        tier:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Finance.PharmacyTier'
+        bannerURL:
+          type: string
+        pendingBannerURL:
+          type: string
+        phone:
+          type: string
+        phoneVisible:
+          type: boolean
+        fax:
+          type: string
+        faxVisible:
+          type: boolean
+        email:
+          type: string
+        emailVisible:
+          type: boolean
+        operatingHours:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
+        operatingHoursRaw:
+          type: string
+        operatingHoursNotes:
+          type: string
+        contactName:
+          type: string
+        websiteURL:
+          type: string
+        address:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        status:
+          format: int32
+          type: integer
+        pepStatus:
+          format: int32
+          type: integer
+        pepScriptProcessing:
+          type: boolean
+        pepScriptProcessingPulse:
+          type: boolean
+        currentUsers:
+          format: int32
+          type: integer
+        currentUsersLocal:
+          format: int32
+          type: integer
+        ttrOrders:
+          format: int32
+          type: integer
+        distance:
+          format: double
+          type: number
+        processingMode:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        broadcastAllowed:
+          type: boolean
+        blockUI:
+          type: boolean
+        password:
+          type: string
+        pushReports:
+          type: boolean
+        pepLastUploadDate:
+          format: date-time
+          type: string
+        pepLastScriptDate:
+          format: date-time
+          type: string
+        gcLastHeartbeat:
+          format: date-time
+          type: string
+        hnScriptFlowEnabled:
+          type: boolean
+        hnLastHeartbeat:
+          format: date-time
+          type: string
+        lightweightLastHeartbeat:
+          format: date-time
+          type: string
+        automatedRefillValid:
+          type: boolean
+        automatedRefillTimePickup:
+          format: int32
+          type: integer
+        automatedRefillClosingLimit:
+          format: int32
+          type: integer
+        automatedRefillAlert:
+          type: boolean
+        automatedPopupAlert:
+          type: boolean
+        automatedRefillReadyMessage:
+          type: boolean
+        supportClickAndCollect:
+          type: boolean
+        supportPayInAdvance:
+          type: boolean
+        supportGST:
+          type: boolean
+        remoteActivation:
+          type: boolean
+        deliveryOptions:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 4
+          type: integer
+        automatedRefillIfRepeats:
+          type: boolean
+        automatedRefillIfDispenseHistory:
+          type: boolean
+        firstLogin:
+          type: boolean
+        latitude:
+          format: double
+          type: number
+        longitude:
+          format: double
+          type: number
+        patientInitiatedCommsAllowed:
+          type: boolean
+        photoSupport:
+          type: boolean
+        wizardRun:
+          type: boolean
+        dispenseSoftware:
+          type: string
+        autoCloseNotification:
+          format: int32
+          type: integer
+        notificationFrequency:
+          format: int32
+          type: integer
+        consumerLogoReplacement:
+          type: string
+        consumerCatalog:
+          type: string
+        consumerRewards:
+          type: string
+        consumerServices:
+          type: string
+        consumerServicesBlock:
+          type: boolean
+        systemID:
+          format: int32
+          type: integer
+        consent:
+          format: int32
+          type: integer
+        lastUploadDate:
+          format: date-time
+          type: string
+        pepLastUploadTime:
+          type: string
+        pepPulseFrequency:
+          format: int32
+          type: integer
+        pepPulseStart:
+          type: string
+        pepPulseEnd:
+          type: string
+        lastScriptDate:
+          format: date-time
+          type: string
+        codeineMonitoring:
+          type: boolean
+        smsSupport:
+          type: boolean
+        allowNDSSOrdering:
+          type: boolean
+        allowOTCOrdering:
+          type: boolean
+        instantActivateAllowed:
+          type: boolean
+        bookingServiceSupport:
+          type: boolean
+        homeSMSView:
+          type: boolean
+        billingAccess:
+          type: string
+        reportAccess:
+          type: string
+        hnId:
+          type: string
+        hnPassword:
+          type: string
+        eGuildID:
+          type: string
+        nostraId:
+          type: array
+          items:
+            type: string
+        uuid:
+          type: string
+        healthNotesPharmacyDetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail'
+        owner:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
+        moduleSettings:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.ModuleActivation'
+        smsFallbackSupport:
+          type: boolean
+        isTest:
+          type: boolean
+        isStaging:
+          type: boolean
+        isDemo:
+          type: boolean
+        isOptOut:
+          type: boolean
+        isMultimain:
+          type: boolean
+        multimainPrimaryId:
+          format: int32
+          type: integer
+        storeDetailsCorrect:
+          format: date-time
+          type: string
+        showTermsConditions:
+          type: boolean
+        partnerType:
+          format: int32
+          type: integer
+        partnerPharmacyId:
+          type: string
+        ePrescribingSettings:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.ElectronicPrescribingSettings'
+        externalSystem:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacyExternalSystem'
+        providers:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider'
+        locale:
+          format: int32
+          type: integer
+        timezone:
+          type: string
+        serverTime:
+          format: date-time
+          type: string
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Subscription'
+    MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto:
+      type: object
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        lastName:
+          type: string
+        firstName:
+          type: string
+        medicareNo:
+          type: string
+        address:
+          type: string
+        suburb:
+          type: string
+        postCode:
+          type: string
+        dob:
+          type: string
+        patientIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        medicareNos:
+          type: array
+          items:
+            type: string
+        medicareSha1s:
+          type: array
+          items:
+            type: string
+        localIdentifiers:
+          type: array
+          items:
+            type: string
+    MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure:
+      type: object
+      properties:
+        programID:
+          format: int32
+          type: integer
+        disclosed:
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacySettingsModel:
+      type: object
+      properties:
+        store:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        lstServices:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacyServiceCapability'
+    MedAdvisor.Framework.Interface.PatientSearchField:
+      type: object
+      properties:
+        lastName:
+          type: boolean
+        firstName:
+          type: boolean
+        medicareNo:
+          type: boolean
+        address:
+          type: boolean
+        mobile:
+          type: boolean
+        dob:
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel:
+      type: object
+      properties:
+        content:
+          type: string
+        fileName:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        pharmacyUUid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        id:
+          format: int32
+          type: integer
+        status:
+          format: int32
+          type: integer
+        message:
+          type: string
+    MedAdvisor.Framework.Interface.InstantActivateResult:
+      type: object
+      properties:
+        pharmacyChangeAllowed:
+          type: boolean
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.PharmacyExternalSystem:
+      type: object
+      properties:
+        maid:
+          format: int32
+          type: integer
+        externalSystemName:
+          type: string
+        externalID:
+          type: string
+        id:
+          format: int32
+          type: integer
+        pendingOperation:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          type: integer
+        externalSystemID:
+          format: int32
+          enum:
+          - 1
+          type: integer
+        rawData:
+          type: string
+        uuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+    MedAdvisor.Framework.Interface.BroadcastMessageJob:
+      type: object
+      properties:
+        jobType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        selectionEngine:
+          type: string
+        appTemplateId:
+          format: int32
+          type: integer
+        appTemplateName:
+          type: string
+        appTemplateTitle:
+          type: string
+        appTemplateBody:
+          type: string
+        appTemplateIncludeBookingLink:
+          type: boolean
+        smsTemplateId:
+          format: int32
+          type: integer
+        smsTemplateName:
+          type: string
+        smsTemplateBody:
+          type: string
+    MedAdvisor.Framework.Interface.Subscription:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        amount:
+          format: double
+          type: number
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        description:
+          type: string
+        showOnInvoice:
+          type: boolean
+        isDefault:
+          type: boolean
+        duration:
+          format: int32
+          type: integer
+          readOnly: true
+    MedAdvisor.Framework.Interface.UserRolloverResponse:
+      type: object
+      properties:
+        userId:
+          format: int32
+          type: integer
+        status:
+          format: int32
+          type: integer
+        statusMessage:
+          type: string
+    MedAdvisor.Framework.Interface.PatientSearch:
+      type: object
+      properties:
+        patientId:
+          format: int64
+          type: integer
+        patientUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        dvaNo:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        medicareNo:
+          type: string
+        mobileNo:
+          type: string
+        pharmacyId:
+          format: int64
+          type: integer
+        pharmacyIdentifier:
+          type: string
+        postCode:
+          type: string
+        stateCode:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        suburb:
+          type: string
+        dob:
+          format: date-time
+          type: string
+        gender:
+          type: string
+        concessionNumber:
+          type: string
+        medicareExpiryDate:
+          format: date-time
+          type: string
+        dispensePatientIdentifier:
+          type: string
+        dispenseSourceSystem:
+          type: string
+        hasSHA:
+          type: boolean
+        sha:
+          type: string
+        instantActivatePending:
+          type: boolean
+        createDate:
+          format: date-time
+          type: string
+        localIdentifier:
+          type: string
+        isAsl:
+          type: boolean
+        isSendResetPassword:
+          type: boolean
+    MedAdvisor.Framework.Interface.RequestContext:
+      type: object
+      properties:
+        applicationId:
+          format: int32
+          type: integer
+        userId:
+          format: int32
+          type: integer
+        userName:
+          type: string
+        firstName:
+          type: string
+        password:
+          type: string
+        isGuildCare:
+          type: boolean
+        workStationName:
+          type: string
+        adminId:
+          format: int32
+          type: integer
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel:
+      type: object
+      properties:
+        identifier:
+          type: string
+        key:
+          type: string
+    MedAdvisor.Framework.Interface.PatientSearchResult:
+      type: object
+      properties:
+        patientList:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearch'
+        totalRecords:
+          format: int32
+          type: integer
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        userRolloverResponses:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UserRolloverResponse'
+    MedAdvisor.Framework.Interface.OperationResult:
+      type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.AccountActivationRequest:
+      type: object
+      properties:
+        context:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.RequestContext'
+        pharmacyId:
+          format: int32
+          type: integer
+        medicare:
+          type: string
+        dva:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+        mobile:
+          type: string
+        email:
+          type: string
+        localSystemIdentifier:
+          type: string
+        initials:
+          type: string
+        isuDisclosures:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure'
+    MedAdvisor.Framework.Finance.PharmacyTier:
+      type: object
+      properties:
+        tierID:
+          format: int32
+          type: integer
+        tierName:
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        duration:
+          format: int32
+          type: integer
+          readOnly: true
+    MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        invoiceGroup:
+          type: string
+        bannerGroup:
+          type: string
+        street:
+          type: string
+        suburb:
+          type: string
+        state:
+          type: string
+        postCode:
+          format: int32
+          type: integer
+        enrolledPatients:
+          format: int32
+          type: integer
+        phone:
+          type: string
+        hN_ID:
+          type: string
+        createDate:
+          format: date-time
+          type: string
+        pharmacy_ID:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.OperatingHour:
+      type: object
+      properties:
+        weekday:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        startHour:
+          format: int32
+          type: integer
+        startMinute:
+          format: int32
+          type: integer
+        endHour:
+          format: int32
+          type: integer
+        endMinute:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.ActivationKeyResult:
+      type: object
+      properties:
+        code:
+          type: string
+        expiryDate:
+          format: date-time
+          type: string
+        pharmacyChangeAllowed:
+          type: boolean
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.GPPractice:
+      type: object
+      properties:
+        practiceId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        contactName:
+          type: string
+        token:
+          type: string
+        activationKey:
+          type: string
+        activationKeyExpiry:
+          format: date-time
+          type: string
+        address:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        addressGoogle:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        bannerURL:
+          type: string
+        businessName:
+          type: string
+        phone:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        website:
+          type: string
+        bookingSystem:
+          type: string
+        abn:
+          type: string
+        phoneVisible:
+          type: boolean
+        faxVisible:
+          type: boolean
+        emailVisible:
+          type: boolean
+        websiteVisible:
+          type: boolean
+        bookingSystemVisible:
+          type: boolean
+        openHours:
+          type: string
+        openHoursNotes:
+          type: string
+        practiceIdentifier:
+          type: string
+        practiceSourceSystem:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - -1
+          type: integer
+        bankingAccount:
+          type: string
+        bankingDisplay:
+          type: string
+        activated:
+          type: boolean
+        allowPracticeRateOverride:
+          type: boolean
+        internalPractice:
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        job:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BroadcastMessageJob'
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BroadcastMessageRecipient'
+    MedAdvisor.Framework.Interface.ModuleActivation:
+      type: object
+      properties:
+        appModule:
+          type: boolean
+        smsModule:
+          type: boolean
+        ppsModule:
+          type: boolean
+        gpModule:
+          type: boolean
+        analyticsModule:
+          type: boolean
+        map2Module:
+          type: boolean
+        healthHubModule:
+          type: boolean
+        termsConditions:
+          type: string
+        paymentsWarning:
+          type: boolean
+        paymentsSuspension:
+          type: boolean
+        whiteLabelName:
+          type: string
+        whiteLabelId:
+          format: int32
+          type: integer
+        segmentApiKey:
+          type: string
+        firehoseAccessKey:
+          type: string
+        firehoseSecretKey:
+          type: string
+        plusOneCloudWatchAccessKey:
+          type: string
+        plusOneCloudWatchSecretKey:
+          type: string
+        s3PlusOneCloudUploadAccessKey:
+          type: string
+        s3PlusOneCloudUploadSecretKey:
+          type: string
+        s3PlusOneCloudUploadBucketName:
+          type: string
+        remoteSettingsEnabled:
+          type: boolean
+        termsConditionsVersion:
+          type: string
+        termsConditionsDate:
+          format: date-time
+          type: string
+        releaseNoteID:
+          format: int32
+          type: integer
+        isDeliveryEnabled:
+          type: boolean
+        calendarModule:
+          type: boolean
+        subscriptionsModule:
+          type: boolean
+        projectStopModule:
+          type: boolean
+        trainingModule:
+          type: boolean
+        locale:
+          format: int32
+          type: integer
+        eGuildID:
+          type: string
+        communicationsModule:
+          type: boolean
+        dataCollectorModule:
+          type: boolean
+        plusOneCloudModule:
+          type: boolean
+        medAdvisorForPharmacyModule:
+          type: boolean
+        showCalendarWizard:
+          type: boolean
+        calendarWizardEndDate:
+          format: date-time
+          type: string
+        calendarWizardRemainingDays:
+          format: int32
+          type: integer
+        calendarVersion:
+          type: string
+        allowedIpAddress:
+          type: string
+        usingCalendar:
+          type: boolean
+        receiveThirdPartyOutageAlerts:
+          type: boolean
+        mergePatientsFunctionality:
+          type: boolean
+        managePharmacistsFunctionality:
+          type: boolean
+        advancedPatientSearch:
+          type: boolean
+        enableNewMedicationForSmsRemindersScreen:
+          type: boolean
+        editDaysLefteScriptsNoScriptFlow:
+          type: boolean
+        unmappedDrugsEnabled:
+          type: boolean
+        automatedBannerEnabled:
+          type: boolean
+        customTileEnabled:
+          type: boolean
+        inboxAlertForMobilePhoneDiscrepancy:
+          type: boolean
+        aiAssistModule:
+          type: boolean
+        aiAssistProvider:
+          type: string
+        angularPendingOrderEnabled:
+          type: boolean
+        walkInEnabled:
+          type: boolean
+        vaccinationConsentCaptureEnabled:
+          type: boolean
+        familyBookingEnabled:
+          type: boolean
+        featureFlag_InboxAlgorithm:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        whitelistIPAddresses:
+          type: array
+          items:
+            type: string
+          readOnly: true
+    MedAdvisor.Framework.Interface.BroadcastMessageRecipient:
+      type: object
+      properties:
+        maId:
+          format: int32
+          type: integer
+        localPatientId:
+          format: int32
+          type: integer
+        dispenseRefId:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        mobile:
+          type: string
+        email:
+          type: string
+        parent_ID:
+          format: int32
+          type: integer
+        communicationType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        sha:
+          type: string
+        shaSecondary:
+          type: string
+        gender:
+          type: string
+        dateOfBirth:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.Location:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        addressName:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        suburb:
+          type: string
+        zipCode:
+          type: string
+        stateId:
+          type: string
+        stateName:
+          type: string
+        type:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          type: integer
+        typeName:
+          type: string
+        latitude:
+          format: double
+          type: number
+        longitude:
+          format: double
+          type: number
+        notes:
+          type: string
+        cityNew:
+          type: string
+        fullAddress:
+          type: string
+          readOnly: true
+        fullAddressWithCommas:
+          type: string
+          readOnly: true
+        fullAddressWithSpace:
+          type: string
+          readOnly: true
+        fullAddressWithCommasAndBr:
+          type: string
+          readOnly: true
+    MedAdvisor.Framework.Interface.Owner:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        abn:
+          type: string
+        pharmacyCount:
+          format: int32
+          type: integer
+        billingGroupCount:
+          format: int32
+          type: integer
+        clinicCount:
+          format: int32
+          type: integer
+        gpCount:
+          format: int32
+          type: integer
+        address:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        pharmacies:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        billingGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        clinics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractice'
+        gPs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractitioner'
+        email:
+          type: string
+        phone:
+          type: string
+        contact:
+          type: string
+        balance:
+          format: double
+          type: number
+    MedAdvisor.Framework.Interface.InstantActivateRequest:
+      type: object
+      properties:
+        signupFromPps:
+          type: boolean
+        context:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.RequestContext'
+        pharmacyId:
+          format: int32
+          type: integer
+        medicare:
+          type: string
+        dva:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+        mobile:
+          type: string
+        email:
+          type: string
+        localSystemIdentifier:
+          type: string
+        initials:
+          type: string
+        isuDisclosures:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

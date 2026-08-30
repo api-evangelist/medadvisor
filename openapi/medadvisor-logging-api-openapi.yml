@@ -1,0 +1,118 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Pharmacy Unified API v1.0 Logging API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: Logging
+paths:
+  /api/v1/logging:
+    post:
+      tags:
+      - Logging
+      summary: 'Forward log from Pharmacy-Web client (angular application) to CloudWatch.
+
+        Callers should use a bearer token if they have one, despite AllowAnonymous, to allow the caller identity to be included in the log entry.'
+      operationId: Logging_Core_Post
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Logging.LogEntryModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Logging.LogEntryModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Logging.LogEntryModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Logging.LogEntryModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Logging.LogEntryModel'
+        required: true
+components:
+  schemas:
+    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        errorData:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
+          readOnly: true
+        result:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - -13
+          - -12
+          - -11
+          - -10
+          - -9
+          - -8
+          - -7
+          - -6
+          - -5
+          - -4
+          - -3
+          - -2
+          - -1
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
+    MedAdvisor.HSH.Core.Structure.NoResult:
+      type: object
+      properties: {}
+    MedAdvisor.HSH.Core.Structure.Logging.LogEntryModel:
+      type: object
+      properties:
+        entryDate:
+          format: date-time
+          type: string
+        message:
+          description: "Messages should be base64 encoded to avoid any URLs or other details triggering the WAF \n(and because any string that's valid in base64 will be treated as such and logged decoded)"
+          type: string
+        stackTrace:
+          description: "StackTraces should be base64 encoded to avoid any URLs or other details triggering the WAF \n(and because any string that's valid in base64 will be treated as such and logged decoded)"
+          type: string
+        logLevel:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        extraInfo:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

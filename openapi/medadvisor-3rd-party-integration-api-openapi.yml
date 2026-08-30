@@ -1,0 +1,535 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Pharmacy Unified API v1.0 3rd-Party Integration API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: 3rd-Party Integration
+paths:
+  /api/v1/account/3rdpartylogin:
+    post:
+      tags:
+      - 3rd-Party Integration
+      summary: Login with pharmacy username and password(encoded).
+      description: 'To login into MedAdvisor''s system, send a <code>POST</code> request to <code>/loginthirdparty</code> and provide <code>userName</code> and <code>password</code> which is encoded by Base64-encoded UTF8 string. MedAdvisor will provide integrators with a <code>clientId</code> and a <code>clientSecret</code>. Consequently, MedAdvisor is going to return a token, which is used for authentication purposes in APIs requiring token-based authentication. '
+      operationId: Account_LoginPharmacy
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+        '404':
+          description: Not Found
+          content:
+            'application/json ( Not found or feature is not available) ':
+              example: "{\n  \"errorData\": {},\n  \"result\": 0,\n  \"resultMessage\": null,\n  \"data\": {\n    \"httpStatusCode\": 404,\n    \"result\": 0,\n    \"resultMessage\": \"Entity not found.\"\n  }\n}"
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy'
+              example:
+                userName: abc@example.com
+                password_encoded: cGFzc3dvcmQ=
+                clientId: clientId
+                clientSecret: clientSecret
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy'
+              example:
+                userName: abc@example.com
+                password_encoded: cGFzc3dvcmQ=
+                clientId: clientId
+                clientSecret: clientSecret
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy'
+              example:
+                userName: abc@example.com
+                password_encoded: cGFzc3dvcmQ=
+                clientId: clientId
+                clientSecret: clientSecret
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy'
+              example:
+                userName: abc@example.com
+                password_encoded: cGFzc3dvcmQ=
+                clientId: clientId
+                clientSecret: clientSecret
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy'
+              example:
+                userName: abc@example.com
+                password_encoded: cGFzc3dvcmQ=
+                clientId: clientId
+                clientSecret: clientSecret
+        description: The identity model for logging in
+        required: true
+  /api/v1/drug/escript/{token}:
+    get:
+      tags:
+      - 3rd-Party Integration
+      summary: Retrieve details of a electronic prescription from PDS, given a EScript token
+      description: "Patient is going to transfer this token, medication, patient information... from Mobile Patient App to MedAdvisor. \nDuring the MedAdvisor's process, patient can look into the information about medication, quantity, status... in Mobile Patient App, by making an API call GET /escript/{token} to retrieve all the information mentioned above. \nIntegrators put the token of the dispensation into parameters request, MedAdvisor responses dispense information"
+      operationId: Drug_RetrieveEPrescription3rdParty
+      parameters:
+      - name: token
+        in: path
+        description: The EScript token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+        '401':
+          description: Unauthorized
+          content:
+            'application/json ( Authorization has been denied for this request.) ':
+              example: "{\n  \"message\": \"Authorization has been denied for this request.\"\n}"
+        '500':
+          description: Internal Server Error
+          content:
+            'application/json ( An error has occurred) ':
+              example: "{\n  \"message\": \"An error has occurred\"\n}"
+      deprecated: false
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/{id}:
+    get:
+      tags:
+      - 3rd-Party Integration
+      summary: Retrieve pharmacy detail information including services information , delivery settings, etc.
+      description: Retrieve pharmacy detail information including services information , delivery settings, etc.
+      operationId: Pharmacy_PharmacyDetail
+      parameters:
+      - name: id
+        in: path
+        description: Id of receiving information pharmacy
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            'application/json ( Pharmacy not found) ':
+              example: "{\n  \"message\": \"Pharmacy not found.\"\n}"
+        '401':
+          description: Unauthorized
+          content:
+            'application/json ( Authorization has been denied for this request.) ':
+              example: "{\n  \"message\": \"Authorization has been denied for this request.\"\n}"
+      deprecated: false
+      security:
+      - Bearer: []
+  /api/v1/pharmacy/notify:
+    post:
+      tags:
+      - 3rd-Party Integration
+      summary: Push a message in Inbox of PlusOne. The detail of message displays description and the clickable URL of the order.
+      operationId: Pharmacy_NotifyPharmacyOfECommerceOrder
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            'application/json ( The URL is invalid) ':
+              example: "{\n  \"message\": \"Result: -2,  HttpStatusCode: 400, ResultMessage: The URL is invalid\"\n}"
+        '401':
+          description: Unauthorized
+          content:
+            'application/json ( Need to authenticate first) ':
+              example: "{\n  \"message\": \"Result: -2,  HttpStatusCode: 401, ResultMessage: Unauthorized request.\"\n}"
+      deprecated: false
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel'
+              example:
+                orderId: 1
+                description: Order description example
+                url: http://www.example.com/index.html
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel'
+              example:
+                orderId: 1
+                description: Order description example
+                url: http://www.example.com/index.html
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel'
+              example:
+                orderId: 1
+                description: Order description example
+                url: http://www.example.com/index.html
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel'
+              example:
+                orderId: 1
+                description: Order description example
+                url: http://www.example.com/index.html
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel'
+              example:
+                orderId: 1
+                description: Order description example
+                url: http://www.example.com/index.html
+        description: Need to provie an orderId, an order description and recall URL is valid.
+        required: true
+components:
+  schemas:
+    MedAdvisor.HSH.Core.Structure.NoResult:
+      type: object
+      properties: {}
+    MedAdvisor.HSH.Core.Structure.IdResult:
+      type: object
+      properties:
+        id:
+          type: string
+    MedAdvisor.HSH.Core.Structure.Patient.eScriptModel:
+      description: eScript Model
+      type: object
+      properties:
+        drugId:
+          format: int32
+          description: The drug id
+          type: integer
+          example: 40
+        drugActiveName:
+          description: The drug name
+          type: string
+          example: AMINOCAPROIC ACID
+        drugForm:
+          description: The drug form
+          type: string
+          example: AMP
+        drugStrength:
+          description: The drug strength
+          type: string
+          example: 250MG/ML 20ML
+        drugLabelName:
+          description: The drug's label
+          type: string
+          example: AMICAR
+        prescriptionDate:
+          format: date-time
+          description: The issued date
+          type: string
+        lastDispenseDate:
+          format: date-time
+          description: The last dispense date
+          type: string
+        quantity:
+          format: int32
+          description: The quantity of drug
+          type: integer
+          example: 0.0
+        repeatsRemaining:
+          format: int32
+          description: The number of time left for this prescription
+          type: integer
+          example: 2
+        totalRepeats:
+          format: int32
+          description: The number of total repeats
+          type: integer
+          example: 4
+        token:
+          description: The token for this escript
+          type: string
+          example: AMIN7
+        qrCodeForToken:
+          description: The QR code for this token
+          type: string
+          example: qr code
+        drugAmtCodes:
+          description: The Drug Amt Codes
+          type: array
+          items:
+            type: string
+          example:
+          - TPP
+          - MPP
+        instructions:
+          description: The direction for use
+          type: string
+          example: drug's instruction
+        status:
+          format: int32
+          description: The token's status
+          enum:
+          - '0: NotDispensed'
+          - '1: Dispensed'
+          - '2: Cancelled'
+          - '3: Expired'
+          - '4: DeferredOrNotEscriptToken'
+          - '5: Disabled'
+          - '10: Invalid'
+          - '-1000: Deferred'
+          type: integer
+          example: 0
+        source:
+          format: int32
+          description: The token's source
+          enum:
+          - '0: Pds'
+          - '1: Dispense'
+          type: integer
+          example: 0
+        patientId:
+          format: int32
+          description: The patient id
+          type: integer
+          example: 123
+        isReadyInOrder:
+          description: Allowed for order or not
+          type: boolean
+          example: true
+        patientFullName:
+          description: The Patient's Name
+          type: string
+          example: Patient Name
+        isUnknownDrugEScript:
+          description: The EScript can be trust or not
+          type: boolean
+          example: false
+        unknownEscriptErrorHandling:
+          description: Unknown escript error handling
+          type: boolean
+          example: false
+        escriptName:
+          description: Escript name
+          type: string
+          example: Escript name
+        isUnmappedDrugEScript:
+          type: boolean
+    MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel:
+      type: object
+      properties:
+        errorStatus:
+          format: int32
+          description: The Error status which response from service
+          enum:
+          - '0: Success'
+          - '1: ErrorOther'
+          - '2: InvalidToken'
+          - '3: TokenNotFound'
+          - '4: DrugNotMapped'
+          - '5: PrescriptionDateNotFound'
+          - '6: TotalRepeatsNotFound'
+          - '7: SupplyNumberNotFound'
+          - '8: NotEScriptToken'
+          type: integer
+          example: 0
+        errorMessage:
+          description: The Result message of API call
+          type: string
+          example: success
+        eScripts:
+          description: Escript information
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.eScriptModel'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel:
+      description: Need to provie an orderId, an order description and recall URL is valid.
+      type: object
+      properties:
+        orderId:
+          format: int32
+          description: The ECommerce order's Id
+          type: integer
+          example: 1
+        description:
+          description: The ECommerce order's description
+          type: string
+          example: Order description example
+        url:
+          description: The ECommerce order's URL
+          type: string
+          example: http://www.example.com/index.html
+    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        errorData:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
+          description: The Error Data which response from service
+          readOnly: true
+          example: {}
+        result:
+          format: int32
+          description: The Result of API call
+          enum:
+          - '0: NOTFOUND'
+          - '1: SUCCESS'
+          - '-13: SANITIZEDINTERNALSERVERERROR'
+          - '-12: INVALIDCOMMONPASSWORD'
+          - '-11: INVALIDREQUIREMENT'
+          - '-10: BLOCKED'
+          - '-9: UNAUTHORIZED'
+          - '-8: TOOMANYREQUESTS'
+          - '-7: SERVICEUNAVAILABLE'
+          - '-6: BADREQUEST'
+          - '-5: CONCURRENCYDELETED'
+          - '-4: CONCURRENCY'
+          - '-3: EXCEPTION'
+          - '-2: VALIDATEFAILED'
+          - '-1: FAILED'
+          type: integer
+          example: 0
+        resultMessage:
+          description: The Result message of API call
+          type: string
+          example: success
+        data:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel'
+          description: The data which returned by the service
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy:
+      description: Login model for pharmacy access.
+      type: object
+      properties:
+        userName:
+          description: The username to be verified
+          type: string
+          example: abc@example.com
+        password_encoded:
+          description: The password to be verified, encoded in Base64.
+          type: string
+          example: cGFzc3dvcmQ=
+        clientId:
+          description: The client Id to be verified
+          type: string
+          example: clientId
+        clientSecret:
+          description: The client secret to be verified
+          type: string
+          example: clientSecret
+    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        errorData:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
+          readOnly: true
+        result:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - -13
+          - -12
+          - -11
+          - -10
+          - -9
+          - -8
+          - -7
+          - -6
+          - -5
+          - -4
+          - -3
+          - -2
+          - -1
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.IdResult'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

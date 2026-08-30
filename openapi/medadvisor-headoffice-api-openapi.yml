@@ -1,0 +1,403 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Pharmacy Unified API v1.0 Head Office API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: HeadOffice
+paths:
+  /api/v1/hq/services:
+    get:
+      tags:
+      - HeadOffice
+      operationId: HeadOffice_GetServices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - HeadOffice
+      summary: 'Creates an HO custom service (RAP-38 Story 2.5). The service is owned by the caller''s report
+
+        group and is NOT pushed to any pharmacy — it lands in the catalogue as "Not pushed". Returns
+
+        the created service. Pushing to pharmacies is a separate operation (Story 2.7).'
+      operationId: HeadOffice_CreateService
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest'
+        required: true
+  /api/v1/hq/pharmacies:
+    get:
+      tags:
+      - HeadOffice
+      operationId: HeadOffice_GetPharmacies
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/hq/services/{id}:
+    get:
+      tags:
+      - HeadOffice
+      operationId: HeadOffice_GetService
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - HeadOffice
+      summary: 'Edits an HO-owned service (RAP-38 Story 2.5). The change updates the shared service definition, so
+
+        it applies to every pharmacy already linked to it — this does not push to new pharmacies. Returns
+
+        the updated service.'
+      operationId: HeadOffice_UpdateService
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest'
+        required: true
+  /api/v1/hq/pharmacies/{id}:
+    get:
+      tags:
+      - HeadOffice
+      operationId: HeadOffice_GetPharmacy
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/hq/services/{id}/push/{pharmacyId}/deadline:
+    put:
+      tags:
+      - HeadOffice
+      summary: 'Extends or shortens the auto-activation deadline on a pending push (RAP-38 Story 3a.5, AC1a).
+
+        Shortening into the past is allowed — the nightly job picks it up on its next run.'
+      operationId: HeadOffice_UpdatePushDeadline
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: pharmacyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest'
+        required: true
+  /api/v1/hq/services/{id}/push:
+    post:
+      tags:
+      - HeadOffice
+      summary: 'Pushes an HO service to pharmacies in the group (RAP-38 Story 2.7) by scope — all, by state, or
+
+        selected pharmacies. Force-links each target with visibility off (pushed, not yet live). Returns
+
+        the push result with updated counts.'
+      operationId: HeadOffice_PushService
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest'
+        required: true
+components:
+  schemas:
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest:
+      description: "Push an HO service to pharmacies in the group (RAP-38 Story 2.7). Targets are always resolved\nwithin the caller's group. Scope is \"all\", \"states\", or \"pharmacies\".\n            \nMVP behaviour: pushing force-links the service to each target pharmacy with visibility OFF — the\npharmacy has the service but it is not active/bookable until turned on. Pharmacy-side activation\n(notification + opt-in in MFP) is a later piece."
+      type: object
+      properties:
+        scope:
+          description: '"all", "states", or "pharmacies".'
+          type: string
+        states:
+          description: State abbreviations (NSW, VIC, …) when Scope = "states".
+          type: array
+          items:
+            type: string
+        pharmacyIds:
+          description: Pharmacy IDs when Scope = "pharmacies" (intersected with group membership).
+          type: array
+          items:
+            format: int32
+            type: integer
+        autoActivateDate:
+          format: date-time
+          description: 'Date the service auto-activates if the pharmacy hasn''t set it up (RAP-38 Story 3a.5). Date-only;
+
+            the nightly job activates it on that date. Optional: null means "no end date" — the service never
+
+            auto-activates and waits for the pharmacy to set it up. When set it must be today or later.'
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest:
+      description: 'Extends or shortens the auto-activation deadline on an already-pushed, still-pending service
+
+        (RAP-38 Story 3a.5, AC1a). Date-only. A past date is allowed — the nightly job picks it up on its
+
+        next run.'
+      type: object
+      properties:
+        autoActivateDate:
+          format: date-time
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest:
+      description: "Payload to edit an existing HO-owned service (RAP-38 Story 2.5). Same fields as create. The edit\nupdates the single shared PharmacyCapability, so it applies to every pharmacy currently linked to\nthe service — there is no per-pharmacy copy to re-push.\n            \nDeferred at v1, same as create: the fixed pre-screener (Medicare + DOB), the consent declaration,\nand Category (no storage target yet)."
+      type: object
+      properties:
+        name:
+          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
+          type: string
+        duration:
+          format: int32
+          description: Default duration in minutes. Stored in DescriptionElements ("dur").
+          type: integer
+        fee:
+          format: double
+          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
+          type: number
+        description:
+          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest:
+      description: "Payload to create a head-office custom service (RAP-38 Story 2.5). The created capability is\nowned by the caller's report group (OwnerReportGroup_ID) and has NO pharmacy links yet — it\nlands in the catalogue as \"Not pushed\" until a separate push creates the link rows.\n            \nDeferred from the wireframe at v1: the fixed pre-screener (Medicare + DOB) and the consent\ndeclaration. Category is also omitted — it has no storage target yet (OQ-02: the category value\nset is unsettled / expected to come from KAMS metadata), so it is not accepted here rather than\ninvent a column or XML element that may conflict with the eventual design."
+      type: object
+      properties:
+        name:
+          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
+          type: string
+        duration:
+          format: int32
+          description: Default duration in minutes. Stored in DescriptionElements ("dur").
+          type: integer
+        fee:
+          format: double
+          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
+          type: number
+        description:
+          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
+          type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

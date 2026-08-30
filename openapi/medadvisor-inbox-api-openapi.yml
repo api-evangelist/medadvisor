@@ -1,0 +1,806 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Pharmacy Unified API v1.0 Inbox API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: Inbox
+paths:
+  /api/v1/inbox/main:
+    get:
+      tags:
+      - Inbox
+      summary: Get inbox messages
+      operationId: Inbox_GetInboxMessages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel'
+      security:
+      - Bearer: []
+  /api/v1/inbox/sent:
+    post:
+      tags:
+      - Inbox
+      summary: Get inbox sent messages
+      operationId: Inbox_GetSentMessages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxSentMessageModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxSentMessageModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxSentMessageModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxSentMessageModel'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+        required: true
+  /api/v1/inbox/addscript:
+    post:
+      tags:
+      - Inbox
+      summary: Create deferred scripts from order
+      operationId: Inbox_AddScript
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel'
+        required: true
+  /api/v1/inbox/completed:
+    post:
+      tags:
+      - Inbox
+      summary: Get inbox completed messages
+      operationId: Inbox_GetCompletedMessages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+        required: true
+  /api/v1/inbox/scheduled:
+    post:
+      tags:
+      - Inbox
+      summary: Get inbox scheduled messages
+      operationId: Inbox_GetScheduledMessages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+        required: true
+  /api/v1/inbox/sendscheduled:
+    post:
+      tags:
+      - Inbox
+      summary: Send scheduled messages
+      operationId: Inbox_SendScheduledMessages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel'
+        required: true
+  /api/v1/inbox/readytocollect:
+    post:
+      tags:
+      - Inbox
+      summary: Mark multiple messages as Ready to collect
+      operationId: Inbox_ReadyToCollectMessage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+        required: true
+  /api/v1/inbox/dismissmultiple:
+    post:
+      tags:
+      - Inbox
+      summary: Dismiss message
+      operationId: Inbox_DismissMultiple
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel'
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel'
+        required: true
+components:
+  schemas:
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel:
+      description: Model for filtering inbox's data
+      type: object
+      properties:
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        messageIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        filterName:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel:
+      type: object
+      properties:
+        renewOrderId:
+          format: int32
+          type: integer
+        messageType:
+          format: int32
+          type: integer
+        messageId:
+          format: int32
+          type: integer
+        subType:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel:
+      type: object
+      properties:
+        successIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        failedIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        result:
+          format: int32
+          type: integer
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel:
+      description: Inbox completed tab
+      type: object
+      properties:
+        dateActioned:
+          format: date-time
+          type: string
+        isDismissed:
+          description: 'True when the order was soft-deleted (dismissed by the pharmacist).
+
+            Surfaces a "Dismissed" chip in the completed tab list row.'
+          type: boolean
+        maMessageId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        message:
+          type: string
+        dateReceived:
+          format: date-time
+          type: string
+        messageType:
+          type: string
+        subType:
+          type: string
+        view:
+          type: string
+        action:
+          type: string
+        severity:
+          format: int32
+          type: integer
+        messageTypeId:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        maPatientId:
+          format: int32
+          type: integer
+        url:
+          type: string
+        drugsOrdered:
+          format: int32
+          type: integer
+        largePopup:
+          type: boolean
+        renewOrder:
+          format: int32
+          type: integer
+        payInAdvance:
+          description: Tag Pay in advance
+          type: boolean
+        deliveryRequested:
+          type: boolean
+        includesNotes:
+          description: Tag flag for patient's notes
+          type: boolean
+        patientNote:
+          type: string
+        actionsList:
+          type: string
+        patientNhi:
+          type: string
+        patientType:
+          format: int32
+          type: integer
+        isGuestOrder:
+          type: boolean
+        viewDetailsUrl:
+          description: External api when clicking the view button
+          type: string
+        iconId:
+          format: int32
+          description: Icon types
+          type: integer
+        chips:
+          description: List of UI chips / tags
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        displayMessageTypeId:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        isAsl:
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest:
+      type: object
+      properties:
+        messageType:
+          format: int32
+          type: integer
+        messageId:
+          format: int32
+          type: integer
+        subType:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel:
+      description: Inbox tab model
+      type: object
+      properties:
+        maMessageId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        message:
+          type: string
+        dateReceived:
+          format: date-time
+          type: string
+        messageType:
+          type: string
+        subType:
+          type: string
+        view:
+          type: string
+        action:
+          type: string
+        severity:
+          format: int32
+          type: integer
+        messageTypeId:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        maPatientId:
+          format: int32
+          type: integer
+        url:
+          type: string
+        drugsOrdered:
+          format: int32
+          type: integer
+        largePopup:
+          type: boolean
+        renewOrder:
+          format: int32
+          type: integer
+        payInAdvance:
+          description: Tag Pay in advance
+          type: boolean
+        deliveryRequested:
+          type: boolean
+        includesNotes:
+          description: Tag flag for patient's notes
+          type: boolean
+        patientNote:
+          type: string
+        actionsList:
+          type: string
+        patientNhi:
+          type: string
+        patientType:
+          format: int32
+          type: integer
+        isGuestOrder:
+          type: boolean
+        viewDetailsUrl:
+          description: External api when clicking the view button
+          type: string
+        iconId:
+          format: int32
+          description: Icon types
+          type: integer
+        chips:
+          description: List of UI chips / tags
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        displayMessageTypeId:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        isAsl:
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxSentMessageModel:
+      description: Inbox sent tab
+      type: object
+      properties:
+        status:
+          type: string
+        dateSent:
+          format: date-time
+          type: string
+        dateDelivered:
+          format: date-time
+          type: string
+        maMessageId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        message:
+          type: string
+        dateReceived:
+          format: date-time
+          type: string
+        messageType:
+          type: string
+        subType:
+          type: string
+        view:
+          type: string
+        action:
+          type: string
+        severity:
+          format: int32
+          type: integer
+        messageTypeId:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        maPatientId:
+          format: int32
+          type: integer
+        url:
+          type: string
+        drugsOrdered:
+          format: int32
+          type: integer
+        largePopup:
+          type: boolean
+        renewOrder:
+          format: int32
+          type: integer
+        payInAdvance:
+          description: Tag Pay in advance
+          type: boolean
+        deliveryRequested:
+          type: boolean
+        includesNotes:
+          description: Tag flag for patient's notes
+          type: boolean
+        patientNote:
+          type: string
+        actionsList:
+          type: string
+        patientNhi:
+          type: string
+        patientType:
+          format: int32
+          type: integer
+        isGuestOrder:
+          type: boolean
+        viewDetailsUrl:
+          description: External api when clicking the view button
+          type: string
+        iconId:
+          format: int32
+          description: Icon types
+          type: integer
+        chips:
+          description: List of UI chips / tags
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        displayMessageTypeId:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        isAsl:
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel:
+      description: Inbox queue tab
+      type: object
+      properties:
+        status:
+          type: string
+        datePending:
+          format: date-time
+          type: string
+        dateNextDue:
+          format: date-time
+          type: string
+        maMessageId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        message:
+          type: string
+        dateReceived:
+          format: date-time
+          type: string
+        messageType:
+          type: string
+        subType:
+          type: string
+        view:
+          type: string
+        action:
+          type: string
+        severity:
+          format: int32
+          type: integer
+        messageTypeId:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        maPatientId:
+          format: int32
+          type: integer
+        url:
+          type: string
+        drugsOrdered:
+          format: int32
+          type: integer
+        largePopup:
+          type: boolean
+        renewOrder:
+          format: int32
+          type: integer
+        payInAdvance:
+          description: Tag Pay in advance
+          type: boolean
+        deliveryRequested:
+          type: boolean
+        includesNotes:
+          description: Tag flag for patient's notes
+          type: boolean
+        patientNote:
+          type: string
+        actionsList:
+          type: string
+        patientNhi:
+          type: string
+        patientType:
+          format: int32
+          type: integer
+        isGuestOrder:
+          type: boolean
+        viewDetailsUrl:
+          description: External api when clicking the view button
+          type: string
+        iconId:
+          format: int32
+          description: Icon types
+          type: integer
+        chips:
+          description: List of UI chips / tags
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        displayMessageTypeId:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        isAsl:
+          type: boolean
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Pharmacy Unified API v1.0 Account API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: Account
+paths:
+  /api/v1/account/resetpassword:
+    post:
+      tags:
+      - Account
+      summary: Request reset password for pharmacy user.
+      operationId: Account_ResetPassword
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ResetPasswordRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ResetPasswordRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ResetPasswordRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ResetPasswordRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.ResetPasswordRequest'
+        required: true
+components:
+  schemas:
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.ResetPasswordRequest:
+      type: object
+      properties:
+        email:
+          type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

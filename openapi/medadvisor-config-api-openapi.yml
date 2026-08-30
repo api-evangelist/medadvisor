@@ -1,0 +1,149 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Pharmacy Unified API v1.0 Config API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: Config
+paths:
+  /api/v1/config/demographicRules:
+    get:
+      tags:
+      - Config
+      summary: Retrieve Demographic Rules Details
+      operationId: Config_RetrieveDemographicRules
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSetResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSetResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSetResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSetResult'
+      security:
+      - Bearer: []
+  /api/v1/config/precursorInstructions:
+    get:
+      tags:
+      - Config
+      summary: Retrieve Demographic Rules Details
+      operationId: Config_RetrievePrecursorInstructionMappings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstructionAbstractionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstructionAbstractionResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstructionAbstractionResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstructionAbstractionResult'
+      security:
+      - Bearer: []
+components:
+  schemas:
+    MedAdvisor.Framework.Interface.DemoRuleSet:
+      type: object
+      properties:
+        demoRuleSetRowId:
+          format: int64
+          type: integer
+        programName:
+          type: string
+        selectionEngine:
+          type: string
+        minimumAge:
+          format: int32
+          type: integer
+        maximumAge:
+          format: int32
+          type: integer
+        gender:
+          type: string
+        includeNoAge:
+          type: boolean
+        includeNoGender:
+          type: boolean
+        hash:
+          type: string
+        createDate:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.InstructionAbstraction:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        rawInstructions:
+          type: string
+        translatedInstructions:
+          type: string
+        quantityPerDose:
+          format: double
+          type: number
+        dosesPerDay:
+          format: double
+          type: number
+        usagePerDay:
+          format: double
+          type: number
+        deterministic:
+          type: boolean
+        translationStatus:
+          type: boolean
+        daysSupplyOverride:
+          format: int32
+          type: integer
+        live:
+          type: boolean
+        nonContOverride:
+          type: string
+    MedAdvisor.Framework.Interface.DemoRuleSetResult:
+      type: object
+      properties:
+        demoRuleSet:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSet'
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.InstructionAbstractionResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstructionAbstraction'
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header
