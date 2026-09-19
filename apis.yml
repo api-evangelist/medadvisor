@@ -134,6 +134,8 @@ apis:
   humanURL: https://pharmacy-unified.api.medadvisor.com.au/swagger/
   baseURL: https://pharmacy-unified.api.medadvisor.com.au
   tags:
+  - Clinics
+  tags_raw:
   - Clinic
   properties:
   - type: OpenAPI
