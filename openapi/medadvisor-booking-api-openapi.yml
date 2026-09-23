@@ -165,6 +165,8 @@ paths:
                 $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
       security:
       - Bearer: []
+      summary: Booking retrieve public booking links
+      x-summary-source: derived
   /api/v2/booking/retrieverunsheet:
     get:
       tags:
@@ -224,6 +226,8 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Boolean__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089'
+      summary: Booking validate calendar token
+      x-summary-source: derived
   /api/v2/booking/services/availableresource/{capabilityId}:
     get:
       tags:
@@ -267,7 +271,7 @@ paths:
     get:
       tags:
       - Booking
-      summary: Retrieves the available time slot new booking.
+      summary: Retrieves the available time slot new booking
       operationId: Booking_RetrieveAvailableTimeSlotNewBooking
       parameters:
       - name: serviceId
@@ -371,7 +375,7 @@ paths:
     get:
       tags:
       - Booking
-      summary: Retrieves the event bookings.
+      summary: Retrieves the event bookings
       operationId: Booking_RetrieveEventBookings
       parameters:
       - name: startDate
@@ -466,7 +470,7 @@ paths:
     post:
       tags:
       - Booking
-      summary: Returns the pharmacy-level walk-in QR token, creating it if it does not exist.
+      summary: Returns the pharmacy-level walk-in QR token, creating it if it does not exist
       operationId: Booking_GetOrCreateWalkInQrToken
       responses:
         '200':
@@ -576,7 +580,7 @@ paths:
     post:
       tags:
       - Booking
-      summary: Sends a prescreener email for a walk-in booking.
+      summary: Sends a prescreener email for a walk-in booking
       operationId: Booking_SendPrescreener
       responses:
         '200':
@@ -651,11 +655,13 @@ paths:
                   $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.PrescreenFormModel'
       security:
       - Bearer: []
+      summary: Booking print
+      x-summary-source: derived
   /api/v2/booking/eventresource/update:
     post:
       tags:
       - Booking
-      summary: Updates the event resource.
+      summary: Updates the event resource
       operationId: Booking_UpdateEventResource
       responses:
         '200':
@@ -849,6 +855,8 @@ paths:
             schema:
               $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PrescreenFormSearchModel'
         required: true
+      summary: Booking search prescreen form for booking
+      x-summary-source: derived
   /api/v2/booking/savebooking:
     post:
       tags:
@@ -940,7 +948,7 @@ paths:
     delete:
       tags:
       - Booking
-      summary: Deletes the event service.
+      summary: Deletes the event service
       operationId: Booking_DeleteEventService
       parameters:
       - name: serviceId
@@ -972,7 +980,7 @@ paths:
     delete:
       tags:
       - Booking
-      summary: Deletes the event resource.
+      summary: Deletes the event resource
       operationId: Booking_DeleteEventResource
       parameters:
       - name: resourceId
@@ -1002,248 +1010,6 @@ paths:
       - Bearer: []
 components:
   schemas:
-    MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider:
-      type: object
-      properties:
-        providerID:
-          format: int32
-          type: integer
-        providerName:
-          type: string
-        merchantId:
-          type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.EventBookingResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingResult'
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Object____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          type: array
-          items:
-            type: object
-    MedAdvisor.Framework.Interface.BookingTokenKey:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        code:
-          type: string
-        userId:
-          type: string
-        url:
-          type: string
-        capabilityId:
-          format: int32
-          type: integer
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult'
-    MedAdvisor.Framework.Interface.v2.PrescreenFormSearchModel:
-      type: object
-      properties:
-        token:
-          type: string
-        lastName:
-          type: string
-        dob:
-          format: date-time
-          type: string
-        postCode:
-          type: string
-        bookingDate:
-          format: date-time
-          type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Collections.Generic.List_1__MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel'
-    MedAdvisor.Framework.Interface.ElectronicPrescribingSettings:
-      type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.EventResourceResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventResourceResult'
-    MedAdvisor.Framework.Interface.v2.ClinicModel:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        pharmacyId:
-          format: int32
-          type: integer
-        capabilityId:
-          format: int32
-          type: integer
-        capabilityName:
-          type: string
-        eventResourceId:
-          format: int32
-          type: integer
-        resourceName:
-          type: string
-        name:
-          type: string
-        serviceLength:
-          format: int32
-          type: integer
-        locationType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          type: integer
-        externalLocationName:
-          type: string
-        startTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        addBufferTime:
-          type: boolean
-        bufferTime:
-          format: int32
-          type: integer
-        clinicStatus:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        privateUrlOnly:
-          type: boolean
-        preferences:
-          type: string
-        pharmacistIds:
-          type: array
-          items:
-            format: uuid
-            type: string
-            example: 00000000-0000-0000-0000-000000000000
-        pharmacists:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacistInfoModel'
-        bookingIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult'
-    MedAdvisor.Framework.Interface.GPPractitioner:
-      type: object
-      properties:
-        practitionerId:
-          format: int32
-          type: integer
-        practice_UserId:
-          type: string
-        practice_PractitionerId:
-          type: string
-        providerNumber:
-          type: string
-        prescriberNumber:
-          type: string
-        stateRegistrationNumber:
-          type: string
-        title:
-          type: string
-        firstName:
-          type: string
-        middleNames:
-          type: string
-        lastName:
-          type: string
-        qualifications:
-          type: string
-        phone:
-          type: string
-        fax:
-          type: string
-        email:
-          type: string
-        mobile:
-          type: string
-        abn:
-          type: string
-        phoneVisible:
-          type: boolean
-        faxVisible:
-          type: boolean
-        emailVisible:
-          type: boolean
-        mobileVisible:
-          type: boolean
-        sendSMSReminder:
-          type: boolean
-        sendSMTPReminder:
-          type: boolean
-        reminderHour:
-          format: int32
-          type: integer
-        reminderMinute:
-          format: int32
-          type: integer
-        processQueue:
-          type: boolean
-        owner:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
     MedAdvisor.Framework.Interface.Store:
       type: object
       properties:
@@ -1516,45 +1282,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Subscription'
-    MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult:
+    MedAdvisor.Framework.Interface.Owner:
       type: object
       properties:
-        pharmacyName:
+        id:
+          format: int32
+          type: integer
+        name:
           type: string
-        fileContent:
+        abn:
           type: string
-    MedAdvisor.Framework.Interface.BookingAvailabilityResult:
-      type: object
-      properties:
-        availability:
+        pharmacyCount:
+          format: int32
+          type: integer
+        billingGroupCount:
+          format: int32
+          type: integer
+        clinicCount:
+          format: int32
+          type: integer
+        gpCount:
+          format: int32
+          type: integer
+        address:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        pharmacies:
           type: array
           items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
-        totalCount:
-          format: int32
-          type: integer
-        isNew:
-          type: boolean
-        bookingType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        bookingTypeUrl:
-          type: string
-        directBookingsURL:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        billingGroups:
           type: array
           items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingTokenKey'
-        result:
-          format: int32
-          type: integer
-        resultMessage:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        clinics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractice'
+        gPs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractitioner'
+        email:
           type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Boolean__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+        phone:
+          type: string
+        contact:
+          type: string
+        balance:
+          format: double
+          type: number
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
     : type: object
       properties:
         result:
@@ -1563,424 +1340,69 @@ components:
         resultMessage:
           type: string
         data:
-          type: boolean
-    MedAdvisor.Framework.Interface.PharmacyExternalSystem:
-      type: object
-      properties:
-        maid:
           format: int32
           type: integer
-        externalSystemName:
-          type: string
-        externalID:
-          type: string
-        id:
-          format: int32
-          type: integer
-        pendingOperation:
-          format: int32
-          enum:
-          - 1
-          - 2
-          - 3
-          type: integer
-        externalSystemID:
-          format: int32
-          enum:
-          - 1
-          type: integer
-        rawData:
-          type: string
-        uuid:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
-      type: object
-      properties:
-        from:
-          format: date-time
-          type: string
-        to:
-          format: date-time
-          type: string
-    MedAdvisor.Framework.Interface.v2.PharmacistInfoModel:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        name:
-          type: string
-        deleted:
-          format: date-time
-          type: string
-    MedAdvisor.Framework.Interface.v2.RunSheetModel:
-      type: object
-      properties:
-        pharmacyName:
-          type: string
-        pharmacyAddress1:
-          type: string
-        pharmacyAddress2:
-          type: string
-        createDate:
-          format: date-time
-          type: string
-        runSheetDate:
-          format: date-time
-          type: string
-        pharmacyStartTime:
-          type: string
-        pharmacyEndTime:
-          type: string
-        staffList:
-          type: array
-          items:
-            type: string
-        roomList:
-          type: array
-          items:
-            type: string
-        services:
-          type: object
-          additionalProperties:
-            format: int32
-            type: integer
-        patientEnquiry:
-          type: string
-        clinicNames:
-          type: array
-          items:
-            type: string
-        bookings:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
-        bookingForClinicList:
-          type: array
-          items:
-            format: int32
-            type: integer
-        clinicMap:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              format: int32
-              type: integer
-    MedAdvisor.Framework.Interface.v2.CalendarWizardModel:
-      type: object
-      properties:
-        pharmacyId:
-          format: int32
-          type: integer
-        bookingTargetType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        bookingTargetUrl:
-          type: string
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventResourceModel'
-        pharmacists:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel'
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel'
-        publicHolidays:
-          type: array
-          items:
-            format: int32
-            type: integer
-    MedAdvisor.Framework.Interface.Subscription:
+    MedAdvisor.Framework.Interface.BookingTokenKey:
       type: object
       properties:
         id:
           format: int32
           type: integer
-        name:
+        code:
           type: string
-        amount:
-          format: double
-          type: number
+        userId:
+          type: string
+        url:
+          type: string
+        capabilityId:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Finance.PharmacyTier:
+      type: object
+      properties:
+        tierID:
+          format: int32
+          type: integer
+        tierName:
+          type: string
         startDate:
           format: date-time
           type: string
         endDate:
           format: date-time
           type: string
-        description:
-          type: string
-        showOnInvoice:
-          type: boolean
-        isDefault:
-          type: boolean
         duration:
           format: int32
           type: integer
           readOnly: true
-    MedAdvisor.Framework.Interface.v2.CustomRunSheetRequest:
+    MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel:
       type: object
       properties:
-        pharmacyID:
-          format: int32
-          type: integer
-        timeFrom:
-          format: date-time
-          type: string
-        timeTo:
-          format: date-time
-          type: string
-        pharmacists:
+        fortnightly:
+          type: boolean
+        primaryWorkingHour:
           type: array
           items:
-            format: uuid
-            type: string
-            example: 00000000-0000-0000-0000-000000000000
-        locations:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
+        primaryStartDate:
+          format: date-time
+          type: string
+        secondaryWorkingHour:
           type: array
           items:
-            format: int32
-            type: integer
-        serviceTypes:
-          type: array
-          items:
-            format: int32
-            type: integer
-        statuses:
-          type: array
-          items:
-            format: int32
-            type: integer
-        orderBy:
-          format: int32
-          enum:
-          - 0
-          - 1
-          type: integer
-    MedAdvisor.Framework.Interface.v2.EventAvailabilityModel:
-      type: object
-      properties:
-        resourceId:
-          format: int32
-          type: integer
-        color:
-          type: string
-        availableTimes:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
-        times:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PrescreenFormModel:
-      type: object
-      properties:
-        bookingCode:
-          type: string
-        readOnlyMode:
-          type: boolean
-        officeOnlyMode:
-          type: boolean
-        formField:
-          type: object
-          additionalProperties:
-            type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        medicareNumber:
-          type: string
-        irn:
-          type: string
-        medicareExpiry:
-          type: string
-        dateOfBirth:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
+        secondaryStartDate:
           format: date-time
           type: string
-        address:
-          type: string
-        contactNumber:
-          type: string
-        emailAddress:
-          type: string
-        pharmacyName:
-          type: string
-        pharmacyAddress:
-          type: string
-        isCompleted:
-          type: boolean
-        startDate:
-          format: date-time
-          type: string
-        completedDate:
-          format: date-time
-          type: string
-        eventBookingCapabilityName:
-          type: string
-        prescreenView:
-          type: string
-        duration:
-          format: int32
-          type: integer
-        bookingCreated:
-          format: date-time
-          type: string
-    MedAdvisor.Framework.Interface.v2.EventResourceModel:
-      type: object
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.String__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    : type: object
       properties:
-        id:
+        result:
           format: int32
           type: integer
-        name:
+        resultMessage:
           type: string
-        pharmacyId:
-          format: int32
-          type: integer
-        preferences:
-          type: string
-        color:
-          type: string
-        serviceCount:
-          format: int32
-          type: integer
-        toServiceId:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.v2.BulkBookingSearchRequest:
-      type: object
-      properties:
-        pharmacy_ID:
-          format: int32
-          type: integer
-        pharmacist_ID:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        fromDate:
-          format: date-time
-          type: string
-        toDate:
-          format: date-time
-          type: string
-        smsContent:
-          type: string
-        emailContent:
-          type: string
-    MedAdvisor.Framework.Interface.BookingAvailability:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        type:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        bookingTarget:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        bookingTargetUrl:
-          type: string
-        name:
-          type: string
-        longName:
-          type: string
-        friendlyName:
-          type: string
-        blurb:
-          type: string
-        iconImage:
-          type: string
-        bannerImage:
-          type: string
-        suggestionPriority:
-          format: int32
-          type: integer
-        resourceAvailable:
-          type: boolean
-        standardDuration:
-          format: int32
-          type: integer
-        prescreenRequirement:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          type: integer
-        prescreenView:
-          type: string
-        ppsEngine:
-          type: string
-        bookingInformation:
-          type: string
-        openPrescreeningInExternalBrowser:
-          type: boolean
-        maExternalBookingUrl:
-          type: string
-        openBookingPageInExternalBrowser:
-          type: boolean
-        warningMessage:
-          type: string
-        isLinkedToVaccinationForm:
-          type: boolean
-        isCollectConsentRemind:
-          type: boolean
-        isCollectConsentPrompt:
-          type: boolean
-        isFamilyBookingEligible:
-          type: boolean
-        collectConsentMessage:
-          type: string
-        isSetAge:
-          type: boolean
-        minAge:
-          format: int32
-          type: integer
-        maxAge:
-          format: int32
-          type: integer
-        clinicId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        clinicName:
-          type: string
-        location:
-          type: string
-    MedAdvisor.Framework.Interface.v2.SendPrescreenerRequest:
-      type: object
-      properties:
-        bookingRef:
-          type: string
-        email:
-          type: string
-        mobile:
-          type: string
-        deliveryMethod:
+        data:
           type: string
     MedAdvisor.Framework.Interface.EventBookingWrapper:
       type: object
@@ -2156,7 +1578,7 @@ components:
           type: string
         hasPrescreen:
           type: boolean
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventBookingModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.EventResourceResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
     : type: object
       properties:
         result:
@@ -2165,7 +1587,472 @@ components:
         resultMessage:
           type: string
         data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventBookingModel'
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventResourceResult'
+    MedAdvisor.Framework.Interface.BookingAvailabilityResult:
+      type: object
+      properties:
+        availability:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
+        totalCount:
+          format: int32
+          type: integer
+        isNew:
+          type: boolean
+        bookingType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        bookingTypeUrl:
+          type: string
+        directBookingsURL:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingTokenKey'
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.BookingAvailability:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        type:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        bookingTarget:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        bookingTargetUrl:
+          type: string
+        name:
+          type: string
+        longName:
+          type: string
+        friendlyName:
+          type: string
+        blurb:
+          type: string
+        iconImage:
+          type: string
+        bannerImage:
+          type: string
+        suggestionPriority:
+          format: int32
+          type: integer
+        resourceAvailable:
+          type: boolean
+        standardDuration:
+          format: int32
+          type: integer
+        prescreenRequirement:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        prescreenView:
+          type: string
+        ppsEngine:
+          type: string
+        bookingInformation:
+          type: string
+        openPrescreeningInExternalBrowser:
+          type: boolean
+        maExternalBookingUrl:
+          type: string
+        openBookingPageInExternalBrowser:
+          type: boolean
+        warningMessage:
+          type: string
+        isLinkedToVaccinationForm:
+          type: boolean
+        isCollectConsentRemind:
+          type: boolean
+        isCollectConsentPrompt:
+          type: boolean
+        isFamilyBookingEligible:
+          type: boolean
+        collectConsentMessage:
+          type: string
+        isSetAge:
+          type: boolean
+        minAge:
+          format: int32
+          type: integer
+        maxAge:
+          format: int32
+          type: integer
+        clinicId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        clinicName:
+          type: string
+        location:
+          type: string
+    MedAdvisor.Framework.Interface.v2.EventAvailabilityModel:
+      type: object
+      properties:
+        resourceId:
+          format: int32
+          type: integer
+        color:
+          type: string
+        availableTimes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
+        times:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
+    MedAdvisor.Framework.Interface.EventResourceResult:
+      type: object
+      properties:
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventResourceWrapper'
+        totalCount:
+          format: int32
+          type: integer
+        store:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        earliestOpening:
+          type: string
+        latestClosing:
+          type: string
+        calendarLayout:
+          type: string
+        smsConfirmation:
+          type: boolean
+        smsReminder:
+          type: boolean
+        duration:
+          format: int32
+          type: integer
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.BookingAvailabilityResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailabilityResult'
+    MedAdvisor.Framework.Interface.ElectronicPrescribingSettings:
+      type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.String____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          type: array
+          items:
+            type: string
+    MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        pharmacy_ID:
+          format: int32
+          type: integer
+        name:
+          type: string
+        bookingType:
+          format: int32
+          type: integer
+        description:
+          type: string
+        supplemental:
+          type: string
+        formType:
+          type: string
+        visible:
+          format: int32
+          type: integer
+        timeRequired:
+          format: int32
+          type: integer
+        limitAmount:
+          format: int32
+          type: integer
+        daysRunning:
+          format: int32
+          type: integer
+        limitBooking:
+          type: boolean
+        sendLimitBookingNotification:
+          type: boolean
+        walkInEnabled:
+          format: int32
+          type: integer
+        fromResourceId:
+          format: int32
+          type: integer
+        eventResources:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventResourceModel'
+        pharmacists:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel'
+        hasPrescreen:
+          type: boolean
+        sourceBannerGroup:
+          type: string
+        remainingDays:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.v2.PrescreenFormSearchModel:
+      type: object
+      properties:
+        token:
+          type: string
+        lastName:
+          type: string
+        dob:
+          format: date-time
+          type: string
+        postCode:
+          type: string
+        bookingDate:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.v2.ClinicModel:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        pharmacyId:
+          format: int32
+          type: integer
+        capabilityId:
+          format: int32
+          type: integer
+        capabilityName:
+          type: string
+        eventResourceId:
+          format: int32
+          type: integer
+        resourceName:
+          type: string
+        name:
+          type: string
+        serviceLength:
+          format: int32
+          type: integer
+        locationType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        externalLocationName:
+          type: string
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        addBufferTime:
+          type: boolean
+        bufferTime:
+          format: int32
+          type: integer
+        clinicStatus:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        privateUrlOnly:
+          type: boolean
+        preferences:
+          type: string
+        pharmacistIds:
+          type: array
+          items:
+            format: uuid
+            type: string
+            example: 00000000-0000-0000-0000-000000000000
+        pharmacists:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacistInfoModel'
+        bookingIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.RunSheetModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.RunSheetModel'
+    MedAdvisor.Framework.Interface.Subscription:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        amount:
+          format: double
+          type: number
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        description:
+          type: string
+        showOnInvoice:
+          type: boolean
+        isDefault:
+          type: boolean
+        duration:
+          format: int32
+          type: integer
+          readOnly: true
+    MedAdvisor.Framework.Interface.v2.CustomRunSheetRequest:
+      type: object
+      properties:
+        pharmacyID:
+          format: int32
+          type: integer
+        timeFrom:
+          format: date-time
+          type: string
+        timeTo:
+          format: date-time
+          type: string
+        pharmacists:
+          type: array
+          items:
+            format: uuid
+            type: string
+            example: 00000000-0000-0000-0000-000000000000
+        locations:
+          type: array
+          items:
+            format: int32
+            type: integer
+        serviceTypes:
+          type: array
+          items:
+            format: int32
+            type: integer
+        statuses:
+          type: array
+          items:
+            format: int32
+            type: integer
+        orderBy:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+    MedAdvisor.Framework.Interface.EventBookingResult:
+      type: object
+      properties:
+        bookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
+        bookings_Event:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
+        totalCount:
+          format: int32
+          type: integer
+        resourceAvailability:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventAvailability'
+        cancelAllowed:
+          type: boolean
+        duration:
+          format: int32
+          type: integer
+        bookingAvailability:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
+      type: object
+      properties:
+        from:
+          format: date-time
+          type: string
+        to:
+          format: date-time
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Boolean__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          type: boolean
     MedAdvisor.Framework.Interface.EventRecurrence:
       type: object
       properties:
@@ -2247,214 +2134,6 @@ components:
           type: integer
         useEndTime:
           type: boolean
-    MedAdvisor.Framework.Interface.EventResourceResult:
-      type: object
-      properties:
-        resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventResourceWrapper'
-        totalCount:
-          format: int32
-          type: integer
-        store:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
-        earliestOpening:
-          type: string
-        latestClosing:
-          type: string
-        calendarLayout:
-          type: string
-        smsConfirmation:
-          type: boolean
-        smsReminder:
-          type: boolean
-        duration:
-          format: int32
-          type: integer
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.Framework.Interface.v2.BookablePharmacistModel:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        name:
-          type: string
-        pharmacyId:
-          format: int32
-          type: integer
-        hasBooking:
-          type: boolean
-        pharmacyUuid:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        workingHour:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel'
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        linkedDate:
-          format: date-time
-          type: string
-        createDate:
-          format: date-time
-          type: string
-        deleted:
-          format: date-time
-          type: string
-        serviceCount:
-          format: int32
-          type: integer
-        hasHolidayAway:
-          type: boolean
-        holidayAway:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
-        preferences:
-          type: string
-        timeSlots:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
-        linkedServices:
-          type: array
-          items:
-            format: int32
-            type: integer
-        dateOfHolidayAways:
-          type: array
-          items:
-            format: date-time
-            type: string
-          readOnly: true
-    MedAdvisor.Framework.Finance.PharmacyTier:
-      type: object
-      properties:
-        tierID:
-          format: int32
-          type: integer
-        tierName:
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        duration:
-          format: int32
-          type: integer
-          readOnly: true
-    MedAdvisor.Framework.Interface.OperatingHour:
-      type: object
-      properties:
-        weekday:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          type: integer
-        startHour:
-          format: int32
-          type: integer
-        startMinute:
-          format: int32
-          type: integer
-        endHour:
-          format: int32
-          type: integer
-        endMinute:
-          format: int32
-          type: integer
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        invoiceGroup:
-          type: string
-        bannerGroup:
-          type: string
-        street:
-          type: string
-        suburb:
-          type: string
-        state:
-          type: string
-        postCode:
-          format: int32
-          type: integer
-        enrolledPatients:
-          format: int32
-          type: integer
-        phone:
-          type: string
-        hN_ID:
-          type: string
-        createDate:
-          format: date-time
-          type: string
-        pharmacy_ID:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.EventBookingResult:
-      type: object
-      properties:
-        bookings:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
-        bookings_Event:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
-        totalCount:
-          format: int32
-          type: integer
-        resourceAvailability:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventAvailability'
-        cancelAllowed:
-          type: boolean
-        duration:
-          format: int32
-          type: integer
-        bookingAvailability:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
     MedAdvisor.Framework.Interface.GPPractice:
       type: object
       properties:
@@ -2529,7 +2208,56 @@ components:
           type: boolean
         owner:
           $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.RunSheetModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    MedAdvisor.Framework.Interface.v2.PharmacistInfoModel:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+        deleted:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.v2.EventBookingModel:
+      type: object
+      properties:
+        bookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
+        totalCount:
+          format: int32
+          type: integer
+        resourceAvailability:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventAvailabilityModel'
+        clinics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicModel'
+        cancelAllowed:
+          type: boolean
+        deleted:
+          format: date-time
+          type: string
+        duration:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.v2.SendPrescreenerRequest:
+      type: object
+      properties:
+        bookingRef:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        deliveryMethod:
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Object____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
     : type: object
       properties:
         result:
@@ -2538,25 +2266,428 @@ components:
         resultMessage:
           type: string
         data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.RunSheetModel'
-    MedAdvisor.Framework.Interface.EventAvailability:
-      type: object
+          type: array
+          items:
+            type: object
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
       properties:
-        resourceId:
+        result:
           format: int32
           type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult'
+    MedAdvisor.Framework.Interface.v2.CalendarWizardModel:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        bookingTargetType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        bookingTargetUrl:
+          type: string
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventResourceModel'
+        pharmacists:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel'
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel'
+        publicHolidays:
+          type: array
+          items:
+            format: int32
+            type: integer
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventBookingModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventBookingModel'
+    MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider:
+      type: object
+      properties:
+        providerID:
+          format: int32
+          type: integer
+        providerName:
+          type: string
+        merchantId:
+          type: string
+    MedAdvisor.Framework.Interface.Location:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        addressName:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        suburb:
+          type: string
+        zipCode:
+          type: string
+        stateId:
+          type: string
+        stateName:
+          type: string
+        type:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          type: integer
+        typeName:
+          type: string
+        latitude:
+          format: double
+          type: number
+        longitude:
+          format: double
+          type: number
+        notes:
+          type: string
+        cityNew:
+          type: string
+        fullAddress:
+          type: string
+          readOnly: true
+        fullAddressWithCommas:
+          type: string
+          readOnly: true
+        fullAddressWithSpace:
+          type: string
+          readOnly: true
+        fullAddressWithCommasAndBr:
+          type: string
+          readOnly: true
+    MedAdvisor.Framework.Interface.v2.EventResourceModel:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        pharmacyId:
+          format: int32
+          type: integer
+        preferences:
+          type: string
+        color:
+          type: string
+        serviceCount:
+          format: int32
+          type: integer
+        toServiceId:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.v2.BookablePharmacistModel:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+        pharmacyId:
+          format: int32
+          type: integer
+        hasBooking:
+          type: boolean
+        pharmacyUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        workingHour:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel'
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        linkedDate:
+          format: date-time
+          type: string
+        createDate:
+          format: date-time
+          type: string
+        deleted:
+          format: date-time
+          type: string
+        serviceCount:
+          format: int32
+          type: integer
+        hasHolidayAway:
+          type: boolean
+        holidayAway:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
+        preferences:
+          type: string
+        timeSlots:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
+        linkedServices:
+          type: array
+          items:
+            format: int32
+            type: integer
+        dateOfHolidayAways:
+          type: array
+          items:
+            format: date-time
+            type: string
+          readOnly: true
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Collections.Generic.List_1__MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PrescreenFormModel:
+      type: object
+      properties:
+        bookingCode:
+          type: string
+        readOnlyMode:
+          type: boolean
+        officeOnlyMode:
+          type: boolean
+        formField:
+          type: object
+          additionalProperties:
+            type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        medicareNumber:
+          type: string
+        irn:
+          type: string
+        medicareExpiry:
+          type: string
+        dateOfBirth:
+          format: date-time
+          type: string
+        address:
+          type: string
+        contactNumber:
+          type: string
+        emailAddress:
+          type: string
+        pharmacyName:
+          type: string
+        pharmacyAddress:
+          type: string
+        isCompleted:
+          type: boolean
+        startDate:
+          format: date-time
+          type: string
+        completedDate:
+          format: date-time
+          type: string
+        eventBookingCapabilityName:
+          type: string
+        prescreenView:
+          type: string
+        duration:
+          format: int32
+          type: integer
+        bookingCreated:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.v2.RunSheetModel:
+      type: object
+      properties:
+        pharmacyName:
+          type: string
+        pharmacyAddress1:
+          type: string
+        pharmacyAddress2:
+          type: string
+        createDate:
+          format: date-time
+          type: string
+        runSheetDate:
+          format: date-time
+          type: string
+        pharmacyStartTime:
+          type: string
+        pharmacyEndTime:
+          type: string
+        staffList:
+          type: array
+          items:
+            type: string
+        roomList:
+          type: array
+          items:
+            type: string
+        services:
+          type: object
+          additionalProperties:
+            format: int32
+            type: integer
+        patientEnquiry:
+          type: string
+        clinicNames:
+          type: array
+          items:
+            type: string
+        bookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
+        bookingForClinicList:
+          type: array
+          items:
+            format: int32
+            type: integer
+        clinicMap:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              format: int32
+              type: integer
+    MedAdvisor.Framework.Interface.EventResourceWrapper:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
         availabilityType:
           format: int32
           enum:
           - 0
           - 1
           type: integer
-        times:
+        recurrencePattern:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventRecurrence'
+        singleBookings:
           type: array
           items:
             $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
-        color:
+        availableServices:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
+        linkedServices:
+          type: array
+          items:
+            format: int32
+            type: integer
+        isDeleted:
+          type: boolean
+        calendarContext:
+          format: int32
+          type: integer
+        locationType:
           type: string
+    MedAdvisor.Framework.Interface.GPPractitioner:
+      type: object
+      properties:
+        practitionerId:
+          format: int32
+          type: integer
+        practice_UserId:
+          type: string
+        practice_PractitionerId:
+          type: string
+        providerNumber:
+          type: string
+        prescriberNumber:
+          type: string
+        stateRegistrationNumber:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        middleNames:
+          type: string
+        lastName:
+          type: string
+        qualifications:
+          type: string
+        phone:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        abn:
+          type: string
+        phoneVisible:
+          type: boolean
+        faxVisible:
+          type: boolean
+        emailVisible:
+          type: boolean
+        mobileVisible:
+          type: boolean
+        sendSMSReminder:
+          type: boolean
+        sendSMTPReminder:
+          type: boolean
+        reminderHour:
+          format: int32
+          type: integer
+        reminderMinute:
+          format: int32
+          type: integer
+        processQueue:
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
     MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult:
       type: object
       properties:
@@ -2573,7 +2704,7 @@ components:
           type: string
         patientFullName:
           type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.BookingAvailabilityResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.EventBookingResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
     : type: object
       properties:
         result:
@@ -2582,7 +2713,7 @@ components:
         resultMessage:
           type: string
         data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailabilityResult'
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingResult'
     MedAdvisor.Framework.Interface.ModuleActivation:
       type: object
       properties:
@@ -2717,41 +2848,113 @@ components:
           items:
             type: string
           readOnly: true
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.String____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
-    : type: object
+    MedAdvisor.Framework.Interface.v2.BulkBookingSearchRequest:
+      type: object
       properties:
-        result:
+        pharmacy_ID:
           format: int32
           type: integer
-        resultMessage:
+        pharmacist_ID:
+          format: uuid
           type: string
-        data:
+          example: 00000000-0000-0000-0000-000000000000
+        fromDate:
+          format: date-time
+          type: string
+        toDate:
+          format: date-time
+          type: string
+        smsContent:
+          type: string
+        emailContent:
+          type: string
+    MedAdvisor.Framework.Interface.PharmacyExternalSystem:
+      type: object
+      properties:
+        maid:
+          format: int32
+          type: integer
+        externalSystemName:
+          type: string
+        externalID:
+          type: string
+        id:
+          format: int32
+          type: integer
+        pendingOperation:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          type: integer
+        externalSystemID:
+          format: int32
+          enum:
+          - 1
+          type: integer
+        rawData:
+          type: string
+        uuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+    MedAdvisor.Framework.Interface.EventAvailability:
+      type: object
+      properties:
+        resourceId:
+          format: int32
+          type: integer
+        availabilityType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        times:
           type: array
           items:
-            type: string
-    MedAdvisor.Framework.Interface.Location:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
+        color:
+          type: string
+    MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail:
       type: object
       properties:
         id:
           format: int32
           type: integer
-        addressName:
+        name:
           type: string
-        addressLine1:
+        invoiceGroup:
           type: string
-        addressLine2:
+        bannerGroup:
           type: string
-        city:
+        street:
           type: string
         suburb:
           type: string
-        zipCode:
+        state:
           type: string
-        stateId:
+        postCode:
+          format: int32
+          type: integer
+        enrolledPatients:
+          format: int32
+          type: integer
+        phone:
           type: string
-        stateName:
+        hN_ID:
           type: string
-        type:
+        createDate:
+          format: date-time
+          type: string
+        pharmacy_ID:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.OperatingHour:
+      type: object
+      properties:
+        weekday:
           format: int32
           enum:
           - 0
@@ -2760,164 +2963,28 @@ components:
           - 3
           - 4
           - 5
+          - 6
           type: integer
-        typeName:
-          type: string
-        latitude:
-          format: double
-          type: number
-        longitude:
-          format: double
-          type: number
-        notes:
-          type: string
-        cityNew:
-          type: string
-        fullAddress:
-          type: string
-          readOnly: true
-        fullAddressWithCommas:
-          type: string
-          readOnly: true
-        fullAddressWithSpace:
-          type: string
-          readOnly: true
-        fullAddressWithCommasAndBr:
-          type: string
-          readOnly: true
-    MedAdvisor.Framework.Interface.v2.EventBookingModel:
+        startHour:
+          format: int32
+          type: integer
+        startMinute:
+          format: int32
+          type: integer
+        endHour:
+          format: int32
+          type: integer
+        endMinute:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.v2.PublicBookingLinksResult:
       type: object
       properties:
-        bookings:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
-        totalCount:
-          format: int32
-          type: integer
-        resourceAvailability:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventAvailabilityModel'
-        clinics:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicModel'
-        cancelAllowed:
-          type: boolean
-        deleted:
-          format: date-time
+        pharmacyName:
           type: string
-        duration:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.v2.PharmacyCapabilityModel:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        pharmacy_ID:
-          format: int32
-          type: integer
-        name:
+        fileContent:
           type: string
-        bookingType:
-          format: int32
-          type: integer
-        description:
-          type: string
-        supplemental:
-          type: string
-        formType:
-          type: string
-        visible:
-          format: int32
-          type: integer
-        timeRequired:
-          format: int32
-          type: integer
-        limitAmount:
-          format: int32
-          type: integer
-        daysRunning:
-          format: int32
-          type: integer
-        limitBooking:
-          type: boolean
-        sendLimitBookingNotification:
-          type: boolean
-        walkInEnabled:
-          format: int32
-          type: integer
-        fromResourceId:
-          format: int32
-          type: integer
-        eventResources:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventResourceModel'
-        pharmacists:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.BookablePharmacistModel'
-        hasPrescreen:
-          type: boolean
-        sourceBannerGroup:
-          type: string
-        remainingDays:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.Owner:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        abn:
-          type: string
-        pharmacyCount:
-          format: int32
-          type: integer
-        billingGroupCount:
-          format: int32
-          type: integer
-        clinicCount:
-          format: int32
-          type: integer
-        gpCount:
-          format: int32
-          type: integer
-        address:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
-        pharmacies:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
-        billingGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
-        clinics:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractice'
-        gPs:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractitioner'
-        email:
-          type: string
-        phone:
-          type: string
-        contact:
-          type: string
-        balance:
-          format: double
-          type: number
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.String__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
     : type: object
       properties:
         result:
@@ -2926,66 +2993,7 @@ components:
         resultMessage:
           type: string
         data:
-          type: string
-    MedAdvisor.Framework.Interface.EventResourceWrapper:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        color:
-          type: string
-        availabilityType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          type: integer
-        recurrencePattern:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventRecurrence'
-        singleBookings:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.EventBookingWrapper'
-        availableServices:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
-        linkedServices:
-          type: array
-          items:
-            format: int32
-            type: integer
-        isDeleted:
-          type: boolean
-        calendarContext:
-          format: int32
-          type: integer
-        locationType:
-          type: string
-    MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel:
-      type: object
-      properties:
-        fortnightly:
-          type: boolean
-        primaryWorkingHour:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
-        primaryStartDate:
-          format: date-time
-          type: string
-        secondaryWorkingHour:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
-        secondaryStartDate:
-          format: date-time
-          type: string
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PrescreenFormSearchResult'
   securitySchemes:
     Bearer:
       type: apiKey

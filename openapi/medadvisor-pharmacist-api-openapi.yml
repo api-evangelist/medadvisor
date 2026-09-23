@@ -124,6 +124,25 @@ paths:
       - Bearer: []
 components:
   schemas:
+    MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel:
+      type: object
+      properties:
+        fortnightly:
+          type: boolean
+        primaryWorkingHour:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
+        primaryStartDate:
+          format: date-time
+          type: string
+        secondaryWorkingHour:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
+        secondaryStartDate:
+          format: date-time
+          type: string
     MedAdvisor.Framework.Interface.OperatingHour:
       type: object
       properties:
@@ -150,15 +169,6 @@ components:
         endMinute:
           format: int32
           type: integer
-    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
-      type: object
-      properties:
-        from:
-          format: date-time
-          type: string
-        to:
-          format: date-time
-          type: string
     MedAdvisor.Framework.Interface.v2.BookablePharmacistModel:
       type: object
       properties:
@@ -220,23 +230,13 @@ components:
             format: date-time
             type: string
           readOnly: true
-    MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel:
+    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
       type: object
       properties:
-        fortnightly:
-          type: boolean
-        primaryWorkingHour:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
-        primaryStartDate:
+        from:
           format: date-time
           type: string
-        secondaryWorkingHour:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
-        secondaryStartDate:
+        to:
           format: date-time
           type: string
   securitySchemes:

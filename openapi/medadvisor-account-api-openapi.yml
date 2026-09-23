@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - Account
-      summary: Request reset password for pharmacy user.
+      summary: Request reset password for pharmacy user
       operationId: Account_ResetPassword
       responses:
         '200':

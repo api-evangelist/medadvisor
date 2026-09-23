@@ -42,8 +42,12 @@ paths:
     delete:
       tags:
       - Clinic
-      summary: Deletes a clinic associated with the specified clinic identifier.
-      description: "This action requires the caller to be authorized and associated with a valid\n            pharmacy. If the pharmacy identifier is invalid, the request will result in an unauthorized response. If the\n            {clinicId} is an empty GUID, the request will result in a bad request response."
+      summary: Deletes a clinic associated with the specified clinic identifier
+      description: 'This action requires the caller to be authorized and associated with a valid
+
+        pharmacy. If the pharmacy identifier is invalid, the request will result in an unauthorized response. If the
+
+        {clinicId} is an empty GUID, the request will result in a bad request response.'
       operationId: Clinic_RemoveClinic
       parameters:
       - name: clinicId
@@ -264,7 +268,7 @@ paths:
     get:
       tags:
       - Clinic
-      summary: Retrieves clinic.
+      summary: Retrieves clinic
       operationId: Clinic_RetrieveClinics
       parameters:
       - name: status
@@ -324,7 +328,7 @@ paths:
     post:
       tags:
       - Clinic
-      summary: Create or update the clinic.
+      summary: Create or update the clinic
       operationId: Clinic_CreateOrUpdateClinic
       responses:
         '200':
@@ -367,8 +371,12 @@ paths:
     delete:
       tags:
       - Clinic
-      summary: Deletes a clinic booking associated with the specified pharmacy, clinic, and event booking identifiers.
-      description: "This action requires the caller to be authorized and associated with a valid pharmacy.  \n            If the pharmacy identifier is invalid or does not match the authenticated user, the request will result in an unauthorized response. \n            If the {eventBookingId} is invalid or zero, the request will result in a bad request response."
+      summary: Deletes a clinic booking associated with the specified pharmacy, clinic, and…
+      description: 'This action requires the caller to be authorized and associated with a valid pharmacy.
+
+        If the pharmacy identifier is invalid or does not match the authenticated user, the request will result in an unauthorized response.
+
+        If the {eventBookingId} is invalid or zero, the request will result in a bad request response.'
       operationId: Clinic_RemoveClinicBooking
       parameters:
       - name: clinicId
@@ -405,7 +413,19 @@ paths:
       - Bearer: []
 components:
   schemas:
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    MedAdvisor.Framework.Interface.v2.PharmacistInfoModel:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+        deleted:
+          format: date-time
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicReportModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2____MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
     : type: object
       properties:
         result:
@@ -414,7 +434,107 @@ components:
         resultMessage:
           type: string
         data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel'
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicReportModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicModel'
+    MedAdvisor.Framework.Interface.v2.ClinicModel:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        pharmacyId:
+          format: int32
+          type: integer
+        capabilityId:
+          format: int32
+          type: integer
+        capabilityName:
+          type: string
+        eventResourceId:
+          format: int32
+          type: integer
+        resourceName:
+          type: string
+        name:
+          type: string
+        serviceLength:
+          format: int32
+          type: integer
+        locationType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        externalLocationName:
+          type: string
+        startTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        addBufferTime:
+          type: boolean
+        bufferTime:
+          format: int32
+          type: integer
+        clinicStatus:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        privateUrlOnly:
+          type: boolean
+        preferences:
+          type: string
+        pharmacistIds:
+          type: array
+          items:
+            format: uuid
+            type: string
+            example: 00000000-0000-0000-0000-000000000000
+        pharmacists:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacistInfoModel'
+        bookingIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+    MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel:
+      type: object
+      properties:
+        availableTimes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
+        bookingAvailability:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
+    MedAdvisor.Framework.Interface.v2.ClinicSaveModel:
+      type: object
+      properties:
+        clinicId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        bookingUrl:
+          type: string
     ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
     : type: object
       properties:
@@ -426,6 +546,53 @@ components:
         data:
           format: int32
           type: integer
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.String__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicReportModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicReportModel'
+    MedAdvisor.Framework.Interface.v2.ClinicReportModel:
+      type: object
+      properties:
+        clinicName:
+          type: string
+        fileContent:
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicSaveModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicSaveModel'
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel'
     MedAdvisor.Framework.Interface.v2.ClinicBookingModel:
       type: object
       properties:
@@ -593,55 +760,15 @@ components:
           type: string
         location:
           type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicReportModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2____MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicReportModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2'
-    MedAdvisor.Framework.Interface.v2.ClinicReportModel:
+    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
       type: object
       properties:
-        clinicName:
+        from:
+          format: date-time
           type: string
-        fileContent:
+        to:
+          format: date-time
           type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicSaveModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicSaveModel'
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Collections.Generic.List_1__MedAdvisor.Framework.Interface.v2.ClinicModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicModel'
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicModel'
     ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Boolean__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
     : type: object
       properties:
@@ -664,109 +791,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicBookingModel'
-    MedAdvisor.Framework.Interface.v2.ClinicSaveModel:
-      type: object
-      properties:
-        clinicId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        bookingUrl:
-          type: string
-    MedAdvisor.Framework.Interface.v2.PharmacistInfoModel:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        name:
-          type: string
-        deleted:
-          format: date-time
-          type: string
-    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
-      type: object
-      properties:
-        from:
-          format: date-time
-          type: string
-        to:
-          format: date-time
-          type: string
-    MedAdvisor.Framework.Interface.v2.ClinicModel:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        pharmacyId:
-          format: int32
-          type: integer
-        capabilityId:
-          format: int32
-          type: integer
-        capabilityName:
-          type: string
-        eventResourceId:
-          format: int32
-          type: integer
-        resourceName:
-          type: string
-        name:
-          type: string
-        serviceLength:
-          format: int32
-          type: integer
-        locationType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          type: integer
-        externalLocationName:
-          type: string
-        startTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        addBufferTime:
-          type: boolean
-        bufferTime:
-          format: int32
-          type: integer
-        clinicStatus:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        privateUrlOnly:
-          type: boolean
-        preferences:
-          type: string
-        pharmacistIds:
-          type: array
-          items:
-            format: uuid
-            type: string
-            example: 00000000-0000-0000-0000-000000000000
-        pharmacists:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PharmacistInfoModel'
-        bookingIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.String__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Collections.Generic.List_1__MedAdvisor.Framework.Interface.v2.ClinicModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2____mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
     : type: object
       properties:
         result:
@@ -775,26 +800,9 @@ components:
         resultMessage:
           type: string
         data:
-          type: string
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClinicReportModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicReportModel'
-    MedAdvisor.Framework.Interface.v2.ClinicAvailableTimeModel:
-      type: object
-      properties:
-        availableTimes:
           type: array
           items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
-        bookingAvailability:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BookingAvailability'
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClinicModel'
   securitySchemes:
     Bearer:
       type: apiKey

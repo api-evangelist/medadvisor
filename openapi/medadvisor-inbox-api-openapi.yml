@@ -327,66 +327,6 @@ paths:
         required: true
 components:
   schemas:
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel:
-      type: object
-      properties:
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest'
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel:
-      description: Model for filtering inbox's data
-      type: object
-      properties:
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        pageIndex:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        messageIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-        filterName:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel:
-      type: object
-      properties:
-        renewOrderId:
-          format: int32
-          type: integer
-        messageType:
-          format: int32
-          type: integer
-        messageId:
-          format: int32
-          type: integer
-        subType:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel:
-      type: object
-      properties:
-        successIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-        failedIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-        result:
-          format: int32
-          type: integer
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel:
       description: Inbox completed tab
       type: object
@@ -489,9 +429,58 @@ components:
           type: integer
         isAsl:
           type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest:
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel:
       type: object
       properties:
+        successIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        failedIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        result:
+          format: int32
+          type: integer
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel:
+      description: Model for filtering inbox's data
+      type: object
+      properties:
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        messageIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        filterName:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessagesRequestModel:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel:
+      type: object
+      properties:
+        renewOrderId:
+          format: int32
+          type: integer
         messageType:
           format: int32
           type: integer
@@ -500,10 +489,18 @@ components:
           type: integer
         subType:
           type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel:
-      description: Inbox tab model
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel:
+      description: Inbox queue tab
       type: object
       properties:
+        status:
+          type: string
+        datePending:
+          format: date-time
+          type: string
+        dateNextDue:
+          format: date-time
+          type: string
         maMessageId:
           format: int32
           type: integer
@@ -696,18 +693,10 @@ components:
           type: integer
         isAsl:
           type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel:
-      description: Inbox queue tab
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel:
+      description: Inbox tab model
       type: object
       properties:
-        status:
-          type: string
-        datePending:
-          format: date-time
-          type: string
-        dateNextDue:
-          format: date-time
-          type: string
         maMessageId:
           format: int32
           type: integer
@@ -798,6 +787,17 @@ components:
           type: integer
         isAsl:
           type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest:
+      type: object
+      properties:
+        messageType:
+          format: int32
+          type: integer
+        messageId:
+          format: int32
+          type: integer
+        subType:
+          type: string
   securitySchemes:
     Bearer:
       type: apiKey

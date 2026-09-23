@@ -11,8 +11,8 @@ paths:
     post:
       tags:
       - 3rd-Party Integration
-      summary: Login with pharmacy username and password(encoded).
-      description: 'To login into MedAdvisor''s system, send a <code>POST</code> request to <code>/loginthirdparty</code> and provide <code>userName</code> and <code>password</code> which is encoded by Base64-encoded UTF8 string. MedAdvisor will provide integrators with a <code>clientId</code> and a <code>clientSecret</code>. Consequently, MedAdvisor is going to return a token, which is used for authentication purposes in APIs requiring token-based authentication. '
+      summary: Login with pharmacy username and password(encoded)
+      description: To login into MedAdvisor's system, send a POST request to /loginthirdparty and provide userName and password which is encoded by Base64-encoded UTF8 string. MedAdvisor will provide integrators with a clientId and a clientSecret. Consequently, MedAdvisor is going to return a token, which is used for authentication purposes in APIs requiring token-based authentication.
       operationId: Account_LoginPharmacy
       responses:
         '200':
@@ -100,7 +100,11 @@ paths:
       tags:
       - 3rd-Party Integration
       summary: Retrieve details of a electronic prescription from PDS, given a EScript token
-      description: "Patient is going to transfer this token, medication, patient information... from Mobile Patient App to MedAdvisor. \nDuring the MedAdvisor's process, patient can look into the information about medication, quantity, status... in Mobile Patient App, by making an API call GET /escript/{token} to retrieve all the information mentioned above. \nIntegrators put the token of the dispensation into parameters request, MedAdvisor responses dispense information"
+      description: 'Patient is going to transfer this token, medication, patient information... from Mobile Patient App to MedAdvisor.
+
+        During the MedAdvisor''s process, patient can look into the information about medication, quantity, status... in Mobile Patient App, by making an API call GET /escript/{token} to retrieve all the information mentioned above.
+
+        Integrators put the token of the dispensation into parameters request, MedAdvisor responses dispense information'
       operationId: Drug_RetrieveEPrescription3rdParty
       parameters:
       - name: token
@@ -157,7 +161,7 @@ paths:
     get:
       tags:
       - 3rd-Party Integration
-      summary: Retrieve pharmacy detail information including services information , delivery settings, etc.
+      summary: Retrieve pharmacy detail information including services information , delivery…
       description: Retrieve pharmacy detail information including services information , delivery settings, etc.
       operationId: Pharmacy_PharmacyDetail
       parameters:
@@ -201,7 +205,7 @@ paths:
     post:
       tags:
       - 3rd-Party Integration
-      summary: Push a message in Inbox of PlusOne. The detail of message displays description and the clickable URL of the order.
+      summary: Push a message in Inbox of PlusOne.
       operationId: Pharmacy_NotifyPharmacyOfECommerceOrder
       responses:
         '200':
@@ -273,14 +277,26 @@ paths:
         required: true
 components:
   schemas:
-    MedAdvisor.HSH.Core.Structure.NoResult:
-      type: object
-      properties: {}
-    MedAdvisor.HSH.Core.Structure.IdResult:
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy:
+      description: Login model for pharmacy access.
       type: object
       properties:
-        id:
+        userName:
+          description: The username to be verified
           type: string
+          example: abc@example.com
+        password_encoded:
+          description: The password to be verified, encoded in Base64.
+          type: string
+          example: cGFzc3dvcmQ=
+        clientId:
+          description: The client Id to be verified
+          type: string
+          example: clientId
+        clientSecret:
+          description: The client secret to be verified
+          type: string
+          example: clientSecret
     MedAdvisor.HSH.Core.Structure.Patient.eScriptModel:
       description: eScript Model
       type: object
@@ -398,50 +414,11 @@ components:
           example: Escript name
         isUnmappedDrugEScript:
           type: boolean
-    MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel:
+    MedAdvisor.HSH.Core.Structure.IdResult:
       type: object
       properties:
-        errorStatus:
-          format: int32
-          description: The Error status which response from service
-          enum:
-          - '0: Success'
-          - '1: ErrorOther'
-          - '2: InvalidToken'
-          - '3: TokenNotFound'
-          - '4: DrugNotMapped'
-          - '5: PrescriptionDateNotFound'
-          - '6: TotalRepeatsNotFound'
-          - '7: SupplyNumberNotFound'
-          - '8: NotEScriptToken'
-          type: integer
-          example: 0
-        errorMessage:
-          description: The Result message of API call
+        id:
           type: string
-          example: success
-        eScripts:
-          description: Escript information
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.eScriptModel'
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel:
-      description: Need to provie an orderId, an order description and recall URL is valid.
-      type: object
-      properties:
-        orderId:
-          format: int32
-          description: The ECommerce order's Id
-          type: integer
-          example: 1
-        description:
-          description: The ECommerce order's description
-          type: string
-          example: Order description example
-        url:
-          description: The ECommerce order's URL
-          type: string
-          example: http://www.example.com/index.html
     ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
       properties:
@@ -478,26 +455,6 @@ components:
         data:
           $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel'
           description: The data which returned by the service
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy:
-      description: Login model for pharmacy access.
-      type: object
-      properties:
-        userName:
-          description: The username to be verified
-          type: string
-          example: abc@example.com
-        password_encoded:
-          description: The password to be verified, encoded in Base64.
-          type: string
-          example: cGFzc3dvcmQ=
-        clientId:
-          description: The client Id to be verified
-          type: string
-          example: clientId
-        clientSecret:
-          description: The client secret to be verified
-          type: string
-          example: clientSecret
     ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
       properties:
@@ -527,6 +484,53 @@ components:
           type: string
         data:
           $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.IdResult'
+    MedAdvisor.HSH.Core.Structure.NoResult:
+      type: object
+      properties: {}
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel:
+      description: Need to provie an orderId, an order description and recall URL is valid.
+      type: object
+      properties:
+        orderId:
+          format: int32
+          description: The ECommerce order's Id
+          type: integer
+          example: 1
+        description:
+          description: The ECommerce order's description
+          type: string
+          example: Order description example
+        url:
+          description: The ECommerce order's URL
+          type: string
+          example: http://www.example.com/index.html
+    MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel:
+      type: object
+      properties:
+        errorStatus:
+          format: int32
+          description: The Error status which response from service
+          enum:
+          - '0: Success'
+          - '1: ErrorOther'
+          - '2: InvalidToken'
+          - '3: TokenNotFound'
+          - '4: DrugNotMapped'
+          - '5: PrescriptionDateNotFound'
+          - '6: TotalRepeatsNotFound'
+          - '7: SupplyNumberNotFound'
+          - '8: NotEScriptToken'
+          type: integer
+          example: 0
+        errorMessage:
+          description: The Result message of API call
+          type: string
+          example: success
+        eScripts:
+          description: Escript information
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.eScriptModel'
   securitySchemes:
     Bearer:
       type: apiKey

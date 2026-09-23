@@ -11,9 +11,7 @@ paths:
     get:
       tags:
       - RefillOrder
-      summary: 'Get full pending order with line items and resolved statuses (Epic 2 — Story 2.1).
-
-        Returns HTTP 404 when the order does not exist or does not belong to this pharmacy.'
+      summary: Get full pending order with line items and resolved statuses (Epic 2 — Story…
       operationId: RefillOrder_GetPendingOrder
       parameters:
       - name: orderId
@@ -43,9 +41,7 @@ paths:
     delete:
       tags:
       - RefillOrder
-      summary: 'Delete a pending order (Epic 2 — Story 2.5a, FR29).
-
-        Returns 404 when the order does not exist or does not belong to this pharmacy.'
+      summary: Delete a pending order (Epic 2 — Story 2.5a, FR29).
       operationId: RefillOrder_Delete
       parameters:
       - name: orderId
@@ -63,9 +59,7 @@ paths:
     get:
       tags:
       - RefillOrder
-      summary: 'Get a completed order with read-only details and PIA payment status (Epic 6 — Story 6.1).
-
-        Returns HTTP 404 when the order does not exist or does not belong to this pharmacy.'
+      summary: Get a completed order with read-only details and PIA payment status (Epic 6…
       operationId: RefillOrder_GetCompletedOrder
       parameters:
       - name: orderId
@@ -96,9 +90,7 @@ paths:
     get:
       tags:
       - RefillOrder
-      summary: 'Get full eScript token detail for a line item (Epic 3 — Story 3.2, FR15).
-
-        Returns 404 when the order does not belong to this pharmacy or the token is not found.'
+      summary: Get full eScript token detail for a line item (Epic 3 — Story 3.2, FR15).
       operationId: RefillOrder_GetEScriptToken
       parameters:
       - name: orderId
@@ -134,9 +126,7 @@ paths:
     put:
       tags:
       - RefillOrder
-      summary: 'Update delivery address fields, shipping method, or delivery status (Story 4.1 — FR18–FR20).
-
-        Returns 404 when the order does not exist, does not belong to this pharmacy, or is not a delivery order.'
+      summary: Update delivery address fields, shipping method, or delivery status (Story 4.1…
       operationId: RefillOrder_UpdateDelivery
       parameters:
       - name: orderId
@@ -172,9 +162,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Add or update a pharmacy note on an order (Epic 5 — Story 5.1, FR24).
-
-        Returns 404 when the order does not belong to this pharmacy.'
+      summary: Add or update a pharmacy note on an order (Epic 5 — Story 5.1, FR24).
       operationId: RefillOrder_AddNote
       responses:
         '204':
@@ -203,11 +191,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Finalise (complete) a pending order (Story 2.5b — FR27).
-
-        Returns 404 when the order does not exist or does not belong to this pharmacy.
-
-        Returns 400 when the order has no line items to tally.'
+      summary: Finalise (complete) a pending order (Story 2.5b — FR27).
       operationId: RefillOrder_Complete
       responses:
         '204':
@@ -236,7 +220,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: Process a Pay-in-Advance charge (Epic 4 — Story 4.3).
+      summary: Process a Pay-in-Advance charge (Epic 4 — Story 4.3)
       operationId: RefillOrder_ProcessPIA
       responses:
         '204':
@@ -265,13 +249,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Send an eScript token to the dispensing system (Epic 3 — Story 3.3, FR16).
-
-        Always returns HTTP 200; the response body Code field indicates SUCCESS,
-
-        FALLBACK_TO_PLUSONE (Angular must call PlusOne JS bridge), or ERROR.
-
-        Returns 404 when the order does not belong to this pharmacy.'
+      summary: Send an eScript token to the dispensing system (Epic 3 — Story 3.3, FR16).
       operationId: RefillOrder_SendEScript
       responses:
         '200':
@@ -313,11 +291,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Add a custom line item to a pending order (Story 3.5 — FR13).
-
-        Returns the full updated order so the caller can refresh its list in one round-trip.
-
-        Returns 400 when the name is missing; 404 when the order does not belong to this pharmacy.'
+      summary: Add a custom line item to a pending order (Story 3.5 — FR13).
       operationId: RefillOrder_AddLineItem
       parameters:
       - name: orderId
@@ -366,11 +340,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Update the status of a line item (Epic 3 — Story 3.1, FR6–FR9).
-
-        Returns 404 when the order or component does not belong to this pharmacy.
-
-        Returns 400 when action = OnOrder but followUpDate is absent.'
+      summary: Update the status of a line item (Epic 3 — Story 3.1, FR6–FR9).
       operationId: RefillOrder_UpdateLineItemStatus
       responses:
         '204':
@@ -399,13 +369,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Refund the PIA charge for a completed order (Epic 6 — Story 6.4, CRO-5).
-
-        Returns 404 when the order does not exist or does not belong to this pharmacy.
-
-        Returns 400 with an error message when the refund is rejected (gateway failure,
-
-        disbursed, already refunded, delay window, etc.).'
+      summary: Refund the PIA charge for a completed order (Epic 6 — Story 6.4, CRO-5).
       operationId: RefillOrder_RefundOrder
       parameters:
       - name: orderId
@@ -423,11 +387,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Send a reminder message to a patient for a completed order (Epic 6 — Story 6.2, CRO-2).
-
-        Returns 404 when the order does not exist or does not belong to this pharmacy.
-
-        Returns 400 when the message body is missing or empty.'
+      summary: Send a reminder message to a patient for a completed order (Epic 6 — Story 6.2…
       operationId: RefillOrder_SendReminder
       parameters:
       - name: orderId
@@ -463,9 +423,7 @@ paths:
     post:
       tags:
       - RefillOrder
-      summary: 'Return all items for a completed order to stock (Epic 6 — Story 6.3, CRO-3).
-
-        Returns 404 when the order does not exist or does not belong to this pharmacy.'
+      summary: Return all items for a completed order to stock (Epic 6 — Story 6.3, CRO-3).
       operationId: RefillOrder_ReturnToStock
       parameters:
       - name: orderId
@@ -483,11 +441,7 @@ paths:
     delete:
       tags:
       - RefillOrder
-      summary: 'Delete a custom line item from a pending order (Story 3.5 — FR14).
-
-        Returns 404 when the order, item, or pharmacy context is not found, or the item
-
-        is not a custom item (only custom items may be deleted via this endpoint).'
+      summary: Delete a custom line item from a pending order (Story 3.5 — FR14).
       operationId: RefillOrder_DeleteLineItem
       parameters:
       - name: orderId
@@ -509,33 +463,80 @@ paths:
       - Bearer: []
 components:
   schemas:
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateLineItemStatusRequest:
-      description: 'Request body for POST /RefillOrder/UpdateLineItemStatus (RAP-6 — Story 3.1).
-
-        Carries the orderId + componentId so the service can verify component ownership
-
-        before delegating to the BLL.'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendReminderRequest:
+      description: Request body for POST /api/v1/RefillOrder/CompletedOrder/{orderId}/Reminder (Epic 6 — Story 6.2).
+      type: object
+      properties:
+        message:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendEScriptRequest:
+      description: Request body for POST /RefillOrder/SendEScript (RAP-6 — Story 3.3, FR16).
       type: object
       properties:
         orderId:
           format: int32
           type: integer
-        componentId:
-          format: int32
-          type: integer
-        action:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        followUpDate:
-          format: date-time
-          description: 'Required when {MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateLineItemStatusRequest.Action} is {MedAdvisor.PharmacyUnifiedAPI.v1.Enums.UpdateLineItemAction.OnOrder}.
+        token:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.EScriptTokenDetailModel:
+      description: 'Full eScript token detail returned by GET /RefillOrder/EScriptToken/{orderId}/{tokenId} (FR15).
 
-            Stored as the estimated stock availability date ("cdatefollowup" BLL parameter).'
+        Maps from EScriptDto in MedAdvisor.Framework.Interface.'
+      type: object
+      properties:
+        token:
+          type: string
+        drugLabelName:
+          type: string
+        drugActiveName:
+          type: string
+        drugForm:
+          type: string
+        drugStrength:
+          type: string
+        prescriptionDate:
+          format: date-time
+          type: string
+        repeatsRemainingDisplay:
+          format: int32
+          description: EScriptDto.RepeatsRemaining + 1 (see EScriptTokenSummaryModel.RepeatsRemainingDisplay).
+          type: integer
+        totalRepeats:
+          format: int32
+          type: integer
+        quantity:
+          format: int32
+          type: integer
+        instructions:
+          type: string
+        isExpired:
+          type: boolean
+        source:
+          description: String form of EScriptSource enum (e.g. "Pds", "Asl").
+          type: string
+        isUnknownDrugEScript:
+          type: boolean
+        patientFullName:
+          type: string
+        patientFirstName:
+          type: string
+        patientLastName:
+          type: string
+        qrCodeForToken:
+          description: 'Base64-encoded PNG of the token QR code, or null if unavailable.
+
+            Render as: &lt;img src="data:image/png;base64,{QrCodeForToken}"&gt;'
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendEScriptResponse:
+      description: "Response from POST /RefillOrder/SendEScript (RAP-6 — Story 3.3, FR16).\n            \nAlways returned as HTTP 200 so Angular can distinguish the three outcomes without\nintercepting HTTP errors:\n  SUCCESS            — token sent to MedView Flow successfully.\n  FALLBACK_TO_PLUSONE — pharmacy has no MedView Flow ID; Angular must call the\n                       PlusOne JS bridge (uicontroller.SendEScriptTokenToDispense).\n  ERROR              — MedView Flow returned an error; Message contains detail."
+      type: object
+      properties:
+        success:
+          type: boolean
+        code:
+          description: 'One of: "SUCCESS", "FALLBACK_TO_PLUSONE", "ERROR".'
+          type: string
+        message:
           type: string
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.PendingOrderLineItemModel:
       description: 'A single line item within a pending order, with its status pre-resolved server-side.
@@ -662,6 +663,135 @@ components:
           type: string
         scriptPhotoThumbnailUrl:
           type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddNoteRequest:
+      description: Request body for POST /RefillOrder/AddNote (Epic 5 — Story 5.1, FR24).
+      type: object
+      properties:
+        orderId:
+          format: int32
+          type: integer
+        note:
+          description: Note text. Pass null or empty string to clear the existing note. Max 250 chars.
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.EScriptTokenSummaryModel:
+      description: 'Summary of a single eScript token embedded in the pending order line item response (FR4).
+
+        Provides enough information to display the token list without a separate detail round-trip.
+
+        Full detail is returned by GET /RefillOrder/EScriptToken/{orderId}/{tokenId} (FR15).'
+      type: object
+      properties:
+        token:
+          description: The token identifier string — used as the key for GET /EScriptToken.
+          type: string
+        prescriptionDate:
+          format: date-time
+          type: string
+        repeatsRemainingDisplay:
+          format: int32
+          description: 'EScriptDto.RepeatsRemaining + 1, matching the MVC PendingOrder.cshtml display
+
+            (the raw BLL value is one less than the pharmacist-visible count).'
+          type: integer
+        isExpired:
+          description: 'True when PrescriptionDate + 12 months &lt; today.
+
+            Note: S8 drugs expire after 6 months in the MVC — deferred to Story 5.4 walkthrough
+
+            because RefillOrderComponentPending.Schedule is not currently surfaced here.'
+          type: boolean
+        isSelected:
+          description: True when this token is the currently selected EScriptInComponent for the line item.
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.CompleteOrderRequest:
+      description: Request body for POST /RefillOrder/Complete (RAP-6 — Story 2.5b FR27, Story 4.3 FR22).
+      type: object
+      properties:
+        orderId:
+          format: int32
+          type: integer
+        message:
+          description: 'Patient-facing notification message (maps to the "omessage:" BLL parameter).
+
+            Pre-filled with a context-aware default on the Angular side; editable before submission.'
+          type: string
+        chargeCard:
+          description: 'True to charge the patient''s saved card (PIA orders only).
+
+            False = finalise without charging (maps to DeclinePayment intent on the order).
+
+            Ignored for non-PIA orders.'
+          type: boolean
+        lineItemPrices:
+          description: Per-line-item prices entered by the pharmacist. PIA orders only; null/empty for others.
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.LineItemPriceEntry'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.LineItemPriceEntry:
+      description: Per-component price entered by the pharmacist at PIA order completion.
+      type: object
+      properties:
+        componentId:
+          format: int32
+          type: integer
+        price:
+          format: double
+          description: 'Total price entered by the pharmacist. When GstApplies=true this is the GST-inclusive
+
+            amount; GST = Round(Price/11, 2), Net = Price - GST. Matches MVC behaviour.'
+          type: number
+        gstApplies:
+          description: True when the item is subject to GST.
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateLineItemStatusRequest:
+      description: 'Request body for POST /RefillOrder/UpdateLineItemStatus (RAP-6 — Story 3.1).
+
+        Carries the orderId + componentId so the service can verify component ownership
+
+        before delegating to the BLL.'
+      type: object
+      properties:
+        orderId:
+          format: int32
+          type: integer
+        componentId:
+          format: int32
+          type: integer
+        action:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        followUpDate:
+          format: date-time
+          description: 'Required when {MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateLineItemStatusRequest.Action} is {MedAdvisor.PharmacyUnifiedAPI.v1.Enums.UpdateLineItemAction.OnOrder}.
+
+            Stored as the estimated stock availability date ("cdatefollowup" BLL parameter).'
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.DeliveryAgentOptionModel:
+      description: A shipping agent option shown in the delivery section dropdown (Story 4.1 — FR19).
+      type: object
+      properties:
+        value:
+          format: int32
+          description: Integer value of the DeliveryAgent enum (PharmacyDriver=1, Kings=2, AusPost=4).
+          type: integer
+        label:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddLineItemRequest:
+      description: Request body for POST /RefillOrder/LineItem/{orderId} (RAP-6 — Story 3.5, FR13).
+      type: object
+      properties:
+        name:
+          description: Custom item display name (max 50 chars, matching MVC input maxlength).
+          type: string
+        quantity:
+          format: int32
+          description: Quantity to dispense. Defaults to 1 when absent or zero.
+          type: integer
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.PendingOrderModel:
       description: 'Order payload returned by GET /api/v1/RefillOrder/PendingOrder/{orderId} and
 
@@ -804,58 +934,6 @@ components:
 
             When true the completed order dialog shows a "Dismissed" banner and hides action buttons.'
           type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddLineItemRequest:
-      description: Request body for POST /RefillOrder/LineItem/{orderId} (RAP-6 — Story 3.5, FR13).
-      type: object
-      properties:
-        name:
-          description: Custom item display name (max 50 chars, matching MVC input maxlength).
-          type: string
-        quantity:
-          format: int32
-          description: Quantity to dispense. Defaults to 1 when absent or zero.
-          type: integer
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.LineItemPriceEntry:
-      description: Per-component price entered by the pharmacist at PIA order completion.
-      type: object
-      properties:
-        componentId:
-          format: int32
-          type: integer
-        price:
-          format: double
-          description: 'Total price entered by the pharmacist. When GstApplies=true this is the GST-inclusive
-
-            amount; GST = Round(Price/11, 2), Net = Price - GST. Matches MVC behaviour.'
-          type: number
-        gstApplies:
-          description: True when the item is subject to GST.
-          type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendReminderRequest:
-      description: Request body for POST /api/v1/RefillOrder/CompletedOrder/{orderId}/Reminder (Epic 6 — Story 6.2).
-      type: object
-      properties:
-        message:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendEScriptRequest:
-      description: Request body for POST /RefillOrder/SendEScript (RAP-6 — Story 3.3, FR16).
-      type: object
-      properties:
-        orderId:
-          format: int32
-          type: integer
-        token:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddNoteRequest:
-      description: Request body for POST /RefillOrder/AddNote (Epic 5 — Story 5.1, FR24).
-      type: object
-      properties:
-        orderId:
-          format: int32
-          type: integer
-        note:
-          description: Note text. Pass null or empty string to clear the existing note. Max 250 chars.
-          type: string
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateDeliveryRequest:
       description: 'Request body for PUT /RefillOrder/Delivery/{orderId} (Story 4.1 — FR18, FR19, FR20).
 
@@ -884,130 +962,6 @@ components:
 
             Null leaves the current status unchanged.'
           type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendEScriptResponse:
-      description: "Response from POST /RefillOrder/SendEScript (RAP-6 — Story 3.3, FR16).\n            \nAlways returned as HTTP 200 so Angular can distinguish the three outcomes without\nintercepting HTTP errors:\n  SUCCESS            — token sent to MedView Flow successfully.\n  FALLBACK_TO_PLUSONE — pharmacy has no MedView Flow ID; Angular must call the\n                       PlusOne JS bridge (uicontroller.SendEScriptTokenToDispense).\n  ERROR              — MedView Flow returned an error; Message contains detail."
-      type: object
-      properties:
-        success:
-          type: boolean
-        code:
-          description: 'One of: "SUCCESS", "FALLBACK_TO_PLUSONE", "ERROR".'
-          type: string
-        message:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.CompleteOrderRequest:
-      description: Request body for POST /RefillOrder/Complete (RAP-6 — Story 2.5b FR27, Story 4.3 FR22).
-      type: object
-      properties:
-        orderId:
-          format: int32
-          type: integer
-        message:
-          description: 'Patient-facing notification message (maps to the "omessage:" BLL parameter).
-
-            Pre-filled with a context-aware default on the Angular side; editable before submission.'
-          type: string
-        chargeCard:
-          description: 'True to charge the patient''s saved card (PIA orders only).
-
-            False = finalise without charging (maps to DeclinePayment intent on the order).
-
-            Ignored for non-PIA orders.'
-          type: boolean
-        lineItemPrices:
-          description: Per-line-item prices entered by the pharmacist. PIA orders only; null/empty for others.
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.LineItemPriceEntry'
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.DeliveryAgentOptionModel:
-      description: A shipping agent option shown in the delivery section dropdown (Story 4.1 — FR19).
-      type: object
-      properties:
-        value:
-          format: int32
-          description: Integer value of the DeliveryAgent enum (PharmacyDriver=1, Kings=2, AusPost=4).
-          type: integer
-        label:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.EScriptTokenSummaryModel:
-      description: 'Summary of a single eScript token embedded in the pending order line item response (FR4).
-
-        Provides enough information to display the token list without a separate detail round-trip.
-
-        Full detail is returned by GET /RefillOrder/EScriptToken/{orderId}/{tokenId} (FR15).'
-      type: object
-      properties:
-        token:
-          description: The token identifier string — used as the key for GET /EScriptToken.
-          type: string
-        prescriptionDate:
-          format: date-time
-          type: string
-        repeatsRemainingDisplay:
-          format: int32
-          description: 'EScriptDto.RepeatsRemaining + 1, matching the MVC PendingOrder.cshtml display
-
-            (the raw BLL value is one less than the pharmacist-visible count).'
-          type: integer
-        isExpired:
-          description: 'True when PrescriptionDate + 12 months &lt; today.
-
-            Note: S8 drugs expire after 6 months in the MVC — deferred to Story 5.4 walkthrough
-
-            because RefillOrderComponentPending.Schedule is not currently surfaced here.'
-          type: boolean
-        isSelected:
-          description: True when this token is the currently selected EScriptInComponent for the line item.
-          type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.EScriptTokenDetailModel:
-      description: 'Full eScript token detail returned by GET /RefillOrder/EScriptToken/{orderId}/{tokenId} (FR15).
-
-        Maps from EScriptDto in MedAdvisor.Framework.Interface.'
-      type: object
-      properties:
-        token:
-          type: string
-        drugLabelName:
-          type: string
-        drugActiveName:
-          type: string
-        drugForm:
-          type: string
-        drugStrength:
-          type: string
-        prescriptionDate:
-          format: date-time
-          type: string
-        repeatsRemainingDisplay:
-          format: int32
-          description: EScriptDto.RepeatsRemaining + 1 (see EScriptTokenSummaryModel.RepeatsRemainingDisplay).
-          type: integer
-        totalRepeats:
-          format: int32
-          type: integer
-        quantity:
-          format: int32
-          type: integer
-        instructions:
-          type: string
-        isExpired:
-          type: boolean
-        source:
-          description: String form of EScriptSource enum (e.g. "Pds", "Asl").
-          type: string
-        isUnknownDrugEScript:
-          type: boolean
-        patientFullName:
-          type: string
-        patientFirstName:
-          type: string
-        patientLastName:
-          type: string
-        qrCodeForToken:
-          description: 'Base64-encoded PNG of the token QR code, or null if unavailable.
-
-            Render as: &lt;img src="data:image/png;base64,{QrCodeForToken}"&gt;'
-          type: string
   securitySchemes:
     Bearer:
       type: apiKey

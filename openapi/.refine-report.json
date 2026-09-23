@@ -1,0 +1,62 @@
+{
+  "provider": "medadvisor",
+  "sources": [
+    "_original/medadvisor-pharmacy-unified-openapi.json",
+    "_original/medadvisor-pharmacy-unified-v2-openapi.json"
+  ],
+  "outputs": [
+    "medadvisor-3rd-party-integration-api-openapi.yml",
+    "medadvisor-account-api-openapi.yml",
+    "medadvisor-bookingservice-api-openapi.yml",
+    "medadvisor-communication-api-openapi.yml",
+    "medadvisor-config-api-openapi.yml",
+    "medadvisor-headoffice-api-openapi.yml",
+    "medadvisor-inbox-api-openapi.yml",
+    "medadvisor-logging-api-openapi.yml",
+    "medadvisor-pharmacy-api-openapi.yml",
+    "medadvisor-refillorder-api-openapi.yml",
+    "medadvisor-booking-api-openapi.yml",
+    "medadvisor-calendarsetting-api-openapi.yml",
+    "medadvisor-clinic-api-openapi.yml",
+    "medadvisor-pharmacist-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "medadvisor-pharmacy-unified-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 5 component key(s) illegal in 3.x (e.g. MedAdvisor.HSH.Core.Structure.OperationResult`1[[MedAdvisor.HSH.Core.Structure.IdResult, MedAdvisor.PharmacyUnifiedAPI, Version=5.85.0.0, Culture=neutral, PublicKeyToken=null]])",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: 3rd-Party Integration",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: Account",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: BookingService",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: Communication",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: Config",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: HeadOffice",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: Inbox",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: Logging",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: Pharmacy",
+    "medadvisor-pharmacy-unified-openapi.json: declared missing tag: RefillOrder",
+    "medadvisor-pharmacy-unified-v2-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 22 component key(s) illegal in 3.x (e.g. MedAdvisor.Framework.Interface.v2.ApiResponseModel`1[[MedAdvisor.Framework.Interface.BookingAvailabilityResult, MedAdvisor.Framework, Version=5.85.0.0, Culture=neutral, PublicKeyToken=c5a42efe99ff1eb2]])",
+    "medadvisor-pharmacy-unified-v2-openapi.json: declared missing tag: Booking",
+    "medadvisor-pharmacy-unified-v2-openapi.json: declared missing tag: CalendarSetting",
+    "medadvisor-pharmacy-unified-v2-openapi.json: declared missing tag: Clinic",
+    "medadvisor-pharmacy-unified-v2-openapi.json: declared missing tag: Pharmacist",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "medadvisor-3rd-party-integration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-booking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-bookingservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-calendarsetting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-clinic-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-communication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-config-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-headoffice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-inbox-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-logging-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-pharmacist-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-pharmacy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "medadvisor-refillorder-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
