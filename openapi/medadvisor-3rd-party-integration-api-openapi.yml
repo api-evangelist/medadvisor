@@ -277,26 +277,35 @@ paths:
         required: true
 components:
   schemas:
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy:
-      description: Login model for pharmacy access.
-      type: object
+    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
       properties:
-        userName:
-          description: The username to be verified
+        errorData:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
+          readOnly: true
+        result:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - -13
+          - -12
+          - -11
+          - -10
+          - -9
+          - -8
+          - -7
+          - -6
+          - -5
+          - -4
+          - -3
+          - -2
+          - -1
+          type: integer
+        resultMessage:
           type: string
-          example: abc@example.com
-        password_encoded:
-          description: The password to be verified, encoded in Base64.
-          type: string
-          example: cGFzc3dvcmQ=
-        clientId:
-          description: The client Id to be verified
-          type: string
-          example: clientId
-        clientSecret:
-          description: The client secret to be verified
-          type: string
-          example: clientSecret
+        data:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.IdResult'
     MedAdvisor.HSH.Core.Structure.Patient.eScriptModel:
       description: eScript Model
       type: object
@@ -414,11 +423,34 @@ components:
           example: Escript name
         isUnmappedDrugEScript:
           type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy:
+      description: Login model for pharmacy access.
+      type: object
+      properties:
+        userName:
+          description: The username to be verified
+          type: string
+          example: abc@example.com
+        password_encoded:
+          description: The password to be verified, encoded in Base64.
+          type: string
+          example: cGFzc3dvcmQ=
+        clientId:
+          description: The client Id to be verified
+          type: string
+          example: clientId
+        clientSecret:
+          description: The client secret to be verified
+          type: string
+          example: clientSecret
     MedAdvisor.HSH.Core.Structure.IdResult:
       type: object
       properties:
         id:
           type: string
+    MedAdvisor.HSH.Core.Structure.NoResult:
+      type: object
+      properties: {}
     ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
       properties:
@@ -455,38 +487,6 @@ components:
         data:
           $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel'
           description: The data which returned by the service
-    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
-    : type: object
-      properties:
-        errorData:
-          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
-          readOnly: true
-        result:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - -13
-          - -12
-          - -11
-          - -10
-          - -9
-          - -8
-          - -7
-          - -6
-          - -5
-          - -4
-          - -3
-          - -2
-          - -1
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.IdResult'
-    MedAdvisor.HSH.Core.Structure.NoResult:
-      type: object
-      properties: {}
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel:
       description: Need to provie an orderId, an order description and recall URL is valid.
       type: object

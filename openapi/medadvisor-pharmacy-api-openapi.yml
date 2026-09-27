@@ -1186,6 +1186,1000 @@ paths:
       - Bearer: []
 components:
   schemas:
+    MedAdvisor.Framework.Interface.Owner:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        abn:
+          type: string
+        pharmacyCount:
+          format: int32
+          type: integer
+        billingGroupCount:
+          format: int32
+          type: integer
+        clinicCount:
+          format: int32
+          type: integer
+        gpCount:
+          format: int32
+          type: integer
+        address:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        pharmacies:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        billingGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        clinics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractice'
+        gPs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractitioner'
+        email:
+          type: string
+        phone:
+          type: string
+        contact:
+          type: string
+        balance:
+          format: double
+          type: number
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        job:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BroadcastMessageJob'
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BroadcastMessageRecipient'
+    MedAdvisor.Framework.Interface.BroadcastMessageRecipient:
+      type: object
+      properties:
+        maId:
+          format: int32
+          type: integer
+        localPatientId:
+          format: int32
+          type: integer
+        dispenseRefId:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        mobile:
+          type: string
+        email:
+          type: string
+        parent_ID:
+          format: int32
+          type: integer
+        communicationType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        sha:
+          type: string
+        shaSecondary:
+          type: string
+        gender:
+          type: string
+        dateOfBirth:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.PatientSearchField:
+      type: object
+      properties:
+        lastName:
+          type: boolean
+        firstName:
+          type: boolean
+        medicareNo:
+          type: boolean
+        address:
+          type: boolean
+        mobile:
+          type: boolean
+        dob:
+          type: boolean
+    MedAdvisor.Framework.Interface.ElectronicPrescribingSettings:
+      type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.ActivationKeyResult:
+      type: object
+      properties:
+        code:
+          type: string
+        expiryDate:
+          format: date-time
+          type: string
+        pharmacyChangeAllowed:
+          type: boolean
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        userRolloverResponses:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UserRolloverResponse'
+    MedAdvisor.Framework.Finance.PharmacyTier:
+      type: object
+      properties:
+        tierID:
+          format: int32
+          type: integer
+        tierName:
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        duration:
+          format: int32
+          type: integer
+          readOnly: true
+    MedAdvisor.Framework.Interface.UserRolloverResponse:
+      type: object
+      properties:
+        userId:
+          format: int32
+          type: integer
+        status:
+          format: int32
+          type: integer
+        statusMessage:
+          type: string
+    MedAdvisor.Framework.Interface.RequestContext:
+      type: object
+      properties:
+        applicationId:
+          format: int32
+          type: integer
+        userId:
+          format: int32
+          type: integer
+        userName:
+          type: string
+        firstName:
+          type: string
+        password:
+          type: string
+        isGuildCare:
+          type: boolean
+        workStationName:
+          type: string
+        adminId:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest:
+      type: object
+      properties:
+        pharmacyUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        searchValue:
+          type: string
+        searchFields:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchField'
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        patientIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        medicareNos:
+          type: array
+          items:
+            type: string
+        medicareSha1s:
+          type: array
+          items:
+            type: string
+        localIdentifiers:
+          type: array
+          items:
+            type: string
+    MedAdvisor.Framework.Interface.BroadcastMessageJob:
+      type: object
+      properties:
+        jobType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        selectionEngine:
+          type: string
+        appTemplateId:
+          format: int32
+          type: integer
+        appTemplateName:
+          type: string
+        appTemplateTitle:
+          type: string
+        appTemplateBody:
+          type: string
+        appTemplateIncludeBookingLink:
+          type: boolean
+        smsTemplateId:
+          format: int32
+          type: integer
+        smsTemplateName:
+          type: string
+        smsTemplateBody:
+          type: string
+    MedAdvisor.Framework.Interface.PatientSearchResult:
+      type: object
+      properties:
+        patientList:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearch'
+        totalRecords:
+          format: int32
+          type: integer
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.ModuleActivation:
+      type: object
+      properties:
+        appModule:
+          type: boolean
+        smsModule:
+          type: boolean
+        ppsModule:
+          type: boolean
+        gpModule:
+          type: boolean
+        analyticsModule:
+          type: boolean
+        map2Module:
+          type: boolean
+        healthHubModule:
+          type: boolean
+        termsConditions:
+          type: string
+        paymentsWarning:
+          type: boolean
+        paymentsSuspension:
+          type: boolean
+        whiteLabelName:
+          type: string
+        whiteLabelId:
+          format: int32
+          type: integer
+        segmentApiKey:
+          type: string
+        firehoseAccessKey:
+          type: string
+        firehoseSecretKey:
+          type: string
+        plusOneCloudWatchAccessKey:
+          type: string
+        plusOneCloudWatchSecretKey:
+          type: string
+        s3PlusOneCloudUploadAccessKey:
+          type: string
+        s3PlusOneCloudUploadSecretKey:
+          type: string
+        s3PlusOneCloudUploadBucketName:
+          type: string
+        remoteSettingsEnabled:
+          type: boolean
+        termsConditionsVersion:
+          type: string
+        termsConditionsDate:
+          format: date-time
+          type: string
+        releaseNoteID:
+          format: int32
+          type: integer
+        isDeliveryEnabled:
+          type: boolean
+        calendarModule:
+          type: boolean
+        subscriptionsModule:
+          type: boolean
+        projectStopModule:
+          type: boolean
+        trainingModule:
+          type: boolean
+        locale:
+          format: int32
+          type: integer
+        eGuildID:
+          type: string
+        communicationsModule:
+          type: boolean
+        dataCollectorModule:
+          type: boolean
+        plusOneCloudModule:
+          type: boolean
+        medAdvisorForPharmacyModule:
+          type: boolean
+        showCalendarWizard:
+          type: boolean
+        calendarWizardEndDate:
+          format: date-time
+          type: string
+        calendarWizardRemainingDays:
+          format: int32
+          type: integer
+        calendarVersion:
+          type: string
+        allowedIpAddress:
+          type: string
+        usingCalendar:
+          type: boolean
+        receiveThirdPartyOutageAlerts:
+          type: boolean
+        mergePatientsFunctionality:
+          type: boolean
+        managePharmacistsFunctionality:
+          type: boolean
+        advancedPatientSearch:
+          type: boolean
+        enableNewMedicationForSmsRemindersScreen:
+          type: boolean
+        editDaysLefteScriptsNoScriptFlow:
+          type: boolean
+        unmappedDrugsEnabled:
+          type: boolean
+        automatedBannerEnabled:
+          type: boolean
+        customTileEnabled:
+          type: boolean
+        inboxAlertForMobilePhoneDiscrepancy:
+          type: boolean
+        aiAssistModule:
+          type: boolean
+        aiAssistProvider:
+          type: string
+        angularPendingOrderEnabled:
+          type: boolean
+        walkInEnabled:
+          type: boolean
+        vaccinationConsentCaptureEnabled:
+          type: boolean
+        familyBookingEnabled:
+          type: boolean
+        featureFlag_InboxAlgorithm:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        whitelistIPAddresses:
+          type: array
+          items:
+            type: string
+          readOnly: true
+    MedAdvisor.Framework.Interface.AccountActivationRequest:
+      type: object
+      properties:
+        context:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.RequestContext'
+        pharmacyId:
+          format: int32
+          type: integer
+        medicare:
+          type: string
+        dva:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+        gender:
+          type: string
+        mobile:
+          type: string
+        email:
+          type: string
+        localSystemIdentifier:
+          type: string
+        initials:
+          type: string
+        isuDisclosures:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel:
+      type: object
+      properties:
+        identifier:
+          type: string
+        key:
+          type: string
+    MedAdvisor.Framework.Interface.PharmacyExternalSystem:
+      type: object
+      properties:
+        maid:
+          format: int32
+          type: integer
+        externalSystemName:
+          type: string
+        externalID:
+          type: string
+        id:
+          format: int32
+          type: integer
+        pendingOperation:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          type: integer
+        externalSystemID:
+          format: int32
+          enum:
+          - 1
+          type: integer
+        rawData:
+          type: string
+        uuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+    MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure:
+      type: object
+      properties:
+        programID:
+          format: int32
+          type: integer
+        disclosed:
+          type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        pharmacyUUid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        id:
+          format: int32
+          type: integer
+        status:
+          format: int32
+          type: integer
+        message:
+          type: string
+    MedAdvisor.Framework.Interface.UpdateCachePatientRequest:
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        patientData:
+          format: byte
+          type: string
+    MedAdvisor.Framework.Interface.GPPractitioner:
+      type: object
+      properties:
+        practitionerId:
+          format: int32
+          type: integer
+        practice_UserId:
+          type: string
+        practice_PractitionerId:
+          type: string
+        providerNumber:
+          type: string
+        prescriberNumber:
+          type: string
+        stateRegistrationNumber:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        middleNames:
+          type: string
+        lastName:
+          type: string
+        qualifications:
+          type: string
+        phone:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        abn:
+          type: string
+        phoneVisible:
+          type: boolean
+        faxVisible:
+          type: boolean
+        emailVisible:
+          type: boolean
+        mobileVisible:
+          type: boolean
+        sendSMSReminder:
+          type: boolean
+        sendSMTPReminder:
+          type: boolean
+        reminderHour:
+          format: int32
+          type: integer
+        reminderMinute:
+          format: int32
+          type: integer
+        processQueue:
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
+    MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider:
+      type: object
+      properties:
+        providerID:
+          format: int32
+          type: integer
+        providerName:
+          type: string
+        merchantId:
+          type: string
+    MedAdvisor.Framework.Interface.GPPractice:
+      type: object
+      properties:
+        practiceId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        contactName:
+          type: string
+        token:
+          type: string
+        activationKey:
+          type: string
+        activationKeyExpiry:
+          format: date-time
+          type: string
+        address:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        addressGoogle:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
+        bannerURL:
+          type: string
+        businessName:
+          type: string
+        phone:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        website:
+          type: string
+        bookingSystem:
+          type: string
+        abn:
+          type: string
+        phoneVisible:
+          type: boolean
+        faxVisible:
+          type: boolean
+        emailVisible:
+          type: boolean
+        websiteVisible:
+          type: boolean
+        bookingSystemVisible:
+          type: boolean
+        openHours:
+          type: string
+        openHoursNotes:
+          type: string
+        practiceIdentifier:
+          type: string
+        practiceSourceSystem:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - -1
+          type: integer
+        bankingAccount:
+          type: string
+        bankingDisplay:
+          type: string
+        activated:
+          type: boolean
+        allowPracticeRateOverride:
+          type: boolean
+        internalPractice:
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
+    MedAdvisor.Framework.Interface.OperationResult:
+      type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel:
+      type: object
+      properties:
+        idType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        pharmacyId:
+          type: string
+    MedAdvisor.Framework.Interface.PatientSearch:
+      type: object
+      properties:
+        patientId:
+          format: int64
+          type: integer
+        patientUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        dvaNo:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        medicareNo:
+          type: string
+        mobileNo:
+          type: string
+        pharmacyId:
+          format: int64
+          type: integer
+        pharmacyIdentifier:
+          type: string
+        postCode:
+          type: string
+        stateCode:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        suburb:
+          type: string
+        dob:
+          format: date-time
+          type: string
+        gender:
+          type: string
+        concessionNumber:
+          type: string
+        medicareExpiryDate:
+          format: date-time
+          type: string
+        dispensePatientIdentifier:
+          type: string
+        dispenseSourceSystem:
+          type: string
+        hasSHA:
+          type: boolean
+        sha:
+          type: string
+        instantActivatePending:
+          type: boolean
+        createDate:
+          format: date-time
+          type: string
+        localIdentifier:
+          type: string
+        isAsl:
+          type: boolean
+        isSendResetPassword:
+          type: boolean
+    MedAdvisor.Framework.Interface.Subscription:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        amount:
+          format: double
+          type: number
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        description:
+          type: string
+        showOnInvoice:
+          type: boolean
+        isDefault:
+          type: boolean
+        duration:
+          format: int32
+          type: integer
+          readOnly: true
+    MedAdvisor.Framework.Interface.Location:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        addressName:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        suburb:
+          type: string
+        zipCode:
+          type: string
+        stateId:
+          type: string
+        stateName:
+          type: string
+        type:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          type: integer
+        typeName:
+          type: string
+        latitude:
+          format: double
+          type: number
+        longitude:
+          format: double
+          type: number
+        notes:
+          type: string
+        cityNew:
+          type: string
+        fullAddress:
+          type: string
+          readOnly: true
+        fullAddressWithCommas:
+          type: string
+          readOnly: true
+        fullAddressWithSpace:
+          type: string
+          readOnly: true
+        fullAddressWithCommasAndBr:
+          type: string
+          readOnly: true
+    MedAdvisor.Framework.Interface.PharmacySettingsResult:
+      type: object
+      properties:
+        stores:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
+        servicesProvided:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacyServiceCapability'
+        totalCount:
+          format: int32
+          type: integer
+        additional:
+          type: array
+          items:
+            type: string
+        bannerLogos:
+          type: array
+          items:
+            type: string
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel:
+      type: object
+      properties:
+        content:
+          type: string
+        fileName:
+          type: string
+    MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        invoiceGroup:
+          type: string
+        bannerGroup:
+          type: string
+        street:
+          type: string
+        suburb:
+          type: string
+        state:
+          type: string
+        postCode:
+          format: int32
+          type: integer
+        enrolledPatients:
+          format: int32
+          type: integer
+        phone:
+          type: string
+        hN_ID:
+          type: string
+        createDate:
+          format: date-time
+          type: string
+        pharmacy_ID:
+          format: int32
+          type: integer
+    MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest:
+      type: object
+      properties:
+        pharmacistFullName:
+          type: string
+        version:
+          type: string
+    MedAdvisor.Framework.Interface.PharmacyServiceCapability:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        shortName:
+          type: string
+        longName:
+          type: string
+        isProvided:
+          type: boolean
+        pharmacyId:
+          format: int32
+          type: integer
+        bookingType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        linkElements:
+          type: string
+        capElements:
+          type: string
+    MedAdvisor.Framework.Interface.InstantActivateResult:
+      type: object
+      properties:
+        pharmacyChangeAllowed:
+          type: boolean
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        mobile:
+          type: string
+        medicare:
+          type: string
+        dva:
+          type: string
+    MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto:
+      type: object
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        lastName:
+          type: string
+        firstName:
+          type: string
+        medicareNo:
+          type: string
+        address:
+          type: string
+        suburb:
+          type: string
+        postCode:
+          type: string
+        dob:
+          type: string
+        patientIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        medicareNos:
+          type: array
+          items:
+            type: string
+        medicareSha1s:
+          type: array
+          items:
+            type: string
+        localIdentifiers:
+          type: array
+          items:
+            type: string
     MedAdvisor.Framework.Interface.Store:
       type: object
       properties:
@@ -1458,161 +2452,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Subscription'
-    MedAdvisor.Framework.Interface.InstantActivateResult:
+    MedAdvisor.Framework.Interface.OperatingHour:
       type: object
       properties:
-        pharmacyChangeAllowed:
-          type: boolean
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.Framework.Interface.BroadcastMessageRecipient:
-      type: object
-      properties:
-        maId:
-          format: int32
-          type: integer
-        localPatientId:
-          format: int32
-          type: integer
-        dispenseRefId:
-          type: string
-        title:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        mobile:
-          type: string
-        email:
-          type: string
-        parent_ID:
-          format: int32
-          type: integer
-        communicationType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          type: integer
-        sha:
-          type: string
-        shaSecondary:
-          type: string
-        gender:
-          type: string
-        dateOfBirth:
-          format: date-time
-          type: string
-    MedAdvisor.Framework.Interface.Owner:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        abn:
-          type: string
-        pharmacyCount:
-          format: int32
-          type: integer
-        billingGroupCount:
-          format: int32
-          type: integer
-        clinicCount:
-          format: int32
-          type: integer
-        gpCount:
-          format: int32
-          type: integer
-        address:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
-        pharmacies:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
-        billingGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
-        clinics:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractice'
-        gPs:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.GPPractitioner'
-        email:
-          type: string
-        phone:
-          type: string
-        contact:
-          type: string
-        balance:
-          format: double
-          type: number
-    MedAdvisor.Framework.Interface.PatientSearchField:
-      type: object
-      properties:
-        lastName:
-          type: boolean
-        firstName:
-          type: boolean
-        medicareNo:
-          type: boolean
-        address:
-          type: boolean
-        mobile:
-          type: boolean
-        dob:
-          type: boolean
-    MedAdvisor.Framework.Interface.UserRolloverResponse:
-      type: object
-      properties:
-        userId:
-          format: int32
-          type: integer
-        status:
-          format: int32
-          type: integer
-        statusMessage:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyGuidModel:
-      type: object
-      properties:
-        idType:
+        weekday:
           format: int32
           enum:
           - 0
           - 1
           - 2
           - 3
+          - 4
+          - 5
+          - 6
           type: integer
-        pharmacyId:
-          type: string
-    MedAdvisor.Framework.Finance.PharmacyTier:
-      type: object
-      properties:
-        tierID:
+        startHour:
           format: int32
           type: integer
-        tierName:
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        duration:
+        startMinute:
           format: int32
           type: integer
-          readOnly: true
+        endHour:
+          format: int32
+          type: integer
+        endMinute:
+          format: int32
+          type: integer
     MedAdvisor.Framework.Interface.InstantActivateRequest:
       type: object
       properties:
@@ -1649,370 +2514,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure'
-    MedAdvisor.Framework.Interface.PharmacyServiceCapability:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        shortName:
-          type: string
-        longName:
-          type: string
-        isProvided:
-          type: boolean
-        pharmacyId:
-          format: int32
-          type: integer
-        bookingType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        linkElements:
-          type: string
-        capElements:
-          type: string
-    MedAdvisor.Framework.Interface.BroadcastMessageJob:
-      type: object
-      properties:
-        jobType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          type: integer
-        selectionEngine:
-          type: string
-        appTemplateId:
-          format: int32
-          type: integer
-        appTemplateName:
-          type: string
-        appTemplateTitle:
-          type: string
-        appTemplateBody:
-          type: string
-        appTemplateIncludeBookingLink:
-          type: boolean
-        smsTemplateId:
-          format: int32
-          type: integer
-        smsTemplateName:
-          type: string
-        smsTemplateBody:
-          type: string
-    MedAdvisor.Framework.Interface.ElectronicPrescribingSettings:
-      type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.Framework.Interface.PatientSearchAdvanceRequestDto:
-      type: object
-      properties:
-        pageIndex:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        lastName:
-          type: string
-        firstName:
-          type: string
-        medicareNo:
-          type: string
-        address:
-          type: string
-        suburb:
-          type: string
-        postCode:
-          type: string
-        dob:
-          type: string
-        patientIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-        medicareNos:
-          type: array
-          items:
-            type: string
-        medicareSha1s:
-          type: array
-          items:
-            type: string
-        localIdentifiers:
-          type: array
-          items:
-            type: string
-    MedAdvisor.Framework.Interface.Subscription:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        amount:
-          format: double
-          type: number
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        description:
-          type: string
-        showOnInvoice:
-          type: boolean
-        isDefault:
-          type: boolean
-        duration:
-          format: int32
-          type: integer
-          readOnly: true
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacyIdentifierModel:
-      type: object
-      properties:
-        identifier:
-          type: string
-        key:
-          type: string
-    MedAdvisor.Framework.Interface.ActivationKeyResult:
-      type: object
-      properties:
-        code:
-          type: string
-        expiryDate:
-          format: date-time
-          type: string
-        pharmacyChangeAllowed:
-          type: boolean
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.UpdateSMSReminderCompleteModel:
-      type: object
-      properties:
-        pharmacyId:
-          format: int32
-          type: integer
-        userRolloverResponses:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.UserRolloverResponse'
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.SendBroadcastMessageRequestModel:
-      type: object
-      properties:
-        pharmacyId:
-          format: int32
-          type: integer
-        job:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BroadcastMessageJob'
-        recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.BroadcastMessageRecipient'
-    MedAdvisor.Framework.Interface.AccountActivationRequest:
-      type: object
-      properties:
-        context:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.RequestContext'
-        pharmacyId:
-          format: int32
-          type: integer
-        medicare:
-          type: string
-        dva:
-          type: string
-        title:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        dateOfBirth:
-          type: string
-        gender:
-          type: string
-        mobile:
-          type: string
-        email:
-          type: string
-        localSystemIdentifier:
-          type: string
-        initials:
-          type: string
-        isuDisclosures:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure'
-    MedAdvisor.Framework.Interface.GPPractice:
-      type: object
-      properties:
-        practiceId:
-          format: int32
-          type: integer
-        name:
-          type: string
-        contactName:
-          type: string
-        token:
-          type: string
-        activationKey:
-          type: string
-        activationKeyExpiry:
-          format: date-time
-          type: string
-        address:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
-        addressGoogle:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Location'
-        bannerURL:
-          type: string
-        businessName:
-          type: string
-        phone:
-          type: string
-        fax:
-          type: string
-        email:
-          type: string
-        website:
-          type: string
-        bookingSystem:
-          type: string
-        abn:
-          type: string
-        phoneVisible:
-          type: boolean
-        faxVisible:
-          type: boolean
-        emailVisible:
-          type: boolean
-        websiteVisible:
-          type: boolean
-        bookingSystemVisible:
-          type: boolean
-        openHours:
-          type: string
-        openHoursNotes:
-          type: string
-        practiceIdentifier:
-          type: string
-        practiceSourceSystem:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - -1
-          type: integer
-        bankingAccount:
-          type: string
-        bankingDisplay:
-          type: string
-        activated:
-          type: boolean
-        allowPracticeRateOverride:
-          type: boolean
-        internalPractice:
-          type: boolean
-        owner:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.FileUploadModel:
-      type: object
-      properties:
-        content:
-          type: string
-        fileName:
-          type: string
-    MedAdvisor.Framework.Interface.AcceptTermsConditionsRequest:
-      type: object
-      properties:
-        pharmacistFullName:
-          type: string
-        version:
-          type: string
-    MedAdvisor.Framework.Interface.PatientSearch:
-      type: object
-      properties:
-        patientId:
-          format: int64
-          type: integer
-        patientUuid:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        dvaNo:
-          type: string
-        email:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        medicareNo:
-          type: string
-        mobileNo:
-          type: string
-        pharmacyId:
-          format: int64
-          type: integer
-        pharmacyIdentifier:
-          type: string
-        postCode:
-          type: string
-        stateCode:
-          type: string
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        suburb:
-          type: string
-        dob:
-          format: date-time
-          type: string
-        gender:
-          type: string
-        concessionNumber:
-          type: string
-        medicareExpiryDate:
-          format: date-time
-          type: string
-        dispensePatientIdentifier:
-          type: string
-        dispenseSourceSystem:
-          type: string
-        hasSHA:
-          type: boolean
-        sha:
-          type: string
-        instantActivatePending:
-          type: boolean
-        createDate:
-          format: date-time
-          type: string
-        localIdentifier:
-          type: string
-        isAsl:
-          type: boolean
-        isSendResetPassword:
-          type: boolean
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.PharmacySettingsModel:
       type: object
       properties:
@@ -2022,507 +2523,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacyServiceCapability'
-    MedAdvisor.Framework.Interface.PharmacyLoyaltyProvider:
-      type: object
-      properties:
-        providerID:
-          format: int32
-          type: integer
-        providerName:
-          type: string
-        merchantId:
-          type: string
-    MedAdvisor.Framework.Interface.Location:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        addressName:
-          type: string
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        suburb:
-          type: string
-        zipCode:
-          type: string
-        stateId:
-          type: string
-        stateName:
-          type: string
-        type:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          type: integer
-        typeName:
-          type: string
-        latitude:
-          format: double
-          type: number
-        longitude:
-          format: double
-          type: number
-        notes:
-          type: string
-        cityNew:
-          type: string
-        fullAddress:
-          type: string
-          readOnly: true
-        fullAddressWithCommas:
-          type: string
-          readOnly: true
-        fullAddressWithSpace:
-          type: string
-          readOnly: true
-        fullAddressWithCommasAndBr:
-          type: string
-          readOnly: true
-    MedAdvisor.Framework.Interface.PatientSearchResult:
-      type: object
-      properties:
-        patientList:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearch'
-        totalRecords:
-          format: int32
-          type: integer
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.Framework.Interface.PharmacySettingsResult:
-      type: object
-      properties:
-        stores:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Store'
-        servicesProvided:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PharmacyServiceCapability'
-        totalCount:
-          format: int32
-          type: integer
-        additional:
-          type: array
-          items:
-            type: string
-        bannerLogos:
-          type: array
-          items:
-            type: string
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.Framework.Interface.IncentivisedSignUpPatientDisclosure:
-      type: object
-      properties:
-        programID:
-          format: int32
-          type: integer
-        disclosed:
-          type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.ActionUpdateModel:
-      type: object
-      properties:
-        pharmacyId:
-          format: int32
-          type: integer
-        pharmacyUUid:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        id:
-          format: int32
-          type: integer
-        status:
-          format: int32
-          type: integer
-        message:
-          type: string
-    MedAdvisor.Framework.Interface.OperationResult:
-      type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.Framework.Interface.GeneratePharmacyChangeRequest:
-      type: object
-      properties:
-        email:
-          type: string
-        mobile:
-          type: string
-        medicare:
-          type: string
-        dva:
-          type: string
-    MedAdvisor.Framework.Interface.RequestContext:
-      type: object
-      properties:
-        applicationId:
-          format: int32
-          type: integer
-        userId:
-          format: int32
-          type: integer
-        userName:
-          type: string
-        firstName:
-          type: string
-        password:
-          type: string
-        isGuildCare:
-          type: boolean
-        workStationName:
-          type: string
-        adminId:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.GPPractitioner:
-      type: object
-      properties:
-        practitionerId:
-          format: int32
-          type: integer
-        practice_UserId:
-          type: string
-        practice_PractitionerId:
-          type: string
-        providerNumber:
-          type: string
-        prescriberNumber:
-          type: string
-        stateRegistrationNumber:
-          type: string
-        title:
-          type: string
-        firstName:
-          type: string
-        middleNames:
-          type: string
-        lastName:
-          type: string
-        qualifications:
-          type: string
-        phone:
-          type: string
-        fax:
-          type: string
-        email:
-          type: string
-        mobile:
-          type: string
-        abn:
-          type: string
-        phoneVisible:
-          type: boolean
-        faxVisible:
-          type: boolean
-        emailVisible:
-          type: boolean
-        mobileVisible:
-          type: boolean
-        sendSMSReminder:
-          type: boolean
-        sendSMTPReminder:
-          type: boolean
-        reminderHour:
-          format: int32
-          type: integer
-        reminderMinute:
-          format: int32
-          type: integer
-        processQueue:
-          type: boolean
-        owner:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.Owner'
-    MedAdvisor.Framework.Interface.ModuleActivation:
-      type: object
-      properties:
-        appModule:
-          type: boolean
-        smsModule:
-          type: boolean
-        ppsModule:
-          type: boolean
-        gpModule:
-          type: boolean
-        analyticsModule:
-          type: boolean
-        map2Module:
-          type: boolean
-        healthHubModule:
-          type: boolean
-        termsConditions:
-          type: string
-        paymentsWarning:
-          type: boolean
-        paymentsSuspension:
-          type: boolean
-        whiteLabelName:
-          type: string
-        whiteLabelId:
-          format: int32
-          type: integer
-        segmentApiKey:
-          type: string
-        firehoseAccessKey:
-          type: string
-        firehoseSecretKey:
-          type: string
-        plusOneCloudWatchAccessKey:
-          type: string
-        plusOneCloudWatchSecretKey:
-          type: string
-        s3PlusOneCloudUploadAccessKey:
-          type: string
-        s3PlusOneCloudUploadSecretKey:
-          type: string
-        s3PlusOneCloudUploadBucketName:
-          type: string
-        remoteSettingsEnabled:
-          type: boolean
-        termsConditionsVersion:
-          type: string
-        termsConditionsDate:
-          format: date-time
-          type: string
-        releaseNoteID:
-          format: int32
-          type: integer
-        isDeliveryEnabled:
-          type: boolean
-        calendarModule:
-          type: boolean
-        subscriptionsModule:
-          type: boolean
-        projectStopModule:
-          type: boolean
-        trainingModule:
-          type: boolean
-        locale:
-          format: int32
-          type: integer
-        eGuildID:
-          type: string
-        communicationsModule:
-          type: boolean
-        dataCollectorModule:
-          type: boolean
-        plusOneCloudModule:
-          type: boolean
-        medAdvisorForPharmacyModule:
-          type: boolean
-        showCalendarWizard:
-          type: boolean
-        calendarWizardEndDate:
-          format: date-time
-          type: string
-        calendarWizardRemainingDays:
-          format: int32
-          type: integer
-        calendarVersion:
-          type: string
-        allowedIpAddress:
-          type: string
-        usingCalendar:
-          type: boolean
-        receiveThirdPartyOutageAlerts:
-          type: boolean
-        mergePatientsFunctionality:
-          type: boolean
-        managePharmacistsFunctionality:
-          type: boolean
-        advancedPatientSearch:
-          type: boolean
-        enableNewMedicationForSmsRemindersScreen:
-          type: boolean
-        editDaysLefteScriptsNoScriptFlow:
-          type: boolean
-        unmappedDrugsEnabled:
-          type: boolean
-        automatedBannerEnabled:
-          type: boolean
-        customTileEnabled:
-          type: boolean
-        inboxAlertForMobilePhoneDiscrepancy:
-          type: boolean
-        aiAssistModule:
-          type: boolean
-        aiAssistProvider:
-          type: string
-        angularPendingOrderEnabled:
-          type: boolean
-        walkInEnabled:
-          type: boolean
-        vaccinationConsentCaptureEnabled:
-          type: boolean
-        familyBookingEnabled:
-          type: boolean
-        featureFlag_InboxAlgorithm:
-          format: int32
-          enum:
-          - 0
-          - 1
-          type: integer
-        whitelistIPAddresses:
-          type: array
-          items:
-            type: string
-          readOnly: true
-    MedAdvisor.Framework.Interface.PharmacyExternalSystem:
-      type: object
-      properties:
-        maid:
-          format: int32
-          type: integer
-        externalSystemName:
-          type: string
-        externalID:
-          type: string
-        id:
-          format: int32
-          type: integer
-        pendingOperation:
-          format: int32
-          enum:
-          - 1
-          - 2
-          - 3
-          type: integer
-        externalSystemID:
-          format: int32
-          enum:
-          - 1
-          type: integer
-        rawData:
-          type: string
-        uuid:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-    MedAdvisor.Framework.Interface.HealthNotesPharmacyDetail:
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        invoiceGroup:
-          type: string
-        bannerGroup:
-          type: string
-        street:
-          type: string
-        suburb:
-          type: string
-        state:
-          type: string
-        postCode:
-          format: int32
-          type: integer
-        enrolledPatients:
-          format: int32
-          type: integer
-        phone:
-          type: string
-        hN_ID:
-          type: string
-        createDate:
-          format: date-time
-          type: string
-        pharmacy_ID:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.PatientSearchFreeTextRequest:
-      type: object
-      properties:
-        pharmacyUuid:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        searchValue:
-          type: string
-        searchFields:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientSearchField'
-        pageIndex:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        patientIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-        medicareNos:
-          type: array
-          items:
-            type: string
-        medicareSha1s:
-          type: array
-          items:
-            type: string
-        localIdentifiers:
-          type: array
-          items:
-            type: string
-    MedAdvisor.Framework.Interface.OperatingHour:
-      type: object
-      properties:
-        weekday:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          type: integer
-        startHour:
-          format: int32
-          type: integer
-        startMinute:
-          format: int32
-          type: integer
-        endHour:
-          format: int32
-          type: integer
-        endMinute:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.UpdateCachePatientRequest:
-      type: object
-      properties:
-        pharmacyId:
-          format: int32
-          type: integer
-        patientData:
-          format: byte
-          type: string
   securitySchemes:
     Bearer:
       type: apiKey

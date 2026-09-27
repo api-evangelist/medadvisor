@@ -316,6 +316,24 @@ paths:
         required: true
 components:
   schemas:
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest:
+      description: "Payload to create a head-office custom service (RAP-38 Story 2.5). The created capability is\nowned by the caller's report group (OwnerReportGroup_ID) and has NO pharmacy links yet — it\nlands in the catalogue as \"Not pushed\" until a separate push creates the link rows.\n            \nDeferred from the wireframe at v1: the fixed pre-screener (Medicare + DOB) and the consent\ndeclaration. Category is also omitted — it has no storage target yet (OQ-02: the category value\nset is unsettled / expected to come from KAMS metadata), so it is not accepted here rather than\ninvent a column or XML element that may conflict with the eventual design."
+      type: object
+      properties:
+        name:
+          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
+          type: string
+        duration:
+          format: int32
+          description: Default duration in minutes. Stored in DescriptionElements ("dur").
+          type: integer
+        fee:
+          format: double
+          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
+          type: number
+        description:
+          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
+          type: string
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest:
       description: 'Extends or shortens the auto-activation deadline on an already-pushed, still-pending service
 
@@ -352,24 +370,6 @@ components:
             the nightly job activates it on that date. Optional: null means "no end date" — the service never
 
             auto-activates and waits for the pharmacy to set it up. When set it must be today or later.'
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest:
-      description: "Payload to create a head-office custom service (RAP-38 Story 2.5). The created capability is\nowned by the caller's report group (OwnerReportGroup_ID) and has NO pharmacy links yet — it\nlands in the catalogue as \"Not pushed\" until a separate push creates the link rows.\n            \nDeferred from the wireframe at v1: the fixed pre-screener (Medicare + DOB) and the consent\ndeclaration. Category is also omitted — it has no storage target yet (OQ-02: the category value\nset is unsettled / expected to come from KAMS metadata), so it is not accepted here rather than\ninvent a column or XML element that may conflict with the eventual design."
-      type: object
-      properties:
-        name:
-          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
-          type: string
-        duration:
-          format: int32
-          description: Default duration in minutes. Stored in DescriptionElements ("dur").
-          type: integer
-        fee:
-          format: double
-          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
-          type: number
-        description:
-          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
           type: string
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest:
       description: "Payload to edit an existing HO-owned service (RAP-38 Story 2.5). Same fields as create. The edit\nupdates the single shared PharmacyCapability, so it applies to every pharmacy currently linked to\nthe service — there is no per-pharmacy copy to re-push.\n            \nDeferred at v1, same as create: the fixed pre-screener (Medicare + DOB), the consent declaration,\nand Category (no storage target yet)."
