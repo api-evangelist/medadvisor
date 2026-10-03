@@ -219,16 +219,6 @@ paths:
         required: true
 components:
   schemas:
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
     ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__System.Int32__mscorlib__Version_4.0.0.0__Culture_neutral__PublicKeyToken_b77a5c561934e089
     : type: object
       properties:
@@ -240,39 +230,6 @@ components:
         data:
           format: int32
           type: integer
-    MedAdvisor.Framework.Interface.v2.ClosedPeriodModel:
-      type: object
-      properties:
-        pharmacyUuid:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        year:
-          format: int32
-          type: integer
-        holidays:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PublicHolidayModel'
-        linkedPublicHolidays:
-          type: array
-          items:
-            format: int32
-            type: integer
-        bookingClosedPeriods:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
-    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
-    : type: object
-      properties:
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
     MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel:
       type: object
       properties:
@@ -305,15 +262,16 @@ components:
         maxAge:
           format: int32
           type: integer
-    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
-      type: object
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.ClosedPeriodModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
       properties:
-        from:
-          format: date-time
+        result:
+          format: int32
+          type: integer
+        resultMessage:
           type: string
-        to:
-          format: date-time
-          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.ClosedPeriodModel'
     MedAdvisor.Framework.Interface.v2.PublicHolidayModel:
       type: object
       properties:
@@ -327,6 +285,48 @@ components:
           type: string
         state:
           type: string
+    MedAdvisor.Framework.Interface.v2.TimePeriodModel:
+      type: object
+      properties:
+        from:
+          format: date-time
+          type: string
+        to:
+          format: date-time
+          type: string
+    ? MedAdvisor.Framework.Interface.v2.ApiResponseModel_1__MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel__MedAdvisor.Framework__Version_5.85.0.0__Culture_neutral__PublicKeyToken_c5a42efe99ff1eb2
+    : type: object
+      properties:
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.EventPreferenceUpdateModel'
+    MedAdvisor.Framework.Interface.v2.ClosedPeriodModel:
+      type: object
+      properties:
+        pharmacyUuid:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        year:
+          format: int32
+          type: integer
+        holidays:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.PublicHolidayModel'
+        linkedPublicHolidays:
+          type: array
+          items:
+            format: int32
+            type: integer
+        bookingClosedPeriods:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.v2.TimePeriodModel'
   securitySchemes:
     Bearer:
       type: apiKey

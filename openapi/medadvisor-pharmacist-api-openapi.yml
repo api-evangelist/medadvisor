@@ -124,51 +124,6 @@ paths:
       - Bearer: []
 components:
   schemas:
-    MedAdvisor.Framework.Interface.OperatingHour:
-      type: object
-      properties:
-        weekday:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          type: integer
-        startHour:
-          format: int32
-          type: integer
-        startMinute:
-          format: int32
-          type: integer
-        endHour:
-          format: int32
-          type: integer
-        endMinute:
-          format: int32
-          type: integer
-    MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel:
-      type: object
-      properties:
-        fortnightly:
-          type: boolean
-        primaryWorkingHour:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
-        primaryStartDate:
-          format: date-time
-          type: string
-        secondaryWorkingHour:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
-        secondaryStartDate:
-          format: date-time
-          type: string
     MedAdvisor.Framework.Interface.v2.BookablePharmacistModel:
       type: object
       properties:
@@ -230,6 +185,32 @@ components:
             format: date-time
             type: string
           readOnly: true
+    MedAdvisor.Framework.Interface.OperatingHour:
+      type: object
+      properties:
+        weekday:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        startHour:
+          format: int32
+          type: integer
+        startMinute:
+          format: int32
+          type: integer
+        endHour:
+          format: int32
+          type: integer
+        endMinute:
+          format: int32
+          type: integer
     MedAdvisor.Framework.Interface.v2.TimePeriodModel:
       type: object
       properties:
@@ -237,6 +218,25 @@ components:
           format: date-time
           type: string
         to:
+          format: date-time
+          type: string
+    MedAdvisor.Framework.Interface.v2.PharmacistWorkingHourModel:
+      type: object
+      properties:
+        fortnightly:
+          type: boolean
+        primaryWorkingHour:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
+        primaryStartDate:
+          format: date-time
+          type: string
+        secondaryWorkingHour:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.OperatingHour'
+        secondaryStartDate:
           format: date-time
           type: string
   securitySchemes:

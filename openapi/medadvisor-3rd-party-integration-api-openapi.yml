@@ -277,35 +277,53 @@ paths:
         required: true
 components:
   schemas:
-    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
-    : type: object
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel:
+      description: Need to provie an orderId, an order description and recall URL is valid.
+      type: object
       properties:
-        errorData:
-          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
-          readOnly: true
-        result:
+        orderId:
           format: int32
-          enum:
-          - 0
-          - 1
-          - -13
-          - -12
-          - -11
-          - -10
-          - -9
-          - -8
-          - -7
-          - -6
-          - -5
-          - -4
-          - -3
-          - -2
-          - -1
+          description: The ECommerce order's Id
           type: integer
-        resultMessage:
+          example: 1
+        description:
+          description: The ECommerce order's description
           type: string
-        data:
-          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.IdResult'
+          example: Order description example
+        url:
+          description: The ECommerce order's URL
+          type: string
+          example: http://www.example.com/index.html
+    MedAdvisor.HSH.Core.Structure.NoResult:
+      type: object
+      properties: {}
+    MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel:
+      type: object
+      properties:
+        errorStatus:
+          format: int32
+          description: The Error status which response from service
+          enum:
+          - '0: Success'
+          - '1: ErrorOther'
+          - '2: InvalidToken'
+          - '3: TokenNotFound'
+          - '4: DrugNotMapped'
+          - '5: PrescriptionDateNotFound'
+          - '6: TotalRepeatsNotFound'
+          - '7: SupplyNumberNotFound'
+          - '8: NotEScriptToken'
+          type: integer
+          example: 0
+        errorMessage:
+          description: The Result message of API call
+          type: string
+          example: success
+        eScripts:
+          description: Escript information
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.eScriptModel'
     MedAdvisor.HSH.Core.Structure.Patient.eScriptModel:
       description: eScript Model
       type: object
@@ -423,6 +441,35 @@ components:
           example: Escript name
         isUnmappedDrugEScript:
           type: boolean
+    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.IdResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        errorData:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.NoResult'
+          readOnly: true
+        result:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - -13
+          - -12
+          - -11
+          - -10
+          - -9
+          - -8
+          - -7
+          - -6
+          - -5
+          - -4
+          - -3
+          - -2
+          - -1
+          type: integer
+        resultMessage:
+          type: string
+        data:
+          $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.IdResult'
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.AuthLoginPharmacy:
       description: Login model for pharmacy access.
       type: object
@@ -448,9 +495,6 @@ components:
       properties:
         id:
           type: string
-    MedAdvisor.HSH.Core.Structure.NoResult:
-      type: object
-      properties: {}
     ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
       properties:
@@ -487,50 +531,6 @@ components:
         data:
           $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel'
           description: The data which returned by the service
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.NotifyPharmacyModel:
-      description: Need to provie an orderId, an order description and recall URL is valid.
-      type: object
-      properties:
-        orderId:
-          format: int32
-          description: The ECommerce order's Id
-          type: integer
-          example: 1
-        description:
-          description: The ECommerce order's description
-          type: string
-          example: Order description example
-        url:
-          description: The ECommerce order's URL
-          type: string
-          example: http://www.example.com/index.html
-    MedAdvisor.HSH.Core.Structure.Patient.PdsEScriptModel:
-      type: object
-      properties:
-        errorStatus:
-          format: int32
-          description: The Error status which response from service
-          enum:
-          - '0: Success'
-          - '1: ErrorOther'
-          - '2: InvalidToken'
-          - '3: TokenNotFound'
-          - '4: DrugNotMapped'
-          - '5: PrescriptionDateNotFound'
-          - '6: TotalRepeatsNotFound'
-          - '7: SupplyNumberNotFound'
-          - '8: NotEScriptToken'
-          type: integer
-          example: 0
-        errorMessage:
-          description: The Result message of API call
-          type: string
-          example: success
-        eScripts:
-          description: Escript information
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.Patient.eScriptModel'
   securitySchemes:
     Bearer:
       type: apiKey

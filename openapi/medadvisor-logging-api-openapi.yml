@@ -49,6 +49,9 @@ paths:
         required: true
 components:
   schemas:
+    MedAdvisor.HSH.Core.Structure.NoResult:
+      type: object
+      properties: {}
     ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
       properties:
@@ -105,9 +108,6 @@ components:
           type: array
           items:
             type: string
-    MedAdvisor.HSH.Core.Structure.NoResult:
-      type: object
-      properties: {}
   securitySchemes:
     Bearer:
       type: apiKey
