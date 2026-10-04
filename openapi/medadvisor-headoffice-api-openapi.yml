@@ -316,16 +316,23 @@ paths:
         required: true
 components:
   schemas:
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest:
-      description: 'Extends or shortens the auto-activation deadline on an already-pushed, still-pending service
-
-        (RAP-38 Story 3a.5, AC1a). Date-only. A past date is allowed — the nightly job picks it up on its
-
-        next run.'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest:
+      description: "Payload to edit an existing HO-owned service (RAP-38 Story 2.5). Same fields as create. The edit\nupdates the single shared PharmacyCapability, so it applies to every pharmacy currently linked to\nthe service — there is no per-pharmacy copy to re-push.\n            \nDeferred at v1, same as create: the fixed pre-screener (Medicare + DOB), the consent declaration,\nand Category (no storage target yet)."
       type: object
       properties:
-        autoActivateDate:
-          format: date-time
+        name:
+          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
+          type: string
+        duration:
+          format: int32
+          description: Default duration in minutes. Stored in DescriptionElements ("dur").
+          type: integer
+        fee:
+          format: double
+          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
+          type: number
+        description:
+          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
           type: string
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest:
       description: "Push an HO service to pharmacies in the group (RAP-38 Story 2.7). Targets are always resolved\nwithin the caller's group. Scope is \"all\", \"states\", or \"pharmacies\".\n            \nMVP behaviour: pushing force-links the service to each target pharmacy with visibility OFF — the\npharmacy has the service but it is not active/bookable until turned on. Pharmacy-side activation\n(notification + opt-in in MFP) is a later piece."
@@ -371,23 +378,16 @@ components:
         description:
           description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
           type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest:
-      description: "Payload to edit an existing HO-owned service (RAP-38 Story 2.5). Same fields as create. The edit\nupdates the single shared PharmacyCapability, so it applies to every pharmacy currently linked to\nthe service — there is no per-pharmacy copy to re-push.\n            \nDeferred at v1, same as create: the fixed pre-screener (Medicare + DOB), the consent declaration,\nand Category (no storage target yet)."
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest:
+      description: 'Extends or shortens the auto-activation deadline on an already-pushed, still-pending service
+
+        (RAP-38 Story 3a.5, AC1a). Date-only. A past date is allowed — the nightly job picks it up on its
+
+        next run.'
       type: object
       properties:
-        name:
-          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
-          type: string
-        duration:
-          format: int32
-          description: Default duration in minutes. Stored in DescriptionElements ("dur").
-          type: integer
-        fee:
-          format: double
-          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
-          type: number
-        description:
-          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
+        autoActivateDate:
+          format: date-time
           type: string
   securitySchemes:
     Bearer:

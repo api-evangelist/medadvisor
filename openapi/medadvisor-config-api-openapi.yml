@@ -57,6 +57,30 @@ paths:
       - Bearer: []
 components:
   schemas:
+    MedAdvisor.Framework.Interface.DemoRuleSetResult:
+      type: object
+      properties:
+        demoRuleSet:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSet'
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
+    MedAdvisor.Framework.Interface.InstructionAbstractionResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstructionAbstraction'
+        result:
+          format: int32
+          type: integer
+        resultMessage:
+          type: string
     MedAdvisor.Framework.Interface.DemoRuleSet:
       type: object
       properties:
@@ -86,30 +110,6 @@ components:
           type: string
         updatedAt:
           format: date-time
-          type: string
-    MedAdvisor.Framework.Interface.InstructionAbstractionResult:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.InstructionAbstraction'
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
-    MedAdvisor.Framework.Interface.DemoRuleSetResult:
-      type: object
-      properties:
-        demoRuleSet:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSet'
-        result:
-          format: int32
-          type: integer
-        resultMessage:
           type: string
     MedAdvisor.Framework.Interface.InstructionAbstraction:
       type: object
