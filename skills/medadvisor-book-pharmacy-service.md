@@ -2,7 +2,7 @@
 name: Book a pharmacy clinical service
 description: Find an available in-pharmacy service and time slot and create a patient booking (vaccination, health check, scope-of-practice).
 api: openapi/medadvisor-pharmacy-unified-openapi.json
-operations: [Account_LoginPharmacy, BookingService_RetrieveAvailableServices, BookingService_RetrieveAvailableTimeslots, Pharmacy_SearchPatients, BookingService_CreateEventBooking]
+operations: [Account_LoginPharmacy, getApiV1BookingservicePharmacyServicesAvailableByCapabilityId, BookingService_RetrieveAvailableTimeslots, Pharmacy_SearchPatients, BookingService_CreateEventBooking]
 ---
 
 # Book a pharmacy clinical service
