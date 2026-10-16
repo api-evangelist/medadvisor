@@ -234,6 +234,20 @@ paths:
       - Bearer: []
 components:
   schemas:
+    MedAdvisor.Framework.Interface.PatientGroupRequest:
+      type: object
+      properties:
+        groupId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        patientGroupType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
     MedAdvisor.Framework.Interface.PatientGroupMemberRequest:
       type: object
       properties:
@@ -250,20 +264,6 @@ components:
           items:
             format: int32
             type: integer
-    MedAdvisor.Framework.Interface.PatientGroupRequest:
-      type: object
-      properties:
-        groupId:
-          format: int32
-          type: integer
-        name:
-          type: string
-        patientGroupType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          type: integer
   securitySchemes:
     Bearer:
       type: apiKey

@@ -57,18 +57,6 @@ paths:
       - Bearer: []
 components:
   schemas:
-    MedAdvisor.Framework.Interface.DemoRuleSetResult:
-      type: object
-      properties:
-        demoRuleSet:
-          type: array
-          items:
-            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSet'
-        result:
-          format: int32
-          type: integer
-        resultMessage:
-          type: string
     MedAdvisor.Framework.Interface.InstructionAbstractionResult:
       type: object
       properties:
@@ -140,6 +128,18 @@ components:
         live:
           type: boolean
         nonContOverride:
+          type: string
+    MedAdvisor.Framework.Interface.DemoRuleSetResult:
+      type: object
+      properties:
+        demoRuleSet:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.Framework.Interface.DemoRuleSet'
+        result:
+          format: int32
+          type: integer
+        resultMessage:
           type: string
   securitySchemes:
     Bearer:

@@ -1,19 +1,25 @@
-generated: '2026-07-24'
+generated: '2026-09-23'
 method: generated
-source: openapi/medadvisor-pharmacy-unified-openapi.json
+source: openapi/medadvisor-3rd-party-integration-api-openapi.yml, openapi/medadvisor-account-api-openapi.yml,
+  openapi/medadvisor-booking-api-openapi.yml, openapi/medadvisor-bookingservice-api-openapi.yml,
+  openapi/medadvisor-calendarsetting-api-openapi.yml, openapi/medadvisor-clinic-api-openapi.yml,
+  openapi/medadvisor-communication-api-openapi.yml, openapi/medadvisor-config-api-openapi.yml,
+  openapi/medadvisor-headoffice-api-openapi.yml, openapi/medadvisor-inbox-api-openapi.yml, openapi/medadvisor-logging-api-openapi.yml,
+  openapi/medadvisor-pharmacist-api-openapi.yml, openapi/medadvisor-pharmacy-api-openapi.yml,
+  openapi/medadvisor-refillorder-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 112
+  operations: 158
   by_action_class:
-    acting: 67
-    connected: 45
+    acting: 81
+    connected: 77
   by_consequence:
-    write: 49
+    write: 62
+    read: 77
+    physical: 18
     safety-critical: 1
-    read: 45
-    physical: 17
   human_in_the_loop_required: 1
 operations:
 - path: /api/v1/account/3rdpartylogin
@@ -26,6 +32,44 @@ operations:
     audience: null
     token:
       max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/drug/escript/{token}
+  method: get
+  operationId: Drug_RetrieveEPrescription3rdParty
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/pharmacy/{id}
+  method: get
+  operationId: Pharmacy_PharmacyDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/pharmacy/notify
+  method: post
+  operationId: Pharmacy_NotifyPharmacyOfECommerceOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
     escalation:
       human-in-the-loop: conditional
       triggers:
@@ -47,6 +91,362 @@ operations:
       proof-of-possession: true
     escalation:
       human-in-the-loop: required
+    audit: required
+- path: /api/v2/booking/eventresource
+  method: get
+  operationId: Booking_RetrieveEventResources
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/retrieveservice
+  method: get
+  operationId: Booking_RetrieveAllServices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/detail/{bookingId}
+  method: get
+  operationId: Booking_RetrieveBooking
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/services/available
+  method: get
+  operationId: Booking_RetrieveAvailableServices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/eventresource/{resourceId}
+  method: get
+  operationId: Booking_RetrieveEventResource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/RetrievePublicBookingLinks
+  method: get
+  operationId: Booking_RetrievePublicBookingLinks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/retrieverunsheet
+  method: get
+  operationId: Booking_RetrieveRunSheet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/validateCalendarToken
+  method: get
+  operationId: Booking_ValidateCalendarToken
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/services/availableresource/{capabilityId}
+  method: get
+  operationId: Booking_RetrieveAvailableResourceForCapability
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/availabletimeslotnewbooking
+  method: get
+  operationId: Booking_RetrieveAvailableTimeSlotNewBooking
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/retrieveavailabletimeslots
+  method: get
+  operationId: Booking_RetrieveAvailableTimeslots
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/retrieveeventbookings
+  method: get
+  operationId: Booking_RetrieveEventBookings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/count
+  method: post
+  operationId: Booking_CountNumberOfBooking
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/booking/walkinqr
+  method: post
+  operationId: Booking_GetOrCreateWalkInQrToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/bulkcancel
+  method: post
+  operationId: Booking_BulkCancelBooking
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/customrunsheet
+  method: post
+  operationId: Booking_CustomRunSheet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/sendprescreener
+  method: post
+  operationId: Booking_SendPrescreener
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/print/{bookingCode}
+  method: post
+  operationId: Booking_Print
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/eventresource/update
+  method: post
+  operationId: Booking_UpdateEventResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/createorupdateservice
+  method: post
+  operationId: Booking_CreateOrUpdateService
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/CompleteCalendarWizard
+  method: post
+  operationId: Booking_CompleteCalendarWizard
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/eventresource/create/{name}
+  method: post
+  operationId: Booking_CreateEventResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/searchprescreenformforbooking
+  method: post
+  operationId: Booking_SearchPrescreenFormForBooking
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/savebooking
+  method: post
+  operationId: Booking_SaveBooking
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/delete/{bookingId}
+  method: delete
+  operationId: Booking_DeleteBooking
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/services/delete/{serviceId}
+  method: delete
+  operationId: Booking_DeleteEventService
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/booking/eventresource/{resourceId}/delete
+  method: delete
+  operationId: Booking_DeleteEventResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
     audit: required
 - path: /api/v1/bookingservice/pharmacy/gettime
   method: get
@@ -224,18 +624,12 @@ operations:
   method: post
   operationId: BookingService_RetrieveHistoricBookings
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/bookingservice/createeventbooking
   method: post
   operationId: BookingService_CreateEventBooking
@@ -256,18 +650,12 @@ operations:
   method: post
   operationId: BookingService_RetrieveSuggestedServices
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/bookingservice/eventbooking/update
   method: post
   operationId: BookingService_UpdateEventBooking
@@ -464,18 +852,12 @@ operations:
   method: post
   operationId: BookingService_RetrieveAvailableResourceForCapability
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/bookingservice/pharmacy/services/deletebooking/{bookingId}
   method: delete
   operationId: BookingService_DeleteServiceBooking
@@ -495,6 +877,208 @@ operations:
 - path: /api/v1/bookingservice/deletebookingrequest/{patientId}/{bookingId}
   method: delete
   operationId: BookingService_DeleteBookingRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/calendarsetting/eventpreference
+  method: get
+  operationId: CalendarSetting_GetEventPreferences
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/calendarsetting/retrieveclosedperiod
+  method: get
+  operationId: CalendarSetting_RetrieveClosedPeriod
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/calendarsetting/retrievepublicholidays/{year}
+  method: get
+  operationId: CalendarSetting_RetrievePublicHolidays
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/calendarsetting/eventpreference/update
+  method: post
+  operationId: CalendarSetting_UpdateEventPreferences
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/calendarsetting/createorupdate/closedperiod
+  method: post
+  operationId: CalendarSetting_CreateOrUpdateClosedPeriod
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/calendarsetting/createorupdate/publicholidays
+  method: post
+  operationId: CalendarSetting_CreateOrUpdatePublicHolidays
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/clinic/{clinicId}
+  method: get
+  operationId: Clinic_RetrieveClinicDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/clinic/{clinicId}
+  method: delete
+  operationId: Clinic_RemoveClinic
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/clinic/{clinicId}/retrieveBookingUrl
+  method: get
+  operationId: Clinic_RetrieveBookingUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/clinic/{clinicId}/bookings
+  method: get
+  operationId: Clinic_RetrieveClinicBookings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/clinic/{clinicId}/bookings
+  method: post
+  operationId: Clinic_AddClinicBooking
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/clinic/generateclinicreport
+  method: get
+  operationId: Clinic_GenerateClinicReportAsync
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/clinic/{clinicId}/retrieveavailabletimeslots
+  method: get
+  operationId: Clinic_RetrieveAvailableTimeslots
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/clinic/retrieveclinics
+  method: get
+  operationId: Clinic_RetrieveClinics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v2/clinic/createorupdate
+  method: post
+  operationId: Clinic_CreateOrUpdateClinic
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/clinic/booking/{clinicId}/{eventBookingId}
+  method: delete
+  operationId: Clinic_RemoveClinicBooking
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -605,16 +1189,6 @@ operations:
 - path: /api/v1/config/precursorInstructions
   method: get
   operationId: Config_RetrievePrecursorInstructionMappings
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/drug/escript/{token}
-  method: get
-  operationId: Drug_RetrieveEPrescription3rdParty
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -740,18 +1314,12 @@ operations:
   method: post
   operationId: Inbox_GetSentMessages
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/inbox/addscript
   method: post
   operationId: Inbox_AddScript
@@ -774,34 +1342,22 @@ operations:
   method: post
   operationId: Inbox_GetCompletedMessages
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/inbox/scheduled
   method: post
   operationId: Inbox_GetScheduledMessages
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/inbox/sendscheduled
   method: post
   operationId: Inbox_SendScheduledMessages
@@ -868,9 +1424,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/pharmacy
+- path: /api/v2/pharmacist/retrievebypharmacy
   method: get
-  operationId: Pharmacy_GetPharmacyDetail
+  operationId: Pharmacist_RetrievePharmacist
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -878,9 +1434,41 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/pharmacy/{id}
+- path: /api/v2/pharmacist/createorupdate
+  method: post
+  operationId: Pharmacist_CreateOrUpdatePharmacist
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v2/pharmacist/delete/{pharmacistId}
+  method: delete
+  operationId: Pharmacist_DeletePharmacist
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/pharmacy
   method: get
-  operationId: Pharmacy_PharmacyDetail
+  operationId: Pharmacy_GetPharmacyDetail
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1080,56 +1668,26 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/v1/pharmacy/notify
-  method: post
-  operationId: Pharmacy_NotifyPharmacyOfECommerceOrder
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /api/v1/pharmacy/features
   method: post
   operationId: Pharmacy_SearchPharmacyFeatures
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/pharmacy/SearchPatients
   method: post
   operationId: Pharmacy_SearchPatients
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/pharmacy/getpharmacyinfos
   method: post
   operationId: Pharmacy_GetPharmacyInfos
@@ -1214,18 +1772,12 @@ operations:
   method: post
   operationId: Pharmacy_SearchPatientAdvance
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/pharmacy/SendBroadcastMessage
   method: post
   operationId: Pharmacy_SendBroadcastMessage
