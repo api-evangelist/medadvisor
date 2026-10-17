@@ -69,36 +69,6 @@ components:
           type: integer
         resultMessage:
           type: string
-    MedAdvisor.Framework.Interface.DemoRuleSet:
-      type: object
-      properties:
-        demoRuleSetRowId:
-          format: int64
-          type: integer
-        programName:
-          type: string
-        selectionEngine:
-          type: string
-        minimumAge:
-          format: int32
-          type: integer
-        maximumAge:
-          format: int32
-          type: integer
-        gender:
-          type: string
-        includeNoAge:
-          type: boolean
-        includeNoGender:
-          type: boolean
-        hash:
-          type: string
-        createDate:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
     MedAdvisor.Framework.Interface.InstructionAbstraction:
       type: object
       properties:
@@ -128,6 +98,36 @@ components:
         live:
           type: boolean
         nonContOverride:
+          type: string
+    MedAdvisor.Framework.Interface.DemoRuleSet:
+      type: object
+      properties:
+        demoRuleSetRowId:
+          format: int64
+          type: integer
+        programName:
+          type: string
+        selectionEngine:
+          type: string
+        minimumAge:
+          format: int32
+          type: integer
+        maximumAge:
+          format: int32
+          type: integer
+        gender:
+          type: string
+        includeNoAge:
+          type: boolean
+        includeNoGender:
+          type: boolean
+        hash:
+          type: string
+        createDate:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
           type: string
     MedAdvisor.Framework.Interface.DemoRuleSetResult:
       type: object
