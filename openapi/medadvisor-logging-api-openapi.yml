@@ -19,16 +19,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.90.0.0__Culture_neutral__PublicKeyToken_null'
             text/json:
               schema:
-                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.90.0.0__Culture_neutral__PublicKeyToken_null'
             application/xml:
               schema:
-                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.90.0.0__Culture_neutral__PublicKeyToken_null'
             text/xml:
               schema:
-                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null'
+                $ref: '#/components/schemas/MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.90.0.0__Culture_neutral__PublicKeyToken_null'
       requestBody:
         content:
           application/json:
@@ -49,6 +49,9 @@ paths:
         required: true
 components:
   schemas:
+    MedAdvisor.HSH.Core.Structure.NoResult:
+      type: object
+      properties: {}
     MedAdvisor.HSH.Core.Structure.Logging.LogEntryModel:
       type: object
       properties:
@@ -76,10 +79,7 @@ components:
           type: array
           items:
             type: string
-    MedAdvisor.HSH.Core.Structure.NoResult:
-      type: object
-      properties: {}
-    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.85.0.0__Culture_neutral__PublicKeyToken_null
+    ? MedAdvisor.HSH.Core.Structure.OperationResult_1__MedAdvisor.HSH.Core.Structure.NoResult__MedAdvisor.PharmacyUnifiedAPI__Version_5.90.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
       properties:
         errorData:

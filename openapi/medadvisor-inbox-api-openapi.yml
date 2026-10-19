@@ -327,22 +327,114 @@ paths:
         required: true
 components:
   schemas:
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel:
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel:
       type: object
       properties:
-        successIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-        failedIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-        result:
+        renewOrderId:
           format: int32
           type: integer
+        messageType:
+          format: int32
+          type: integer
+        messageId:
+          format: int32
+          type: integer
+        subType:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel:
+      description: Inbox tab model
+      type: object
+      properties:
+        maMessageId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        message:
+          type: string
+        dateReceived:
+          format: date-time
+          type: string
+        messageType:
+          type: string
+        subType:
+          type: string
+        view:
+          type: string
+        action:
+          type: string
+        severity:
+          format: int32
+          type: integer
+        messageTypeId:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        maPatientId:
+          format: int32
+          type: integer
+        url:
+          type: string
+        drugsOrdered:
+          format: int32
+          type: integer
+        largePopup:
+          type: boolean
+        renewOrder:
+          format: int32
+          type: integer
+        payInAdvance:
+          description: Tag Pay in advance
+          type: boolean
+        deliveryRequested:
+          type: boolean
+        includesNotes:
+          description: Tag flag for patient's notes
+          type: boolean
+        patientNote:
+          type: string
+        actionsList:
+          type: string
+        patientNhi:
+          type: string
+        patientType:
+          format: int32
+          type: integer
+        isGuestOrder:
+          type: boolean
+        viewDetailsUrl:
+          description: External api when clicking the view button
+          type: string
+        iconId:
+          format: int32
+          description: Icon types
+          type: integer
+        chips:
+          description: List of UI chips / tags
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        displayMessageTypeId:
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        isAsl:
+          type: boolean
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxFilterModel:
       description: Model for filtering inbox's data
       type: object
@@ -366,10 +458,18 @@ components:
             type: integer
         filterName:
           type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxMessageModel:
-      description: Inbox tab model
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel:
+      description: Inbox completed tab
       type: object
       properties:
+        dateActioned:
+          format: date-time
+          type: string
+        isDismissed:
+          description: 'True when the order was soft-deleted (dismissed by the pharmacist).
+
+            Surfaces a "Dismissed" chip in the completed tab list row.'
+          type: boolean
         maMessageId:
           format: int32
           type: integer
@@ -467,18 +567,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest'
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxCompletedMessageModel:
-      description: Inbox completed tab
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel:
+      description: Inbox queue tab
       type: object
       properties:
-        dateActioned:
+        status:
+          type: string
+        datePending:
           format: date-time
           type: string
-        isDismissed:
-          description: 'True when the order was soft-deleted (dismissed by the pharmacist).
-
-            Surfaces a "Dismissed" chip in the completed tab list row.'
-          type: boolean
+        dateNextDue:
+          format: date-time
+          type: string
         maMessageId:
           format: int32
           type: integer
@@ -671,125 +771,25 @@ components:
           type: integer
         isAsl:
           type: boolean
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxResultModel:
+      type: object
+      properties:
+        successIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        failedIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        result:
+          format: int32
+          type: integer
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.MessageRequest:
       type: object
       properties:
-        messageType:
-          format: int32
-          type: integer
-        messageId:
-          format: int32
-          type: integer
-        subType:
-          type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.InboxQueuedMessageModel:
-      description: Inbox queue tab
-      type: object
-      properties:
-        status:
-          type: string
-        datePending:
-          format: date-time
-          type: string
-        dateNextDue:
-          format: date-time
-          type: string
-        maMessageId:
-          format: int32
-          type: integer
-        name:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        message:
-          type: string
-        dateReceived:
-          format: date-time
-          type: string
-        messageType:
-          type: string
-        subType:
-          type: string
-        view:
-          type: string
-        action:
-          type: string
-        severity:
-          format: int32
-          type: integer
-        messageTypeId:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        maPatientId:
-          format: int32
-          type: integer
-        url:
-          type: string
-        drugsOrdered:
-          format: int32
-          type: integer
-        largePopup:
-          type: boolean
-        renewOrder:
-          format: int32
-          type: integer
-        payInAdvance:
-          description: Tag Pay in advance
-          type: boolean
-        deliveryRequested:
-          type: boolean
-        includesNotes:
-          description: Tag flag for patient's notes
-          type: boolean
-        patientNote:
-          type: string
-        actionsList:
-          type: string
-        patientNhi:
-          type: string
-        patientType:
-          format: int32
-          type: integer
-        isGuestOrder:
-          type: boolean
-        viewDetailsUrl:
-          description: External api when clicking the view button
-          type: string
-        iconId:
-          format: int32
-          description: Icon types
-          type: integer
-        chips:
-          description: List of UI chips / tags
-          type: string
-        taskType:
-          format: int32
-          type: integer
-        displayMessageTypeId:
-          format: int32
-          enum:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          type: integer
-        isAsl:
-          type: boolean
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.AddScriptRequestModel:
-      type: object
-      properties:
-        renewOrderId:
-          format: int32
-          type: integer
         messageType:
           format: int32
           type: integer

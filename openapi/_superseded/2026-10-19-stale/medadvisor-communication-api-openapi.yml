@@ -1,0 +1,272 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Pharmacy Unified API v1.0 Communication API
+servers:
+- url: https://pharmacy-unified.api.medadvisor.com.au
+tags:
+- name: Communication
+paths:
+  /api/v1/comunication/GetPatientGroups:
+    get:
+      tags:
+      - Communication
+      summary: Get patient groups
+      operationId: Communication_GetPatientGroups
+      parameters:
+      - name: groupType
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/comunication/GetAllPatientGroupMembers:
+    get:
+      tags:
+      - Communication
+      summary: Get all patient group members
+      operationId: Communication_GetAllPatientGroupMembers
+      parameters:
+      - name: groupId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/comunication/AddPatientGroup:
+    post:
+      tags:
+      - Communication
+      summary: Add patient group
+      operationId: Communication_AddPatientGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+        required: true
+  /api/v1/comunication/EditPatientGroup:
+    post:
+      tags:
+      - Communication
+      summary: Edit patient group
+      operationId: Communication_EditPatientGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupRequest'
+        required: true
+  /api/v1/comunication/UpdatePatientGroupMembers:
+    post:
+      tags:
+      - Communication
+      summary: Update patient group members
+      operationId: Communication_UpdatePatientGroupMembers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupMemberRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupMemberRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupMemberRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupMemberRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.Framework.Interface.PatientGroupMemberRequest'
+        required: true
+  /api/v1/comunication/DeletePatientGroup/{id}:
+    delete:
+      tags:
+      - Communication
+      summary: Delete patient group
+      operationId: Communication_DeletePatientGroup
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+components:
+  schemas:
+    MedAdvisor.Framework.Interface.PatientGroupRequest:
+      type: object
+      properties:
+        groupId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        patientGroupType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+    MedAdvisor.Framework.Interface.PatientGroupMemberRequest:
+      type: object
+      properties:
+        groupId:
+          format: int32
+          type: integer
+        addUsers:
+          type: array
+          items:
+            format: int32
+            type: integer
+        removeUsers:
+          type: array
+          items:
+            format: int32
+            type: integer
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

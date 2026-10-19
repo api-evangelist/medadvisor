@@ -7,6 +7,30 @@ servers:
 tags:
 - name: HeadOffice
 paths:
+  /api/v1/hq/groups:
+    get:
+      tags:
+      - HeadOffice
+      summary: The caller's own head office groups (MAU-10822), by id + name — every group…
+      operationId: HeadOffice_GetGroups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
   /api/v1/hq/services:
     get:
       tags:
@@ -178,6 +202,36 @@ paths:
             schema:
               $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest'
         required: true
+    delete:
+      tags:
+      - HeadOffice
+      summary: Deletes an HO-owned service (RAP-38).
+      operationId: HeadOffice_DeleteService
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
   /api/v1/hq/pharmacies/{id}:
     get:
       tags:
@@ -210,6 +264,391 @@ paths:
       - Bearer: []
       summary: Head office get pharmacy
       x-summary-source: derived
+  /api/v1/hq/services/custom:
+    get:
+      tags:
+      - HeadOffice
+      summary: Lists the group's unmapped pharmacy-created custom services (RAP-38…
+      operationId: HeadOffice_GetCustomServices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/hq/booking-url/links:
+    get:
+      tags:
+      - HeadOffice
+      summary: Lists the caller's group's generated booking links — the general URL plus every…
+      operationId: HeadOffice_GetBookingLinks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - HeadOffice
+      summary: Generates — or returns the existing — a deep-link booking token for the…
+      operationId: HeadOffice_GenerateBookingLink
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateBookingLinkRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateBookingLinkRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateBookingLinkRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateBookingLinkRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateBookingLinkRequest'
+        required: true
+  /api/v1/hq/pharmacies/mappings:
+    get:
+      tags:
+      - HeadOffice
+      summary: Every pharmacy in the group with its head-office-owned identifiers (MAU-10548)…
+      operationId: HeadOffice_GetPharmacyMappings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - HeadOffice
+      summary: Applies an uploaded CSV's values across many pharmacies (MAU-10548).
+      operationId: HeadOffice_BulkUpdatePharmacyMappings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingRequest'
+        required: true
+  /api/v1/hq/booking-url/services:
+    get:
+      tags:
+      - HeadOffice
+      summary: The caller's group's catalogue services as they appear on the booking page…
+      operationId: HeadOffice_GetBookingPageServices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/hq/pharmacies/{id}/headofficekey:
+    get:
+      tags:
+      - HeadOffice
+      summary: Gets a pharmacy's head-office-defined Pharmacy ID (RAP-38).
+      operationId: HeadOffice_GetHeadOfficeKey
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - HeadOffice
+      summary: Sets a pharmacy's head-office-defined Pharmacy ID (RAP-38).
+      operationId: HeadOffice_UpdateHeadOfficeKey
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePharmacyIdRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePharmacyIdRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePharmacyIdRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePharmacyIdRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePharmacyIdRequest'
+        required: true
+  /api/v1/hq/booking-url/services/{id}/readiness:
+    get:
+      tags:
+      - HeadOffice
+      summary: The per-service readiness breakdown for the booking page (RAP-41 Story 1.5)…
+      operationId: HeadOffice_GetServiceReadiness
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+  /api/v1/hq/booking-url/services/visibility:
+    put:
+      tags:
+      - HeadOffice
+      summary: Saves which of the caller's group's services appear on its public booking page…
+      operationId: HeadOffice_SetBookingPageServiceVisibility
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoServiceVisibilityRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoServiceVisibilityRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoServiceVisibilityRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoServiceVisibilityRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoServiceVisibilityRequest'
+        required: true
+  /api/v1/hq/pharmacies/{id}/customfields/{fieldId}:
+    put:
+      tags:
+      - HeadOffice
+      summary: Sets a pharmacy's value for a generic HO custom field (KORE-254 — e.g.
+      operationId: HeadOffice_UpdateCustomFieldValue
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: fieldId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateCustomFieldValueRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateCustomFieldValueRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateCustomFieldValueRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateCustomFieldValueRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateCustomFieldValueRequest'
+        required: true
   /api/v1/hq/services/{id}/push/{pharmacyId}/deadline:
     put:
       tags:
@@ -265,11 +704,35 @@ paths:
             schema:
               $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest'
         required: true
+  /api/v1/hq/booking-url:
+    post:
+      tags:
+      - HeadOffice
+      summary: Returns — creating on first call — the caller's group's single booking URL…
+      operationId: HeadOffice_MintBookingUrl
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
   /api/v1/hq/services/{id}/push:
     post:
       tags:
       - HeadOffice
-      summary: Pushes an HO service to pharmacies in the group (RAP-38 Story 2.7) by scope…
+      summary: Pushes a service to pharmacies in the group (RAP-38 Story 2.7) by scope — all…
       operationId: HeadOffice_PushService
       parameters:
       - name: id
@@ -314,6 +777,48 @@ paths:
             schema:
               $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest'
         required: true
+  /api/v1/hq/services/custom/map:
+    post:
+      tags:
+      - HeadOffice
+      summary: Maps selected pharmacy-custom services onto one canonical service (RAP-38…
+      operationId: HeadOffice_MapCustomServices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoMapCustomServicesRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoMapCustomServicesRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoMapCustomServicesRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoMapCustomServicesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoMapCustomServicesRequest'
+        required: true
 components:
   schemas:
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePushDeadlineRequest:
@@ -327,8 +832,123 @@ components:
         autoActivateDate:
           format: date-time
           type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateBookingLinkRequest:
+      description: 'Payload to generate a deep-link booking token that pre-selects a service (and optionally a pharmacy)
+
+        for the caller''s head office group (RAP-41 Story 1.3). The report group is ALWAYS the caller''s
+
+        reportgroup_id claim — there is intentionally no group id here. The ServiceId /
+
+        PharmacyId are validated server-side against the caller''s own group (AD-7 / authz).'
+      type: object
+      properties:
+        serviceId:
+          format: int32
+          description: The service to pre-select. Required. Must be in the caller's group catalogue.
+          type: integer
+        pharmacyId:
+          format: int32
+          description: 'Optional pharmacy to pre-select alongside the service. When supplied, must be a member of the
+
+            caller''s group. Omit for a service-only deep link.'
+          type: integer
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoMapCustomServicesRequest:
+      description: 'Map selected pharmacy-custom services onto one canonical service (RAP-38 consolidation). Forward-only
+
+        cut-over: each source pharmacy starts offering the target (carrying its real staff/room resources
+
+        over), and the custom is retired. Existing bookings stay on the custom so the pharmacy can still
+
+        complete them; only new bookings use the target. One-way — there is no unmap.'
+      type: object
+      properties:
+        targetServiceId:
+          format: int32
+          description: The canonical service to map onto — a Default (platform) service or this group's HO service.
+          type: integer
+        sourceServiceIds:
+          description: The pharmacy-custom capability ids to map.
+          type: array
+          items:
+            format: int32
+            type: integer
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingRequest:
+      description: 'Bulk set of head-office-owned identifiers from an uploaded CSV (MAU-10548). The file is parsed in the
+
+        browser, so this is plain JSON: the bulk version of the single-field edits, not a file upload.'
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingEntry'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkCustomFieldEntry:
+      description: One custom field cell in a CSV row, by field id (the browser gets ids from the GET).
+      type: object
+      properties:
+        fieldId:
+          format: int32
+          type: integer
+        value:
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkMappingEntry:
+      description: "One CSV row: a pharmacy and the values to store against it. A blank value means \"leave as\n            is\", not \"clear\" — a sparsely filled template must not wipe what the inline edit put there."
+      type: object
+      properties:
+        pharmacyId:
+          format: int32
+          type: integer
+        headOfficeKey:
+          type: string
+        customFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoBulkCustomFieldEntry'
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdatePharmacyIdRequest:
+      description: 'Payload to set a pharmacy''s head-office-defined Pharmacy ID (RAP-38). Stored on the pharmacy''s
+
+        membership link (link_Pharmacy_ReportGroup.HeadOfficeKey) — one value per pharmacy + group. Free-form;
+
+        blank/whitespace clears it.'
+      type: object
+      properties:
+        headOfficeKey:
+          description: The head office's external reference for the pharmacy. Blank clears it.
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest:
+      description: "Payload to edit an existing HO-owned service (RAP-38 Story 2.5). Same fields as create. The edit\nupdates the single shared PharmacyCapability, so it applies to every pharmacy currently linked to\nthe service — there is no per-pharmacy copy to re-push.\n            \nDeferred at v1, same as create: the fixed pre-screener (Medicare + DOB), the consent declaration,\nand Category (no storage target yet)."
+      type: object
+      properties:
+        name:
+          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
+          type: string
+        duration:
+          format: int32
+          description: Default duration in minutes. Stored in DescriptionElements ("dur").
+          type: integer
+        fee:
+          format: double
+          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
+          type: number
+        description:
+          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
+          type: string
+        formType:
+          description: 'Optional PPS program consultation type to attach a form to this service (matches MFP''s Calendar
+
+            Wizard "Form type" field). Null/omitted means no form. Stored in DescriptionElements ("ftype").'
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateCustomFieldValueRequest:
+      description: 'Payload to set a pharmacy''s value for a generic HO custom field (KORE-254). Free-form; blank/
+
+        whitespace clears it.'
+      type: object
+      properties:
+        value:
+          description: The new value for the field. Blank clears it.
+          type: string
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest:
-      description: "Push an HO service to pharmacies in the group (RAP-38 Story 2.7). Targets are always resolved\nwithin the caller's group. Scope is \"all\", \"states\", or \"pharmacies\".\n            \nMVP behaviour: pushing force-links the service to each target pharmacy with visibility OFF — the\npharmacy has the service but it is not active/bookable until turned on. Pharmacy-side activation\n(notification + opt-in in MFP) is a later piece."
+      description: "Push a service to pharmacies in the group (RAP-38 Story 2.7) — the group's own HO service or a\nplatform Default (MAU-10758), never a pharmacy-built custom or another group's service. Targets\nare always resolved within the caller's group. Scope is \"all\", \"states\", or \"pharmacies\".\n            \nMVP behaviour: pushing force-links the service to each target pharmacy with visibility OFF — the\npharmacy has the service but it is not active/bookable until turned on. Pharmacy-side activation\n(notification + opt-in in MFP) is a later piece."
       type: object
       properties:
         scope:
@@ -353,24 +973,35 @@ components:
 
             auto-activates and waits for the pharmacy to set it up. When set it must be today or later.'
           type: string
-    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoUpdateServiceRequest:
-      description: "Payload to edit an existing HO-owned service (RAP-38 Story 2.5). Same fields as create. The edit\nupdates the single shared PharmacyCapability, so it applies to every pharmacy currently linked to\nthe service — there is no per-pharmacy copy to re-push.\n            \nDeferred at v1, same as create: the fixed pre-screener (Medicare + DOB), the consent declaration,\nand Category (no storage target yet)."
+        defaultHoursOption:
+          description: 'Which default working-hour template the auto-activation job gives the default "Clinical
+
+            Pharmacist" it creates, if this service auto-activates (MAU-10769). Only meaningful alongside
+
+            {MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoPushServiceRequest.AutoActivateDate} — ignored when it is null, since nothing is ever auto-activated.
+
+            Must be {MedAdvisor.Framework.Preferences.PharmacyCapabilityPreferenceKeys.DefaultHoursOptionMirrorOpeningHours}
+
+            or {MedAdvisor.Framework.Preferences.PharmacyCapabilityPreferenceKeys.DefaultHoursOptionFixedWeekday} when set.'
+          type: string
+    MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoServiceVisibilityRequest:
+      description: 'Head office''s booking-page service selection (RAP-41 Story 1.7, FR7). This is the WHOLE ticked set,
+
+        not a delta: every eligible catalogue service absent from {MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoServiceVisibilityRequest.ServiceIds} is recorded as
+
+        explicitly hidden. That matches the HQ page''s single "Save service updates" button, and it means a
+
+        save always leaves the group in a fully-decided state rather than accumulating partial edits.
+
+        An empty list is legitimate — it hides everything, leaving a booking page with no services.'
       type: object
       properties:
-        name:
-          description: Service name. Required. Stored on PharmacyCapability.Name (max 50 chars).
-          type: string
-        duration:
-          format: int32
-          description: Default duration in minutes. Stored in DescriptionElements ("dur").
-          type: integer
-        fee:
-          format: double
-          description: Optional fee in dollars. Stored in DescriptionElements ("fee").
-          type: number
-        description:
-          description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
-          type: string
+        serviceIds:
+          description: Ids of the services to show on the group's public booking page.
+          type: array
+          items:
+            format: int32
+            type: integer
     MedAdvisor.PharmacyUnifiedAPI.v1.Models.HoCreateServiceRequest:
       description: "Payload to create a head-office custom service (RAP-38 Story 2.5). The created capability is\nowned by the caller's report group (OwnerReportGroup_ID) and has NO pharmacy links yet — it\nlands in the catalogue as \"Not pushed\" until a separate push creates the link rows.\n            \nDeferred from the wireframe at v1: the fixed pre-screener (Medicare + DOB) and the consent\ndeclaration. Category is also omitted — it has no storage target yet (OQ-02: the category value\nset is unsettled / expected to come from KAMS metadata), so it is not accepted here rather than\ninvent a column or XML element that may conflict with the eventual design."
       type: object
@@ -388,6 +1019,11 @@ components:
           type: number
         description:
           description: Optional website/booking description. Stored in DescriptionElements ("ext" blurb).
+          type: string
+        formType:
+          description: 'Optional PPS program consultation type to attach a form to this service (matches MFP''s Calendar
+
+            Wizard "Form type" field). Null/omitted means no form. Stored in DescriptionElements ("ftype").'
           type: string
   securitySchemes:
     Bearer:

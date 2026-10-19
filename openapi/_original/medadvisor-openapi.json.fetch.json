@@ -1,0 +1,12 @@
+{
+ "url": "https://pharmacy-unified.api.medadvisor.com.au/swagger/docs/v1",
+ "final": "https://pharmacy-unified.api.medadvisor.com.au/swagger/docs/v1",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 183260,
+ "sha256": "601d0e775f6d7ac5fd6e98f9e47735cac05b7077f26284b0bfc748a0d14dd2b3",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}
