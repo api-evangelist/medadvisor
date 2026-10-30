@@ -1,4 +1,4 @@
-# MedAdvisor (medadvisor)
+# MedAdvisor
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,79 +64,132 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-MedAdvisor (MedAdvisor Solutions) is an Australian-founded, ASX-listed medication management and patient engagement technology company. Its pharmacy workflow software runs in more than 95% of Australian community pharmacies and reaches over 4 million patients. The web-based "MedAdvisor for Pharmacy" platform (which replaced the long-running PlusOne desktop software) handles dispense workflow, medication adherence, appointment and clinical-service booking, e-script (eScript) handling, refill ordering, and omnichannel patient communication, alongside a consumer medication app. Home market: Australia.
+MedAdvisor (MedAdvisor Solutions) is an Australian-founded, ASX-listed medication management and patient engagement technology company whose pharmacy workflow software runs in more than 95% of Australian community pharmacies and reaches over 4 million patients. Its clinician-facing platform - the web-based "MedAdvisor for Pharmacy" that replaced the long-running PlusOne desktop software - handles dispense workflow, medication adherence, appointment and service booking (vaccinations, health checks, scope-of-practice services), e-script (eScript) token handling, refill ordering, and omnichannel patient communication, alongside a consumer medication app. On the developer side MedAdvisor exposes a real, Swagger-documented HTTP REST surface, the Pharmacy Unified API, at pharmacy-unified.api.medadvisor.com.au, including a "3rd-Party Integration" family (partner login, pharmacy lookup, eScript status, and order notification into the pharmacy PlusOne inbox) for third-party widgets and eCommerce integrations. Authentication is a JWT bearer token obtained via a clientId/clientSecret plus Base64-encoded pharmacy credentials exchange; the surface is HL7/HTTP REST rather than HL7 FHIR - no public FHIR CapabilityStatement or SMART-on-FHIR configuration is served. Home market is Australia, positioned as the dominant community-pharmacy engagement layer sitting between dispense systems, pharmaceutical programs, and patients.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/medadvisor/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/medadvisor/refs/heads/main/apis.yml)
+**Areas:** Healthcare · Australia · Pharmacy · Medication Management · Medication Adherence · e-Prescribing · eScript · Patient Engagement · Appointment Booking · Digital Health · Healthcare API
 
-## API Posture
+## MedAdvisor on APIs.io
 
-MedAdvisor exposes a real, machine-readable **Pharmacy Unified API** documented with a live Swagger UI. It is an HTTP REST API (Swagger 2.0), **not** HL7 FHIR — no FHIR CapabilityStatement or SMART-on-FHIR configuration is served. Authentication is a JWT bearer token obtained via a MedAdvisor-issued `clientId`/`clientSecret` plus Base64-encoded pharmacy credentials (`POST /api/v1/account/3rdpartylogin`). The Swagger reference is publicly viewable, but access is gated behind a partner/integrator arrangement.
+Everything profiled for MedAdvisor is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/medadvisor/](https://apis.io/providers/medadvisor/)** — or go straight to one of the APIs or properties below.
 
-- **Developer reference (Swagger UI):** [https://pharmacy-unified.api.medadvisor.com.au/swagger/](https://pharmacy-unified.api.medadvisor.com.au/swagger/)
-- **OpenAPI (harvested):** [openapi/medadvisor-pharmacy-unified-openapi.json](openapi/medadvisor-pharmacy-unified-openapi.json) — Swagger 2.0, 107 paths / ~112 operations, from `/swagger/docs/v1`
+### APIs (14)
 
-## Tags
+- [MedAdvisor 3rd-Party Integration API](https://apis.io/apis/medadvisor/medadvisor-3rd-party-integration-api/) — The 3rd-Party Integration API from MedAdvisor — 4 operation(s) for 3rd-party integration.
+- [MedAdvisor Account API](https://apis.io/apis/medadvisor/medadvisor-account-api/) — The Account API from MedAdvisor — 1 operation(s) for account.
+- [MedAdvisor Booking API](https://apis.io/apis/medadvisor/medadvisor-booking-api/) — The Booking API from MedAdvisor — 27 operation(s) for booking.
+- [MedAdvisor Booking Service API](https://apis.io/apis/medadvisor/medadvisor-bookingservice-api/) — The BookingService API from MedAdvisor — 34 operation(s) for bookingservice.
+- [MedAdvisor Calendar Setting API](https://apis.io/apis/medadvisor/medadvisor-calendarsetting-api/) — The CalendarSetting API from MedAdvisor — 6 operation(s) for calendarsetting.
+- [MedAdvisor Clinic API](https://apis.io/apis/medadvisor/medadvisor-clinic-api/) — The Clinic API from MedAdvisor — 8 operation(s) for clinic.
+- [MedAdvisor Communication API](https://apis.io/apis/medadvisor/medadvisor-communication-api/) — The Communication API from MedAdvisor — 6 operation(s) for communication.
+- [MedAdvisor Config API](https://apis.io/apis/medadvisor/medadvisor-config-api/) — The Config API from MedAdvisor — 2 operation(s) for config.
+- [MedAdvisor Head Office API](https://apis.io/apis/medadvisor/medadvisor-headoffice-api/) — The HeadOffice API from MedAdvisor — 6 operation(s) for headoffice.
+- [MedAdvisor Inbox API](https://apis.io/apis/medadvisor/medadvisor-inbox-api/) — The Inbox API from MedAdvisor — 8 operation(s) for inbox.
+- [MedAdvisor Logging API](https://apis.io/apis/medadvisor/medadvisor-logging-api/) — The Logging API from MedAdvisor — 1 operation(s) for logging.
+- [MedAdvisor Pharmacist API](https://apis.io/apis/medadvisor/medadvisor-pharmacist-api/) — The Pharmacist API from MedAdvisor — 3 operation(s) for pharmacist.
+- [MedAdvisor Pharmacy API](https://apis.io/apis/medadvisor/medadvisor-pharmacy-api/) — The Pharmacy API from MedAdvisor — 31 operation(s) for pharmacy.
+- [MedAdvisor Refill Order API](https://apis.io/apis/medadvisor/medadvisor-refillorder-api/) — The RefillOrder API from MedAdvisor — 14 operation(s) for refillorder.
 
-- Healthcare
-- Australia
-- Pharmacy
-- Medication Management
-- Medication Adherence
-- e-Prescribing
-- eScript
-- Patient Engagement
-- Appointment Booking
-- Digital Health
-- Healthcare API
+### Published properties
 
-## Timestamps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Created:** 2026-07-24
-- **Modified:** 2026-07-24
+#### MCP servers (1)
 
-## APIs
+Model Context Protocol servers that expose the API to agents.
 
-### Pharmacy Unified API — 3rd-Party Integration
+- [medadvisor-pharmacy-unified](https://apis.io/servers/medadvisor/medadvisor-pharmacy-unified/)
 
-The publicly documented third-party integration surface — partner login, pharmacy lookup, eScript status by token, and order notification into the pharmacy PlusOne inbox — for external widgets and eCommerce platforms.
+#### Agentic access (1)
 
-- **Reference:** [https://pharmacy-unified.api.medadvisor.com.au/swagger/](https://pharmacy-unified.api.medadvisor.com.au/swagger/)
-- **Base URL:** `https://pharmacy-unified.api.medadvisor.com.au`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Pharmacy Unified API — Booking Service
+- [Medadvisor Agentic Access](https://apis.io/agentic-access/medadvisor/medadvisor-agentic-access/)
 
-Appointment and clinical-service booking — available services and time slots, event bookings, event resources and staff calendars, and patient/booking search. Supports in-pharmacy vaccination, health-check, and scope-of-practice services.
+#### Collections (2)
 
-### Pharmacy Unified API — Refill Order
+Postman and Open Collection request collections.
 
-Medication refill and order management — pending/completed orders, sending eScript tokens, line items, patient-initiated actions, order completion, refunds, reminders, and return-to-stock.
+- [Pharmacy Unified API v1.0](https://apis.io/collections/medadvisor/open-medadvisor-pharmacy-unified/)
+- [Pharmacy Unified API v2.0](https://apis.io/collections/medadvisor/open-medadvisor-pharmacy-unified-v2/)
 
-### Pharmacy Unified API — Inbox
+#### Overlays (2)
 
-The pharmacy PlusOne inbox — main, sent, completed, scheduled, and ready-to-collect queues, adding scripts, sending scheduled messages, and dismissing items.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-### Pharmacy Unified API — Communication
+- [Medadvisor Pharmacy Unified V1 Overlay](https://apis.io/overlays/medadvisor/medadvisor-pharmacy-unified-v1-overlay/)
+- [Medadvisor Pharmacy Unified V2 Overlay](https://apis.io/overlays/medadvisor/medadvisor-pharmacy-unified-v2-overlay/)
 
-Patient-communication and group-messaging — creating/editing patient groups, managing membership, and targeted patient outreach.
+#### Security (3)
 
-### Pharmacy Unified API — Head Office
+Authentication, trust centre, and vulnerability disclosure.
 
-Head-office (banner / multi-pharmacy) operations — managing services across a group, listing pharmacies, and pushing services with deadlines to member stores.
+- [Medadvisor Authentication](https://apis.io/security/medadvisor/medadvisor-authentication/)
+- [Medadvisor Domain Security](https://apis.io/security/medadvisor/medadvisor-domain-security/)
+- [Medadvisor Trust Center](https://apis.io/security/medadvisor/medadvisor-trust-center/)
 
-### Pharmacy Unified API — Pharmacy
+## Where to find this API
 
-Pharmacy account, settings, and administration — pharmacy details and module/feature settings, patient search, registration and activation, electronic-prescribing settings, SMS reminders, and change requests.
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.medadvisor.com.au)
-- [Company Website](https://www.medadvisorsolutions.com/)
-- [API Reference](https://pharmacy-unified.api.medadvisor.com.au/swagger/)
+- [Documentation](https://support.medadvisor.com.au)
+- [API reference](https://pharmacy-unified.api.medadvisor.com.au/swagger/)
 - [Support](https://support.medadvisor.com.au)
-- [Privacy Policy](https://www.medadvisor.com.au/privacy)
-- [Contact](https://www.medadvisorsolutions.com/contact)
+- [Compliance](https://www.medadvisorsolutions.com/en-au/data-and-privacy)
+- [Terms of service](https://www.medadvisorsolutions.com/terms-and-conditions)
+- [Privacy policy](https://www.medadvisor.com.au/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 46.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 41.2 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 35.1 |
+| Access clarity | 36.8 |
+
+**Agent readiness 27.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 32.0** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/medadvisor/](https://apis.io/providers/medadvisor/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for MedAdvisor: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/medadvisor/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
